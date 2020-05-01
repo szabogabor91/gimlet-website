@@ -14,6 +14,8 @@ const manifest = isDev
 module.exports = function(eleventyConfig) {
   // Add layout alias
   eleventyConfig.addLayoutAlias("base", "base.njk");
+  eleventyConfig.addLayoutAlias("blog", "blog.njk");
+  eleventyConfig.addLayoutAlias("post", "post.njk");
 
   // Add a shortcode for bundled CSS.
   eleventyConfig.addShortcode("bundledCss", function() {

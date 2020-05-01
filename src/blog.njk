@@ -1,27 +1,21 @@
 ---
 title: Blog
-layout: base
+layout: blog
 ---
-<div class="bg-yellow-200 py-8 sm:pt-10 md:pt-12 ">
-    <div>
-        <div class="max-w-screen-xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto lg:max-w-none">
-                <h2 class="text-lg leading-6 font-semibold text-teal-300 uppercase tracking-wider">
-                    Blog
-                </h2>
-            </div>
+{% for post in collections.posts %}
+<div class="font-sans pb-8">
+    <h2 class="font-bold font-sans break-normal text-gray-800 pt-6 pb-2 text-3xl md:text-4xl">{{ post.data.title }}</h2>
+    <div class="flex">
+        <img class="h-8 w-8 rounded-full" src="/laszlo.jpg" />
+        <div>
+            <span class="ml-2 align-middle text-xs md:text-base font-normal text-gray-600">Laszlo Fogas on Product Updates · {{ post.date | format }}</span>
         </div>
     </div>
-</div>
-
-<div class="container w-full md:max-w-3xl mx-auto pt-4">
-    <div class="w-full px-4 md:px-6 text-base text-gray-900 leading-normal font-sans">
-        {% for post in collections.posts %}
-        <div class="font-sans">
-            <h2 class="font-bold font-sans break-normal text-gray-800 pt-6 pb-2 text-3xl md:text-4xl">{{ post.data.title }}</h2>
-            <p class="text-sm md:text-base font-normal text-gray-600">Laszlo Fogas on Product Updates · {{ post.date | format }}</p>
-        </div>
-        {% endfor %}
+    <img src="/{{ post.data.image }}" class="py-4 object-cover h-64 w-full"/>
+    <div class="post text-gray-700 text-lg">
+        {{  post.data.excerpt | safe }}
     </div>
+    <div class="pt-4"><a href="{{ post.url }}" class="font-medium text-teal-500 hover:text-teal-300 focus:outline-none focus:text-gray-300 transition duration-150 ease-in-out">Continue reading &raquo;</a></div>
 </div>
-</div>
+<hr />
+{% endfor %}

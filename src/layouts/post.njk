@@ -1,0 +1,15 @@
+---
+title: Blog
+layout: blog
+---
+<a href="/blog" class="font-medium text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition duration-150 ease-in-out">&laquo; Back</a>
+<div class="font-sans">
+    <h2 class="font-bold font-sans break-normal text-gray-800 pt-6 pb-2 text-3xl md:text-4xl">{{ title }}</h2>
+    <p class="text-sm md:text-base font-normal text-gray-600">Laszlo Fogas on Product Updates · {{ date | format }}</p>
+</div>
+
+<img src="/{{ image }}" class="py-8 object-cover h-64 w-full"/>
+
+<div class="post font-sans text-gray-700">
+    {{ content | safe }}
+</div>

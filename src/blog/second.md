@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Here we go with a puffin
+title: Another one with a cow 
 date: 2020-04-30
-image: puffin.png
+image: cow.png
 excerpt: |
     I identified three major milestones in the Kubernetes projects I had. <br/><br/>
     

@@ -3,3 +3,30 @@
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
+
+.post p {
+    @apply py-4 text-lg;
+}
+
+.post blockquote {
+    @apply border-l-4 border-teal-500 italic my-8 pl-12;
+}
+
+.post pre {
+    @apply bg-gray-900 rounded text-white font-mono text-base p-4;
+}
+.post code {
+    @apply break-words whitespace-pre-wrap;
+}
+
+.post h2 {
+    @apply font-bold font-sans break-normal text-gray-800 pt-6 pb-2 text-3xl;
+}
+
+.post h3 {
+    @apply font-bold font-sans break-normal text-gray-800 pt-6 pb-2 text-3xl;
+}
+
+.post li {
+    @apply py-3 list-disc list-inside;
+}
