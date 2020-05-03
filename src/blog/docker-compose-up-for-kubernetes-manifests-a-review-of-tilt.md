@@ -1,21 +1,21 @@
 ---
 layout: post
-title: Docker-compose up for Kubernetes manifests - a review of tilt
+title: Docker-compose up for Kubernetes manifests - a review of Tilt
 date: 2020-05-03
 image: wasp.jpg
 image_author: v2osk
 image_url: https://unsplash.com/photos/joL0nSbZ-lI
 excerpt: |
-    Tilt.dev is a New York based startup that made tilt: a new tool for multi-service development.
+    Tilt.dev is a New York based startup that made Tilt: a new tool for multi-service development.
     <br /><br />
-    It is basically docker-compose that works with Kubernetes yamls. In this blog post you get a quick intro to tilt, and our take on it.
+    It is basically docker-compose that works with Kubernetes yamls. In this blog post you get a quick intro to Tilt, and our take on it.
 topic: Ecosystem
 tags: [posts]
 ---
 
-Tilt.dev is a new New York based startup that made tilt: a new tool for multi-service development.
+Tilt.dev is a new New York based startup that made Tilt: a new tool for multi-service development.
 
-It is basically docker-compose that works with Kubernetes yamls. In this blog post you get a quick intro to tilt, and my take on it.
+It is basically docker-compose that works with Kubernetes yamls. In this blog post you get a quick intro to Tilt, and my take on it.
 
 ## Tilt up
 
@@ -39,7 +39,7 @@ k8s_yaml('app.yaml')
 k8s_resource('frontend', port_forwards=8080)
 ```
 
-## Running tilt
+## Running Tilt
 
 When you run `tilt up`, it tries to deploy the stack on your current Kubernetes environment. 
 That said, you have to have a Kubernetes cluster at hand, either a local or your company issued one. 
@@ -137,7 +137,7 @@ Not necessarily the live update feature though. I use Docker Compose for the dep
 The service I'm developing is running on my laptop, and uses the services running in compose. But, as always with new workflow additions, I have to try it and see if it sticks.
 Tilt puts a great emphasis on the live update feature. Technically it's a nice solution, and I'm sure it will please many developers.
 
-Also, tilt is a well executed skeleton of a possible feature rich tool in the future. The Docker Compose workflow is a good start, and I'm sure the Tilt team has many ideas how to develop it further.
+Also, Tilt is a well executed skeleton of a possible feature rich tool in the future. The Docker Compose workflow is a good start, and I'm sure the Tilt team has many ideas how to develop it further.
 It's a nice canvas to build on.
 
 If you want to try Tilt, head over to the <a href="https://docs.tilt.dev/tutorial.html" target="_blank">The First 15 Minutes</a> tutorial by Tilt.
