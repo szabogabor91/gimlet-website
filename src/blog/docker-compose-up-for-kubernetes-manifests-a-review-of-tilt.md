@@ -23,7 +23,7 @@ The promise is simple, you type `tilt up` and your whole stack is up and running
 
 But this time, you define your stack in Kubernetes manifests.
 
-## The `Tiltfile` wires your stack together.
+## The `Tiltfile` wires your stack together
 
 It's a small configuration file written in Starlark, a langugage made specifically for configuration. It's a dialect of Python, with a familiar and highly readable syntax.
 
