@@ -10,20 +10,20 @@
 
     <meta content="Gimlet - Kubernetes automation for platform teams" property="og:title">
     <meta content="website" property="og:type">
-    <meta content="https://gimlet.io/gimlet.png" property="og:image">
-    <meta content="https://gimlet.io/gimlet.png" property="og:image">
+    <meta content="{{ 'https://gimlet.io/'+image | default('https://gimlet.io/gimlet.png') }}" property="og:image">
+    <meta content="{{ 'https://gimlet.io/'+image | default('https://gimlet.io/gimlet.png') }}" property="og:image">
     <meta content="https://gimlet.io/" property="og:url">
     <meta content="Gimlet" property="og:site_name">
-    <meta content="Gimlet brings good defaults so you deploy your services within minutes. It's a release manager for Kubernetes with per branch QA environment support and operations dashboard for developers."
+    <meta content="{{ excerpt | default('Readymade automation for the common GitOps workflows. So you can focus on the special glue.') }}"
           property="og:description">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@laszlocph">
     <meta name="twitter:creator" content="@laszlocph">
-    <meta name="twitter:title" content="Gimlet - Deploy to Kubernetes without the boilerplate">
+    <meta name="twitter:title" content="Gimlet - Kubernetes automation for platform teams">
     <meta name="twitter:description"
-          content="Gimlet brings good defaults so you deploy your services within minutes. A release manager for Kubernetes with per branch QA environment support and operations dashboard for developers.">
-    <meta name="twitter:image" content="https://gimlet.io/gimlet.png">
+          content="{{ excerpt | default('Readymade automation for the common GitOps workflows. So you can focus on the special glue.') }}">
+    <meta name="twitter:image" content="{{ 'https://gimlet.io/'+image | default('https://gimlet.io/gimlet.png') }}">
 
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     {% bundledCss %}
@@ -31,6 +31,7 @@
 </head>
 <body>
 {% bundledJs %}
+
 <div>
     <div id="navbar" x-data="{ open: false, sticky: false }" class="sticky top-0 z-50 bg-yellow-200" x-on:scroll.window="sticky = (window.pageYOffset > document.querySelector('#navbar').getBoundingClientRect().top) ? true : false; " x-bind:class="{ 'shadow': sticky }">
         <div class="max-w-screen-xl mx-auto">
