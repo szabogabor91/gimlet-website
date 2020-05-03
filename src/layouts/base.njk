@@ -11,7 +11,7 @@
     <meta content="{% if title %}{{ title }} | {% endif %}{{ site.title }}" property="og:title">
     <meta content="website" property="og:type">
     <meta content="{{ 'https://gimlet.io/'+image | default('gimlet.png') }}" property="og:image">
-    <meta content="https://gimlet.io/" property="og:url">
+    <meta content="{{ site.url }}{{ page.url }}" property="og:url">
     <meta content="Gimlet" property="og:site_name">
     <meta content="{{ excerpt | default('Readymade automation for the common GitOps workflows. So you can focus on the special glue.') }}"
           property="og:description">
