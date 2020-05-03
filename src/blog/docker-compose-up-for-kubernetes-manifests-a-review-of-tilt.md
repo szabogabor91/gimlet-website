@@ -19,7 +19,7 @@ It is basically docker-compose that works with Kubernetes yamls. In this blog po
 
 ## Tilt up
 
-The promise is simple, you type `tilt up` and your whole stack up and running. Just like with Docker Compose.
+The promise is simple, you type `tilt up` and your whole stack is up and running. Just like with Docker Compose.
 
 But this time, you define your stack in Kubernetes manifests.
 
