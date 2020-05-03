@@ -15,6 +15,7 @@ if (!isDev) {
   [].push.apply(plugins, [
     purgecss({
       content: ['src/**/*.njk', 'src/**/*.md', 'src/**/*.js'],
+      whitelist: ['token', 'pre', 'code'],
       defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
     }),
     cssnano({
