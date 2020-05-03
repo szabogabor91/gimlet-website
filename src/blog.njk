@@ -2,7 +2,7 @@
 title: Blog
 layout: blog
 ---
-{% for post in collections.posts %}
+{% for post in collections.posts | reverse %}
 <div class="font-sans pb-8">
     <h2 class="font-bold font-sans break-normal text-gray-800 pt-6 pb-2 text-3xl md:text-4xl">{{ post.data.title }}</h2>
     <div class="flex">
@@ -12,7 +12,7 @@ layout: blog
         </div>
     </div>
     <img src="/{{ post.data.image }}" class="py-4 object-cover h-64 w-full"/>
-    <div class="post text-gray-700 text-lg">
+    <div class="post font-serif text-gray-800 text-lg">
         {{  post.data.excerpt | safe }}
     </div>
     <div class="pt-4"><a href="{{ post.url }}" class="font-medium text-teal-500 hover:text-teal-300 focus:outline-none focus:text-gray-300 transition duration-150 ease-in-out">Continue reading &raquo;</a></div>

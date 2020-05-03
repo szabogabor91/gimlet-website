@@ -8,13 +8,15 @@ layout: blog
     <div class="flex">
         <img class="h-8 w-8 rounded-full" src="/laszlo.jpg" />
         <div>
-            <span class="ml-2 align-middle text-xs md:text-base font-normal text-gray-600">Laszlo Fogas on Product Updates · {{ date | format }}</span>
+            <span class="ml-2 align-middle text-xs md:text-base font-normal text-gray-600">Laszlo Fogas on {{ topic }} · {{ date | format }}</span>
         </div>
     </div>
 </div>
 
 <img src="/{{ image }}" class="py-8 object-cover h-64 w-full"/>
 
-<div class="post font-sans text-gray-700">
+<div class="post font-serif text-gray-800">
     {{ content | safe }}
+    <p>Photo by {{ image_author }} on <a href="{{image_url}}" target="_blank">Unsplash</a></p>
 </div>
+

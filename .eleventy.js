@@ -3,6 +3,8 @@ const path = require("path");
 
 const isDev = process.env.APP_ENV === "development";
 
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+
 const manifestPath = path.resolve(__dirname, "dist", "assets", "manifest.json");
 const manifest = isDev
   ? {
@@ -42,6 +44,8 @@ module.exports = function(eleventyConfig) {
 
     return value.toLocaleDateString('en-US', options);
   });
+
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   return {
     dir: {
