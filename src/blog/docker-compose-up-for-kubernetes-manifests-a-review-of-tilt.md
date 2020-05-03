@@ -46,7 +46,7 @@ That said, you have to have a Kubernetes cluster at hand, either a local or your
 
 
 It works with any Kubernetes cluster. Should you need one, the Tilt documentation is graciously helping you to get up and running with the well known local ones: Microk8s, Minikube, kind, k3d. 
-Tilt is going as far as building in safeguards to protect you from accidentally deploying on a production cluster. Only the local cluster names are allowed by default, you have to explicitly allow specific k8s contexts for deployment with the `allow_k8s_contexts` command. 
+Tilt is going as far as building in safeguards to protect you from accidentally deploying on a production cluster. Only the local cluster names are allowed by default. You have to explicitly allow remote k8s contexts for deployment with the `allow_k8s_contexts` command. 
 Kudos for these.
 
 Tilt runs in the foreground, and you get a fully functional console UI, but also opens up a browser tab with a web UI.
@@ -71,7 +71,7 @@ Tilt's approach is both simple and novel and I would love to see it evolve. The 
 Interestingly, Docker Inc also started to re-invent itself these days.
 They pivot from the former ops focus: they intentionally leave deployment to other industry players, as they try to become a dev tooling company.
 
-One of their first steps is releasing the Docker Compose specification to the community. Which will bring a nice buzz in the ecosystem. Interesting times ahead.
+One of their first steps is releasing the Docker Compose specification to the community. This will bring a nice buzz in the ecosystem. Interesting times ahead.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">This could be big. Hope it&#39;s not too late. Compose has been my gateway drug to containers et al. and still my standard on ease of use. <a href="https://t.co/URiNQu4R4X">https://t.co/URiNQu4R4X</a></p>&mdash; laszlo (@laszlocph) <a href="https://twitter.com/laszlocph/status/1247515592036409344?ref_src=twsrc%5Etfw">April 7, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
@@ -80,7 +80,7 @@ One of their first steps is releasing the Docker Compose specification to the co
 Tilt comes with one more feature I haven't covered yet.
 
 It automatically rebuilds your Docker images if you change a file, and redeploys it in Kubernetes.
-This closes the developer feedback loop, as you see the Docker build and Kubernetes deploy logs in Tilt.
+This closes the developer feedback loop, as you see the Docker build and Kubernetes deploy logs in Tilt, then your updated app is running in Kubernetes.
 
 You configure this behavior in the Tiltfile with the `docker_build` command.
 
@@ -100,7 +100,7 @@ k8s_resource('frontend', port_forwards=8080)
 Tilt knows that the Docker rebuild and Kubernetes deploy takes time, so it offers two optimizations: the `local_resource` directive and the `live_update` option.
 
 `local_resource` allows you to compile projects outside of the Docker environment, eg on your laptop in your regular development workflow.
-`live_update` then allows you to copy prebuilt binaries or for - interpreted languages or static sites - source files into the container.
+`live_update` then allows you to copy prebuilt binaries or - for interpreted languages or static sites - source files into the container.
 
 This removes the two longest operations from the workflow: Docker image build, and Kubernetes redeploy, 
 reducing the feedback loop to the time of compilation of your app (for compiled languages), and the application restart.
@@ -111,7 +111,7 @@ The Tilt <a href="https://docs.tilt.dev/example_go.html" target="_blank">docs</a
 
 Tilt plays well with the existing tools that we use to manage our manifests. Static files templates are seldom used in real life scenarios: we either use Helm or Kustomize, or roll our own templating solutions.
 
-The Tiltifile has options to work with these templates. This greatly increases the utility of Tilt.
+The Tiltifile has options to work with these templates, which greatly increases its utility.
 
 ``` py
 # multiple YAML files; can be either a list or multiple calls
@@ -127,13 +127,13 @@ k8s_yaml(helm('chart_dir'))
 
 At Gimlet.io, we think that the Cloud Native ecosystem produced many best in class tools. However, they are only building blocks, piecing them together is not an all the way pleasant experience. 
 There shall exist a wide range of tools and products that operate on higher abstractions levels. We are certainly one of those.
-We welcome new products in this space, and we are glad to look at them.
+We welcome new products in this space, and glad to look at them.
 
 Tilt is fast. Golang shines in CLIs, and its startup time never ceases to amaze me. Working with Tilt felt snappy all the way.
 
 Tilt does what it says, it lives up to the Docker Compose experience, therefor I definitely want to try Tilt in my dev setups.
 
-Not necessarily the live update feature though. I use Docker Compose for the dependencies only, the static part of the stack and I wire things in ways I need.
+Not necessarily the live update feature though. I use Docker Compose for the dependencies only, the static part of the stack, and I wire things in ways I need.
 The service I'm developing is running on my laptop, and uses the services running in compose. But, as always with new workflow additions, I have to try it and see if it sticks.
 Tilt puts a great emphasis on the live update feature. Technically it's a nice solution, and I'm sure it will please many developers.
 
