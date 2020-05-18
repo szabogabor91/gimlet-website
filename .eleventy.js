@@ -1,3 +1,4 @@
+const { DateTime } = require("luxon");
 const fs = require("fs");
 const path = require("path");
 
@@ -31,6 +32,11 @@ module.exports = function(eleventyConfig) {
     return manifest["main.js"]
       ? `<script src="${manifest["main.js"]}"></script>`
       : "";
+  });
+
+  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
   });
 
   // Copy static files directly to output.
