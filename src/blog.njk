@@ -11,11 +11,13 @@ layout: blog
             <span class="ml-2 align-middle text-xs md:text-base font-normal text-gray-600">Laszlo Fogas on {{ post.data.topic }} · {{ post.date | format }}</span>
         </div>
     </div>
+    {% if post.data.image %}
     <img src="/{{ post.data.image }}" class="py-4 object-cover h-64 w-full"/>
-    <div class="post font-serif text-gray-800 text-lg">
+    {% endif %}
+    <div class="post font-serif text-gray-800 text-lg {% if not post.data.image %}py-4{% endif %}">
         {{  post.data.excerpt | safe }}
     </div>
-    <div class="pt-4"><a href="{{ post.url }}" class="font-medium text-teal-500 hover:text-teal-300 focus:outline-none focus:text-gray-300 transition duration-150 ease-in-out">Continue reading &raquo;</a></div>
+    <div {% if post.data.image %}class="pt-4"{% endif %}><a href="{{ post.url }}" class="font-medium text-teal-500 hover:text-teal-300 focus:outline-none focus:text-gray-300 transition duration-150 ease-in-out">Continue reading &raquo;</a></div>
 </div>
 <hr />
 {% endfor %}

@@ -13,10 +13,14 @@ layout: blog
     </div>
 </div>
 
+{% if image %}
 <img src="/{{ image }}" class="py-8 object-cover h-64 w-full"/>
+{% endif %}
 
 <div class="post font-serif text-gray-800">
     {{ content | safe }}
+    {% if image %}
     <p><small>Photo by {{ image_author }} on <a href="{{image_url}}" target="_blank">Unsplash</a></small></p>
+    {% endif %}
 </div>
 
