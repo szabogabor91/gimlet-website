@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Why we build Gimlet
+title: Why we built Gimlet
 date: 2020-06-04
 excerpt: |
     Couple of weeks ago, Laszlo had the chance to talk about his path that lead to building Gimlet.

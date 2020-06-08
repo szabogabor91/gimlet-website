@@ -16,7 +16,11 @@
     @apply bg-gray-900 rounded text-white font-mono text-base p-4;
 }
 .post code {
-    @apply bg-gray-900 rounded text-white font-mono text-base p-1 break-words whitespace-pre-wrap;
+    @apply bg-gray-100 border-gray-200 border rounded text-red-600 font-mono text-base p-1 break-words whitespace-pre-wrap;
+}
+
+.post pre code {
+    @apply bg-gray-900 rounded border-0 text-white font-mono text-base p-1 break-words whitespace-pre-wrap;
 }
 
 .post h2 {
@@ -28,7 +32,7 @@
 }
 
 .post li {
-    @apply py-3 list-disc list-inside;
+    @apply font-serif text-lg list-disc list-inside;
 }
 
 .post a {
