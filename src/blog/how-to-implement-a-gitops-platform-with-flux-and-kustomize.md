@@ -181,7 +181,7 @@ Using a `releases` folder allows us to store other things in this repo, like the
 Using the `releases/staging` and `releases/production` folders, allows this repository to serve as the source of truth for multiple environments - or Kubernetes clusters.
 
 
-## Now, let's make the first deploy
+## Now let's make the first deploy
 
 To deploy your application, you should put the kustomized Kubernetes manifests under `releases/staging/your-app`
 
@@ -193,7 +193,9 @@ You should see in the Flux logs that it synced the change to your cluster.
 
 At this point you are already doing gitops. If you want to change something, you make a git commit with the unfolded kustomize template, and Flux deploys it.
 
-Doing this by hand is a good exercise, but it gets tedious soon. It's time to add it to your CI pipeline.
+Doing this by hand is a good exercise, but it gets tedious soon. It's time to add it to CI.
+
+Take the commands you ran previously and add it as a step to your CI pipeline.
 
 ## Rollback
 
