@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to implement a gitops platform with Flux and Helm
-date: 2020-06-10
+date: 2020-06-09
 image: leafs.jpg
 image_author:  Phil Hearing
 image_url: https://unsplash.com/photos/KH9_FVZmmb4
