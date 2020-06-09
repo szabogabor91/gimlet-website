@@ -1,25 +1,28 @@
 ---
 layout: post
-title: How to implement a gitops platform with Flux and Kustomize
-date: 2020-06-08
-image: mountain.jpg
-image_author: Massimiliano Morosinotto
-image_url: https://unsplash.com/photos/3i5PHVp1Fkw
+title: How to implement a gitops platform with Flux and Helm
+date: 2020-06-10
+image: leafs.jpg
+image_author:  Phil Hearing
+image_url: https://unsplash.com/photos/KH9_FVZmmb4
 excerpt: |
-    In this blog post you will learn how to implement a gitops platform at your company, using Flux and Kustomize.
+    In this blog post you will learn how to implement a gitops platform at your company, using Flux and Helm.
 topic: Ecosystem
 tags: [posts]
 ---
 
-In this blog post you will learn how to implement a gitops platform at your company, using Flux and Kustomize.
+In this blog post you will learn how to implement a gitops platform at your company, using Flux and Helm.
 
 What you need as a prerequisite is 
 - a Kubernetes cluster
 - a project you already deploy to Kubernetes from a CI pipeline
-- you configure this application with Kustomize 
+- you configure this application with Helm 
 
 You will deploy this project to Kubernetes with the gitops approach, side-by-side of your existing deployment.
 At the end of this how-to, you will be able to judge how gitops fits your workflow.
+
+If you use Kustomize today, we made a guide for that too.
+See [How to implement a gitops platform with Flux and Kustomize](https://gimlet.io/blog/how-to-implement-a-gitops-platform-with-flux-and-kustomize/)
 
 ## Start with creating an empty git repository
 
@@ -35,102 +38,84 @@ Furthermore, we will use Flux only to synchronize git state to the Kubernetes cl
 We are going to avoid `fluxctl`, Flux's CLI tool. It is both a convenience tool, and an opinionated workflow to use Flux and
 we opted to not use it in this how-to. We did so to have a full understanding of what is happening in the cluster.
 
-This how-to also assumes that you use Kustomize at your company, so we are going to use Kustomize both to configure your deployed applications, and installing Flux.
+
+This how-to also assumes that you use Helm at your company, so we are going to use Helm both to configure your deployed applications, and installing Flux.
 
 ## Continue with installing Flux
 
-For installation, we follow closely the official [How to bootstrap Flux using Kustomize](https://docs.fluxcd.io/en/latest/tutorials/get-started-kustomize/) guide.
+For installation, we follow loosely the official [Get started with Flux using Helm](https://docs.fluxcd.io/en/latest/tutorials/get-started-helm/) guide.
 
-Use the Flux Github release as the Kustomize base, and lock the version to the latest one.
-
-```bash
-cat > fluxcd/kustomization.yaml <<EOF
-namespace: flux
-bases:
-  - github.com/fluxcd/flux//deploy?ref=v1.19.0
-patchesStrategicMerge:
-  - patch.yaml
-EOF
-```
-
-It's a good practice to scan the deployment manifests now on [https://github.com/fluxcd/flux/tree/master/deploy](https://github.com/fluxcd/flux/tree/master/deploy).
-
-Alternatively you can pull down the manifests from Github and use it as a base in your kustomization.yaml. 
-This could be a good idea especially as we are not going to use the Flux features that use Memcached.
-Removing the Memcached manifests reduces the number of moving parts in the deployment.
-
-Next step is to write the `patch.yaml`.
+But, instead of running a one off `helm upgrade` command, you will capture the Flux configuration in the `values.yaml` file first.
+You can see the documentation of each field at the [chart's default values file](https://github.com/fluxcd/flux/blob/master/chart/flux/values.yaml).
 
 ```bash
 export GHUSER="YOURUSER"
 export GITOPS_REPO="gitops"
-cat > fluxcd/patch.yaml <<EOF
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: flux
-  namespace: flux
-spec:
-  template:
-    spec:
-      containers:
-        - name: flux
-          args:
-            - --registry-disable-scanning
-            - --git-readonly
-            - --git-poll-interval=5s
-            - --manifest-generation=true
-            - --ssh-keygen-dir=/var/fluxd/keygen
-            - --git-branch=master
-            - --git-path=releases/staging
-            - --git-url=git@github.com:${GHUSER}/${GITOPS_REPO}
+cat > values.yaml <<EOF
+image:
+  tag: 1.19.0
+
+git:
+  url: git@github.com:${GHUSER}/${GITOPS_REPO}
+  path: releases/staging
+  readonly: true
+  pollInterval: 5s
+
+registry:
+  disableScanning: true
+
+memcached:
+  enabled: false
+
+manifestGeneration: true
 EOF
 ```
 
-The arguments are significantly different from what is in the official installation guide:
+The values are significantly different from what is in the official installation guide:
 
-- add `registry-disable-scanning`
-
-Disables automatic deployments of new Docker images. You will deploy through CI every time, and the version change will be captured as a git commit.
-
-
-- remove `memcached-*` arguments
-
-After adding registry-disable-scanning, we won't need Memcached anymore as Flux only uses Memcached to cache image metadata.
-
-
-- add `git-readonly`
+- `git.readonly: true`
 
 Disables fluxctl release workflows. You will deploy through CI every time, and the version change will be captured as a git commit.
 
 
-- remove `git-user` and `git-email`
-
-Due to using git-readonly
-
-
-
-- add `git-poll-interval`
+- `git.pollInterval: 5s`
 
 To speed up releases. The default is 5 minutes.
 
 
-- change `git-path`
+- `git.path: releases/staging,releases/production`
 
 Configures Flux to deploy everything from the releases/staging and releases/production  folder of the gitops repo.
+
+
+- `registry.disableScanning: true`
+
+Disables automatic deployments of new Docker images. You will deploy through CI every time, and the version change will be captured as a git commit.
+
+
+- `memcached.enabled: false`
+
+After adding registry-disable-scanning, we won't need Memcached anymore as Flux only uses Memcached to cache image metadata.
+
 
 ## Github access
 
 Time to deploy Flux:
 
 ```bash
-kubectl apply -k fluxcd
+kubectl create namespace flux
+
+helm repo add fluxcd https://charts.fluxcd.io
+
+helm upgrade -i flux fluxcd/flux \
+   --values values.yaml \
+   --namespace flux
 ```
 
-At startup Flux generates an SSH key and logs the public key.
+At startup, Flux generates an SSH key and logs the public key.
 In order to sync your cluster state with git, you need to copy the public key and create a deploy key on your GitHub repository.
 
-Grab the key with 
+Grab the key with:
 ```
 kubectl -n flux logs deployment/flux | grep identity.pub | cut -d '"' -f2
 ```
@@ -187,15 +172,24 @@ Using the `releases/staging` and `releases/production` folders, allows this repo
 
 ## Now let's make the first deploy
 
-To deploy your application, you should put the kustomized Kubernetes manifests under `releases/staging/your-app`
+To deploy your application, you should put your application's Kubernetes manifests under `releases/staging/your-app`
+and Flux will sync it to the cluster.
 
-Instead of applying your templates on the cluster with `kubectl apply -k`, run `kubectl kustomize . > releases/staging/your-app/deployment.yaml`, and make a git commit to the gitops repository.   
+This workflow uses Helm's templating features, but nothing else.
 
-You should see in the Flux logs that it synced the change to your cluster.
+Template your application's Helm chart now:   
+
+```bash
+helm template your-app . \
+  --values values.yaml \
+  --output-dir ../gitops-dummy/releases/staging/
+```
+
+Make a git commit to the gitops repository, and you should see in the Flux logs that it synced the change to your cluster.
 
 ## Let's automate the gitops repo update with CI
 
-At this point you are already doing gitops. If you want to change something, you make a git commit with the unfolded kustomize template, and Flux deploys it.
+At this point you are already doing gitops. If you want to change something, you make a git commit with the unfolded Helm chart, and Flux deploys it.
 
 Doing this by hand is a good exercise, but it gets tedious soon. It's time to add it to CI.
 
@@ -242,30 +236,51 @@ spec:
 +           - --token=changethissupersecrettoken
 ```
 
-## An alternative workflow: storing kustomize templates in the gitops repo
+## An alternative workflow: storing Helm charts in the gitops repo
 
-So far we have stored fully kustomized manifests in the gitops repository.
+So far we have stored plain Kubernetes manifests in the gitops repository.
 
-Flux is able to run kustomize upon git sync as we enabled this feature with `manifest-generation=true` in the patch.yaml file.
-Meaning, you can put kustomize templates under `releases/staging/your-app`, Flux will do the `kubectl kustomize` step for you.
+Flux is able to handle Helm charts upon git sync with the [Helm Operator](https://github.com/fluxcd/helm-operator).
+This operator makes Helm charts declarative. Instead of running one off `helm upgrade` commands, you can capture the intended state in a yaml file.
 
-Put a `.flux.yaml` file under `releases/staging/your-app` to enable this feature.
+With the HelmRelease CRD you can capture the chart information and the matching configuration values and you can store this in your gitops repository.
 
 ```yaml
-version: 1
-commandUpdated:
-  generators:
-    - command: kustomize build .
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: default
+spec:
+  releaseName: nginx-ingress
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: nginx-ingress
+    version: 1.22.1
+  values:
+    controller:
+      ingressClass: "myNginx"
 ```
 
-Flux allows great flexibility with this feature, check out the [Manifest generation through .flux.yaml configuration files](https://docs.fluxcd.io/en/1.19.0/references/fluxyaml-config-files/) guide to see all possibilities.
+CRDs are Kubernetes extensions that make is it possible to define custom resources like `HelmRelease`. Install the `HelmRelease` CRD with:
 
-This approach however comes with a few drawbacks:
+```yaml
+kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/master/deploy/crds.yaml
+```
 
-- Kustomize failures will surface at deploy time
-- if you want to see what changed in your manifest in a given commit, you have to run kustomize in your head to grasp what changed
-- Flux imposes limitations on the placement of `.flux.yaml`. It looks for the file in the `git-path` folder, or one level up.
-The folder conventions we come up with do not fit this limitation.  
+Then install the Helm Operator with
+
+```yaml
+helm upgrade -i helm-operator fluxcd/helm-operator \
+  --set git.ssh.secretName=flux-git-deploy \
+  --set helm.versions=v3
+  --namespace flux
+```
+
+Place the example HelmRelease from above under `releases/staging/nginx`, make a git commit 
+and see how Flux and the Helm Operator deploys it.
+
+You can track `HelmReleases` with `kubectl get hr --all-namespaces`.
 
 ## An alternative workflow: using fluxctl
 
@@ -308,5 +323,4 @@ Or, if you liked the setup, and want to kickstart your gitops platform, check ou
 For inspiration, you can check out some other OSS projects that have a slightly different take and/or go further with Flux:
 
 - [https://github.com/cloud-native-nordics/k8s-config-repo](https://github.com/cloud-native-nordics/k8s-config-repo) a gitops repo, that follows a slightly different structure
-- [https://github.com/swade1987/gitops-with-kustomize](https://github.com/swade1987/gitops-with-kustomize) more sophisticated scripting for Flux and Kustomize
 - [https://github.com/lunarway/release-manager](https://github.com/lunarway/release-manager) a gitops platform using Flux, its own CLI tool, its server-side component, that implements promotion and release logic
