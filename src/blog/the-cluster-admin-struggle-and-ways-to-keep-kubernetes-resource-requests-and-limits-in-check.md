@@ -184,6 +184,7 @@ We would be delighted if you check out [Gimlet](https://gimlet.io).
 [1] https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
 <br/>
 [2] https://sysdig.com/blog/kubernetes-limits-requests/
+<br/>
 [3] https://kubernetes.io/docs/concepts/policy/resource-quotas/#enabling-resource-quota
 <br/>
 <br/>
