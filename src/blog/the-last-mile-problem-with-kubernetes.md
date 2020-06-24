@@ -103,7 +103,7 @@ You too can track the changes in the Kubernetes reources upon a deploy.
 
 Just like the name, namespace and replica fields, the ingress configuration too has its matching entry in the `questions.yaml` file.
 
-In addition to the common fields, it specifies the `resource` field too, which tells Gimlet to add the `ingress.yaml` to the generated Kustomize resource file list.
+In addition to the common fields, it specifies the `resource` field, which tells Gimlet to add the `ingress.yaml` to the generated Kustomize resource file list.
 
 questions.yaml
 ```yaml
@@ -125,23 +125,23 @@ ingress.yaml
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: {{ .name }}
+  name: {% raw %}{{ .name }}{% endraw %}
   annotations:
     kubernetes.io/ingress.class: nginx
     certmanager.k8s.io/cluster-issuer: letsencrypt
 spec:
   tls:
     - hosts:
-        - {{ .ingress.subdomain }}.staging.xxx.com
-      secretName: tls-secret-{{ .ingress.subdomain }}
+        - {% raw %}{{ .ingress.subdomain }}{% endraw %}.staging.xxx.com
+      secretName: tls-secret-{% raw %}{{ .ingress.subdomain }}{% endraw %}
   rules:
-    - host: {{ .ingress.subdomain }}.staging.xxx.com
+    - host: {% raw %}{{ .ingress.subdomain }}{% endraw %}.staging.xxx.com
       http:
         paths:
           - path: /
             backend:
-              serviceName: {{ .name }}
-              servicePort: {{ .containerPort }}
+              serviceName: {% raw %}{{ .name }}{% endraw %}
+              servicePort: {% raw %}{{ .containerPort }}{% endraw %}
 ```
 
 Since the Master Template lives in FlyCorp's company gitops repo, they extended it with two new options:
@@ -168,14 +168,14 @@ questions.yaml
         type: string
 +     - variable: production
 +       label: Production
-+       description: Set if this is a production config. If set, the URL will be <<subdomain>>.raffle.systems
++       description: Set if this is a production config. If set, the URL will be <<subdomain>>.xxx.com
 +       type: bool
 +       default: false
 +       patchJson6902:
 +         group: networking.k8s.io
 +         version: v1beta1
 +         kind: Ingress
-+         name: "{{ .name }}"
++         name: "{% raw %}{{ .name }}{% endraw %}"
 +         patch: ingress-hostname.yaml
 ```
 
@@ -185,10 +185,10 @@ ingress-hostname.yaml
 ```yaml
 - op: replace
   path: /spec/rules/0/host
-  value: {{ .ingress.subdomain }}.xxx.com
+  value: {% raw %}{{ .ingress.subdomain }}{% endraw %}.xxx.com
 - op: replace
   path: /spec/tls/0/hosts/0
-  value: {{ .ingress.subdomain }}.xxx.com
+  value: {% raw %}{{ .ingress.subdomain }}{% endraw %}.xxx.com
 ```
 
 If you are new to Kustomize you can get started on [https://kustomize.io/](https://kustomize.io/)
@@ -211,7 +211,7 @@ questions.yaml
 +      group: networking.k8s.io
 +      version: v1beta1
 +      kind: Ingress
-+      name: "{{ .name }}"
++      name: "{% raw %}{{ .name }}{% endraw %}"
 +      patch: ingress-basicauth.yaml
 ```
 
