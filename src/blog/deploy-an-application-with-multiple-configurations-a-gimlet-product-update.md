@@ -25,7 +25,6 @@ envs:
   production:
     - name: pytorch-api
       strategy: simple
-      trigger: .*/docker-image-build
       namespace: models
       image: mycompany/pytorch-api
       tag: '${COMMIT_SHA:0:8}'
@@ -43,7 +42,6 @@ envs:
         MODEL_VERSION: 2
     - name: pytorch-api-2
       strategy: simple
-      trigger: .*/docker-image-build
       namespace: models
       image: mycompany/pytorch-api
       tag: '${COMMIT_SHA:0:8}'
