@@ -10,7 +10,7 @@
 
     <meta content="{% if title %}{{ title }} | {% endif %}{{ site.title }}" property="og:title">
     <meta content="website" property="og:type">
-    <meta content="{{ 'https://gimlet.io/'+image | default('gimlet-text.png') }}" property="og:image">
+    <meta content="{{ 'https://gimlet.io/'+image | default('gimlet.png') }}" property="og:image">
     <meta content="{{ site.url }}{{ page.url }}" property="og:url">
     <meta content="Gimlet" property="og:site_name">
     <meta content="{{ excerpt | default('Readymade automation for the common Kubernetes deployment workflows. If you are hiring your first DevOps, or you need a headstart') }}"
@@ -22,7 +22,7 @@
     <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}{{ site.title }}">
     <meta name="twitter:description"
           content="{{ excerpt | default('Readymade automation for the common Kubernetes deployment workflows. If you are hiring your first DevOps, or you need a headstart') }}">
-    <meta name="twitter:image" content="{{ 'https://gimlet.io/'+image | default('gimlet-text.png') }}">
+    <meta name="twitter:image" content="{{ 'https://gimlet.io/'+image | default('gimlet.png') }}">
 
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     {% bundledCss %}
