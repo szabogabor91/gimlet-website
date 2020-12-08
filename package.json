@@ -6,11 +6,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "run-p dev:*",
-    "dev:assets": "APP_ENV=development webpack --mode production --watch",
-    "dev:site": "APP_ENV=development eleventy --serve",
+    "dev:assets": "webpack --mode production --watch",
+    "dev:site": "eleventy --serve",
     "build": "run-s clean build:assets build:site",
-    "build:assets": "webpack --mode production",
-    "build:site": "eleventy",
+    "build:assets": "NODE_ENV=production webpack --mode production",
+    "build:site": "NODE_ENV=production eleventy",
     "clean": "rm -rf ./dist"
   },
   "devDependencies": {

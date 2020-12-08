@@ -1,7 +1,7 @@
 const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 
-const isDev = process.env.APP_ENV === "development";
+const isDev = process.env.NODE_ENV !== "production";
 
 const plugins = [
   tailwindcss('tailwind.config.js'),
@@ -9,14 +9,9 @@ const plugins = [
 ];
 
 if (!isDev) {
-  const purgecss = require('@fullhuman/postcss-purgecss');
   const cssnano = require('cssnano');
 
   [].push.apply(plugins, [
-    purgecss({
-      content: ['src/**/*.njk', 'src/**/*.md', 'src/**/*.js'],
-      defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
-    }),
     cssnano({
       preset: 'default',
     }),

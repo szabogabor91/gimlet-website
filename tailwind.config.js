@@ -1,4 +1,9 @@
 module.exports = {
+  purge: {
+    mode: 'layers',
+    layers: ['base', 'components', 'utilities'],
+    content: ['src/**/*.njk', 'src/**/*.md', 'src/**/*.js'],
+  },
   theme: {
     extend: {
       colors: {
