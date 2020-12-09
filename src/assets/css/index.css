@@ -71,6 +71,22 @@ pre {
     color: #fff;
 }
 
+.activeMenu {
+    @apply bg-green-100 text-gray-900
+
+}
+
+.menu {
+    @apply bg-white text-gray-600
+}
+
+.menu:hover {
+    @apply bg-gray-50 text-gray-900
+}
+
+.menu:focus {
+    @apply outline-none ring-2 ring-indigo-500
+}
 
 /**
  * a11y-dark theme for JavaScript, CSS, and HTML

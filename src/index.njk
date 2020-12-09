@@ -83,3 +83,13 @@ layout: base
         </div>
     </div>
 </main>
+
+<div>
+    hello
+{% for post in collections.gimletcli | reverse %}
+<div class="font-sans pb-8">
+    {{ post.url }}
+</div>
+<hr />
+{% endfor %}
+</div>
