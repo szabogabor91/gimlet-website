@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "run-p dev:*",
-    "dev:assets": "webpack --mode production --watch",
+    "dev:assets": "webpack --watch",
     "dev:site": "eleventy --serve",
     "build": "run-s clean build:assets build:site",
     "build:assets": "NODE_ENV=production webpack --mode production",
