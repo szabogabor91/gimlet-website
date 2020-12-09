@@ -11,11 +11,14 @@ module.exports = {
     colors: {
       white: colors.white,
       red: colors.red,
-      green: colors.green,
-      gray: colors.warmGray,
+      green: colors.emerald,
+      gray: colors.blueGray,
       blue: colors.lightBlue,
       yellow: colors.amber,
       pink: colors.rose,
+      cyan: colors.cyan,
+      black: colors.black,
+      orange: colors.orange,
     },
     extend: {
       fontFamily: {
