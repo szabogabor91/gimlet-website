@@ -24,9 +24,9 @@ layout: base
                     </div>
 
                     <div class="space-y-1">
-                        <button class="{% if '/getting-started' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                        <a href="/gimlet-cli/getting-started" class="{% if '/getting-started' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
                             Getting Started
-                        </button>
+                        </a>
                     </div>
 
                     <div class="space-y-1">
@@ -34,8 +34,8 @@ layout: base
                             Guides
                         </span>
                         <div class="space-y-1">
-                            <a href="#"
-                               class="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium menu rounded-md">
+                            <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
+                               class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
                                 Deploy your app to Kubernetes without the boilerplate
                             </a>
                             <a href="#"

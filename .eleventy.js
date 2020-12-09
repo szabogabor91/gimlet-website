@@ -54,6 +54,11 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(syntaxHighlight);
 
+  const markdownIt = require("markdown-it");
+  const markdownItAnchor = require("markdown-it-anchor");
+  const markdownLib = markdownIt({ html: true }).use(markdownItAnchor);
+  eleventyConfig.setLibrary("md", markdownLib);
+
   return {
     dir: {
       input: 'src',
