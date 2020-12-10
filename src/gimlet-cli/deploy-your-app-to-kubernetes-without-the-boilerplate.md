@@ -7,7 +7,7 @@ tags: [gimletcli]
 
 # Deploy your app to Kubernetes without the boilerplate
 
-In this guide you will deploy your application to Kubernetes without writing a lengthy deployment manifest.
+In this guide you will deploy your application to Kubernetes without writing lengthy deployment manifests.
 
 #### Prerequisites
 
@@ -211,4 +211,4 @@ There are a couple of paths you can take:
 
 - You can explore the many use-cases of OneChart in the [OneChart documentation]()
 
-- or further explore what you can do with Gimlet CLI in your CI pipeline in [Modernize your Jenkins pipelines with Gimlet and GitOps](/gimlet-cli/modernize-your-jenkins-pipelines-with-gimlet-and-gitops)
+- or read how can you elevate your workflow further by using GitOps in the [Manage environments with Gimlet and GitOps](/gimlet-cli/manage-environments-with-gimlet-and-gitops) guide
