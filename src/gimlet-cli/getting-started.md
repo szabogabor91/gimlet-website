@@ -33,4 +33,4 @@ There are a few paths you can take:
   [Deploy your app to Kubernetes without the boilerplate](/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate)
 
 - If you already deploy services to Kubernetes with CI, see what Gimlet CLI can do for you: <br />
-  [Modernize your Jenkins pipelines with Gimlet and GitOps](/gimlet-cli/modernize-your-jenkins-pipelines-with-gimlet-and-gitOps)
+  [Modernize your Jenkins pipelines with Gimlet and GitOps](/gimlet-cli/modernize-your-jenkins-pipelines-with-gimlet-and-gitops)

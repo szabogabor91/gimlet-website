@@ -193,7 +193,7 @@ helm template myapp -n staging onechart/onechart -f values.yaml | \
 
 Now that you have successfully deployed your application, you can think about a workflow how you will make this process repeatable.
 
-You can version the two artifacts in this workflow: the Kubernetes yaml or the `values.yaml` file.
+You can version two artifacts in this workflow: the Kubernetes yaml or the `values.yaml` file.
 
 We recommend versioning the `values.yaml` file, perhaps in multiple instances, as many environments you have.
 
@@ -211,4 +211,4 @@ There are a couple of paths you can take:
 
 - You can explore the many use-cases of OneChart in the [OneChart documentation]()
 
-- or further explore what you can do with Gimlet CLI in your CI pipeline in [Modernize your Jenkins pipelines with Gimlet and GitOps](/gimlet-cli/modernize-your-jenkins-pipelines-with-gimlet-and-gitOps)
+- or further explore what you can do with Gimlet CLI in your CI pipeline in [Modernize your Jenkins pipelines with Gimlet and GitOps](/gimlet-cli/modernize-your-jenkins-pipelines-with-gimlet-and-gitops)
