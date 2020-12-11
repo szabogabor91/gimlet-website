@@ -116,11 +116,11 @@ Now that you have tools to manage environments, let's tie it back to GitOps.
 
 `gimlet gitops write` is the command to write manifests to a working copy of the GitOps repository:
 
-```bash
+```
 gimlet gitops write -f manifests.yaml \
   --env staging \
   --app myapp \
-  --gitops-repo-path <<path-to-working-copy-of-the-gitops-repo>> \
+  --gitops-repo-path <<path-to-a-working-copy-of-the-gitops-repo>> \
   -m "Releasing Bugfix 345"
 ```
 
@@ -129,9 +129,11 @@ Gimlet prefers a central GitOps repository, one that is separate from the applic
 
 ## Next Steps
 
-There are a few of paths you can take:
+There are a few paths you can take:
 
-- You can read how to [Kick-off GitOps with Gimlet](/gimlet-cli/kick-off-gitops-with-gimlet)
+- You can read how to [Bootstrap GitOps with Gimlet](/gimlet-cli/bootstrap-gitops-with-gimlet) and work with the GitOps repo from CI
+
+- or learn how to use variables in Gimlet manifest files in the [Preview environments with Gimlet](/gimlet-cli/preview-environments-with-gimlet) guide
 
 - or read the reference of 
   - [gimlet manifest create]()
