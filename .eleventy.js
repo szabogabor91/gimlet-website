@@ -20,6 +20,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addLayoutAlias("blog", "blog.njk");
   eleventyConfig.addLayoutAlias("post", "post.njk");
   eleventyConfig.addLayoutAlias("gimlet-cli", "gimlet-cli.njk");
+  eleventyConfig.addLayoutAlias("onechart", "onechart.njk");
 
   // Add a shortcode for bundled CSS.
   eleventyConfig.addShortcode("bundledCss", function() {
