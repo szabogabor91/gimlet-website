@@ -21,7 +21,7 @@ layout: base
                 </button>
             </div>
         </div>
-        <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+        <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-start-8 lg:col-end-13 lg:flex lg:items-center">
             <svg class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 scale-75 origin-top sm:scale-100 lg:hidden"
                  width="640" height="784" fill="none" viewBox="0 0 640 784" aria-hidden="true">
                 <defs>
@@ -34,12 +34,10 @@ layout: base
                 <rect x="118" width="404" height="784" fill="url(#4f4f415c-a0e9-44c2-9601-6ded5a34a13e)"/>
             </svg>
 
-            <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+            <div class="relative mx-auto w-full rounded-lg">
+                <div class="relative w-full lg:w-auto md:px-8 lg:px-0 self-center pb-8 lg:pb-0">
 
-                <div class="relative w-full lg:w-auto
-                col-start-1 col-end-4 md:px-8 lg:px-0 lg:col-start-3 lg:col-end-4 row-start-3 row-end-4 lg:row-start-2 lg:row-end-5 self-center pb-8 lg:pb-0">
-
-                    <div class="relative overflow-hidden md:rounded-xl shadow-2xl flex CodeWindow_root__1fMBP bg-gray-500">
+                    <div class="relative overflow-hidden rounded-md md:rounded-xl shadow-2xl flex bg-gray-500">
                         <div class="absolute inset-0 bg-black bg-opacity-75"></div>
                         <div class="relative w-full flex flex-col">
                             <div class="flex-none h-11 flex items-center px-4">
@@ -52,15 +50,27 @@ layout: base
                             <div class="relative border-t border-white border-opacity-10 min-h-0 flex-auto flex flex-col">
                                 <div class="hidden md:block absolute inset-y-0 left-0 bg-black bg-opacity-25"
                                      style="width:50px"></div>
-                                <div class="w-full flex-auto flex min-h-0 overflow-auto">
+                                <div class="w-full flex-auto flex min-h-0 overflow-hidden">
                                     <div class="w-full relative flex-auto">
-                                                <pre class="flex min-h-full text-xs md:text-sm"><div
-                                                            aria-hidden="true"
-                                                            class="hidden md:block text-white text-opacity-50 flex-none py-4 pr-4 text-right select-none"
-                                                            style="width:50px">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31</div>
-
-
-                                                </pre>
+                                        <pre class="flex min-h-full text-xs md:text-sm text-white text-opacity-95">
+                                            <div
+                                                aria-hidden="true"
+                                                class="block text-white text-opacity-50 flex-none py-4 lg:py-5 pr-4 text-right select-none"
+                                                style="width:50px">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13
+                                            </div>
+# .gimlet/staging.yaml
+app: myapp
+env: staging
+namespace: my-team
+chart:
+  repository: https://chart.onechart.dev
+  name: onechart
+  version: 0.10.0
+values:
+  replicas: 1
+  image:
+    repository: myapp
+    tag: {% raw %}{{ .GIT_SHA }}{% endraw %}</pre>
                                     </div>
                                 </div>
                             </div>
