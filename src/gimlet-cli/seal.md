@@ -50,7 +50,7 @@ values:
   replicas: 1
   image:
     repository: myapp
-    tag: {{ .GIT_SHA }}
+    tag: 1.0.0
   sealedSecrets:
     secret1: secret-value-to-be-sealed
 

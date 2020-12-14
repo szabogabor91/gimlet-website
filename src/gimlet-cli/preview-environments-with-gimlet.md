@@ -115,10 +115,9 @@ gimlet manifest template \
   --vars ci.env
 ```
 
-
 ## Next Steps
 
-There are a couple of paths you can take:
+There are a few of paths you can take:
 
 - You can learn more about the manifest file and see how to [Manage environments with Gimlet and GitOps](/gimlet-cli/manage-environments-with-gimlet-and-gitops)
 

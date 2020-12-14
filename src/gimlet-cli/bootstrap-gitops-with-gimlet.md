@@ -103,10 +103,15 @@ Since the GitOps repository is not the same repository as the one the CI pipelin
 here is a set of example pipelines on how to check out and write the GitOps repository from the different CI engines.
 
 #### Jenkins
+Coming soon
 #### Gitlab
+Coming soon
 #### Github actions
+
 #### Drone
+Coming soon
 #### Woodpecker
+Coming soon
 
 
 ## Next steps
