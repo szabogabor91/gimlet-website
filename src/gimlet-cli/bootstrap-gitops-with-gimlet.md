@@ -116,4 +116,6 @@ Coming soon
 
 ## Next steps
 
-Read how you can manage your environments in the [Manage environments with Gimlet and GitOps](/gimlet-cli/manage-environments-with-gimlet-and-gitops) guide.
+- Read how you can manage your environments in the [Manage environments with Gimlet and GitOps](/gimlet-cli/manage-environments-with-gimlet-and-gitops) guide.
+
+- or read the reference of [gimlet gitops write](/gimlet-cli/gitops-write)

@@ -99,7 +99,14 @@ gimlet seal -f .gimlet/staging.yaml \
   -k sealingKey.crt
 ```
 
-You can safely put this sealed Gimlet file in your GitOps repo.
+You can safely put this sealed Gimlet file in your GitOps repo:
+
+```
+gimlet gitops write -f .gimlet/staging.yaml \
+  --env staging \
+  --app myapp \
+  -m "Adding encrypted secret values"
+```
 
 ## Next Steps
 

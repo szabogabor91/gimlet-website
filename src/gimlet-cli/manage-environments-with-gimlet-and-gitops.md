@@ -138,7 +138,6 @@ There are a few paths you can take:
 - or learn how to use variables in Gimlet manifest files in the [Preview environments with Gimlet](/gimlet-cli/preview-environments-with-gimlet) guide
 
 - or read the reference of 
-  - [gimlet manifest create]()
-  - [gimlet manifest template]()
-  - or [gimlet gitops write]()
-
+  - [gimlet manifest create](/gimlet-cli/manifest-create)
+  - [gimlet manifest template](/gimlet-cli/manifest-template)
+  - or [gimlet gitops write](/gimlet-cli/gitops-write)
