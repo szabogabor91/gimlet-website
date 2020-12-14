@@ -15,13 +15,13 @@ A generic Helm chart for your application deployments. Because no-one can rememb
 
 Add the OneChart Helm repository:
 
-```bash
+```
 helm repo add onechart https://chart.onechart.dev
 ```
 
 Set your image name and version, the boilerplate is generated.
 
-```bash
+```
 helm template my-release onechart/onechart \
   --set image.repository=nginx \
   --set image.tag=1.19.3
@@ -29,7 +29,7 @@ helm template my-release onechart/onechart \
 
 Deploy with Helm:
 
-```bash
+```
 helm install my-release onechart/onechart \
   --set image.repository=nginx \
   --set image.tag=1.19.3

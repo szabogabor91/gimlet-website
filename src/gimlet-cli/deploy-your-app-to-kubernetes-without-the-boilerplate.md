@@ -209,6 +209,6 @@ gimlet chart configure -f values.yaml onechart/onechart
 
 There are a couple of paths you can take:
 
-- You can explore the many use-cases of OneChart in the [OneChart documentation]()
+- You can explore the many use-cases of OneChart in the [OneChart documentation](/onechart/getting-started)
 
 - or read how can you elevate your workflow further by using GitOps in the [Manage environments with Gimlet and GitOps](/gimlet-cli/manage-environments-with-gimlet-and-gitops) guide
