@@ -10,19 +10,19 @@
 
     <meta content="{% if title %}{{ title }} | {% endif %}{{ site.title }}" property="og:title">
     <meta content="website" property="og:type">
-    <meta content="{{ 'https://gimlet.io/'+image | default('gimlet.png') }}" property="og:image">
+    <meta content="{{ 'https://gimlet.io/'+image | default('logo.png') }}" property="og:image">
     <meta content="{{ site.url }}{{ page.url }}" property="og:url">
     <meta content="Gimlet" property="og:site_name">
-    <meta content="{{ excerpt | default('Readymade automation for the common Kubernetes deployment workflows. If you are hiring your first DevOps, or you need a headstart') }}"
+    <meta content="{{ excerpt | default('A modular GitOps workflow for Kubernetes deployments that grows with you. It's open-source') }}"
           property="og:description">
 
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@laszlocph">
     <meta name="twitter:creator" content="@laszlocph">
     <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}{{ site.title }}">
     <meta name="twitter:description"
-          content="{{ excerpt | default('Readymade automation for the common Kubernetes deployment workflows. If you are hiring your first DevOps, or you need a headstart') }}">
-    <meta name="twitter:image" content="{{ 'https://gimlet.io/'+image | default('gimlet.png') }}">
+          content="{{ excerpt | default('A modular GitOps workflow for Kubernetes deployments that grows with you. It's open-source') }}">
+    <meta name="twitter:image" content="{{ 'https://gimlet.io/'+image | default('logo.png') }}">
 
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -56,7 +56,7 @@
                        class="flex items-center text-green-700 no-underline hover:no-underline font-bold text-xl lg:text-xl">
                         <span class="sr-only">Gimlet</span>
                         <svg class="h-8 w-auto sm:h-10" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            {% if '/' != page.url %}<circle cx="512" cy="512" r="512" fill="url(#paint0_linear)"/>{% endif %}
+                            <circle cx="512" cy="512" r="512" fill="url(#paint0_linear)"/>
                             <mask id="path-2-inside-1" fill="white">
                                 <path d="M543.13 563.022C526.393 581.47 497.607 581.47 480.87 563.022L267.183 327.498C242.354 300.131 261.569 256 298.313 256L725.687 256C762.431 256 781.646 300.131 756.817 327.498L543.13 563.022Z"/>
                                 <path d="M526.076 768H497.923L483.846 739.556V540.444H540.152V739.556L526.076 768Z"/>
@@ -113,6 +113,7 @@
                            class="flex items-center text-green-700 no-underline hover:no-underline font-bold text-xl lg:text-xl">
                             <span class="sr-only">Gimlet</span>
                             <svg class="h-8 w-auto sm:h-10" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="512" cy="512" r="512" fill="url(#paint0_linear)"/>
                                 <mask id="path-2-inside-1" fill="white">
                                     <path d="M543.13 563.022C526.393 581.47 497.607 581.47 480.87 563.022L267.183 327.498C242.354 300.131 261.569 256 298.313 256L725.687 256C762.431 256 781.646 300.131 756.817 327.498L543.13 563.022Z"/>
                                     <path d="M526.076 768H497.923L483.846 739.556V540.444H540.152V739.556L526.076 768Z"/>
