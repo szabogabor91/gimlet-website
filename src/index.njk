@@ -56,7 +56,7 @@ layout: base
                                             <div
                                                 aria-hidden="true"
                                                 class="block text-white text-opacity-50 flex-none py-4 lg:py-5 pr-4 text-right select-none"
-                                                style="width:50px">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13
+                                                style="width:50px">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17
                                             </div>
 # .gimlet/staging.yaml
 app: myapp
@@ -70,7 +70,11 @@ values:
   replicas: 1
   image:
     repository: myapp
-    tag: {% raw %}{{ .GIT_SHA }}{% endraw %}</pre>
+    tag: {% raw %}{{ .GIT_SHA }}{% endraw %}
+
+
+# Github Actions example
+https://github.com/gimlet-io/github-actions-example</pre>
                                     </div>
                                 </div>
                             </div>
