@@ -108,6 +108,8 @@ Coming soon
 Coming soon
 #### Github actions
 
+[https://github.com/gimlet-io/github-actions-example](https://github.com/gimlet-io/github-actions-example)
+
 #### Drone
 Coming soon
 #### Woodpecker

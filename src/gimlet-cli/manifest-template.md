@@ -11,6 +11,8 @@ Templates a Gimlet manifest.
 
 Resolves template variables and templates the referenced Helm Chart with the values specified.
 
+All environment variables from the shell are available in the template. You can also provide a `.env` file for additional variables.
+
 ## Usage
 
 ```
