@@ -39,6 +39,6 @@ helm install my-release onechart/onechart \
 
 - See how you can [deploy your application image](/onechart/deploying-an-image) using OneChart
 
-- See how you can [set environment variables]()
+- See how you can [set environment variables](/onechart/environment-variables)
 
 [comment]: <> (- Learn how OneChart came about, what it is solving, and where are its limitations in [Reasoning]&#40;&#41;)
