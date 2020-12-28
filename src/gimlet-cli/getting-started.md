@@ -27,7 +27,7 @@ gimlet --version
 
 ## Next steps
 
-There are a few paths you can take:
+There are a couple of paths you can take:
 
 - If you are new to Kubernetes, follow this guide: <br />
   [Deploy your app to Kubernetes without the boilerplate](/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate)
