@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Helm React UI: a React component to render UIs for Helm charts"
+title: "Helm React UI: a React component to render UIs for Helm Charts"
 date: 2020-12-29
 excerpt: |
     Helm React UI generates a UI based on Helm schema files and allows you to configure Helm
