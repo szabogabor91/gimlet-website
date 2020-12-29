@@ -19,7 +19,7 @@ layout: blog
 
 <div class="post font-serif text-gray-800">
     {{ content | safe }}
-    {% if image %}
+    {% if image_author %}
     <p><small>Photo by {{ image_author }} on <a href="{{image_url}}" target="_blank">Unsplash</a></small></p>
     {% endif %}
 </div>
