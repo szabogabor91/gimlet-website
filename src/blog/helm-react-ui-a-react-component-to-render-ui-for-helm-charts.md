@@ -23,11 +23,12 @@ Helm React UI is here to improve this practice.
 
 ## Helm React UI is a project to allow the configuration of Helm values on a UI   
 
-It takes the [Helm schema file](https://helm.sh/docs/topics/charts/#schema-files) to generate a UI for users 
-to better discover the possible configuration options. Also, to allow an alternative path to Helm. 
+Helm React UI generates a UI based on the [Helm schema file](https://helm.sh/docs/topics/charts/#schema-files) - if there is one available. It is for users
+to better discover the possible configuration options, and it also allows an alternative path to Helm.
 
 The project is hosted at [https://github.com/gimlet-io/helm-react-ui](https://github.com/gimlet-io/helm-react-ui) 
-and a practical [example project](https://github.com/gimlet-io/helm-react-ui-test-bed) is available too. The project that produced the following screen.
+
+A practical [example project](https://github.com/gimlet-io/helm-react-ui-test-bed) is available too. The project, that produced the following screen:
 
 ![Helm React UI screen](/helmreactui2.png)
 
@@ -44,24 +45,28 @@ import HelmUI from 'helm-react-ui';
 />
 ```
 
-It takes the schema as input, and a json file that helps to generate better UIs than the json schema would allow on its own.
+It takes
 
-Besides those, you can feed in an existing Helm `values.json` and an event handler to keep track of UI changes.
+- the schema as input, 
+- a json object that helps to generate better UIs than the json schema would allow on its own
+- and you can feed in an existing Helm `values.json`
+
+It also has an event handler to keep track of UI changes.
 
 See the example code [here](https://github.com/gimlet-io/helm-react-ui-test-bed/blob/main/src/app.js).
 
 ## The `helm-ui.json`
 
-Generating UIs from json schema is a practically doable task, but the schema doesn't allow the kind of fine-tuning 
+Generating UIs from json schema is a practically doable task, but the schema alone doesn't allow the kind of fine-tuning 
 that is needed for useful UIs.
 
 When I set out to implement Helm React UI I was warned on Twitter.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">json schema lacks layout information, information on how to pre-fill some fields.</p>&mdash; Tamal Saha (@tsaha) <a href="https://twitter.com/tsaha/status/1316665380442497024?ref_src=twsrc%5Etfw">October 15, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
-Rightly so. Helm schemas are large, and rendering all fields at once would be difficult to comprehend.
+Rightly so. Helm schemas are large, and rendering all fields at once results in UIs that are difficult to comprehend.
 
-Thankfully, this was handled already in the React component I use. With [react-jsonschema-form](https://react-jsonschema-form.readthedocs.io/en/latest/api-reference/uiSchema/#uischema)
+Thankfully, this problem was solved already in the React component I use. With [react-jsonschema-form](https://react-jsonschema-form.readthedocs.io/en/latest/api-reference/uiSchema/#uischema)
 I could attach the required metadata to further customize the chart appearance.
 
 Furthermore, I introduced a new metadata format for Helm charts
@@ -97,6 +102,8 @@ It is an array of objects with three fields
 
 See a full example [here](https://github.com/gimlet-io/onechart/blob/master/charts/onechart/helm-ui.json).
 
+Eventually a `helm-ui.json` file will be part of the common Helm Charts, to allow Helm React UI to render them.
+
 ## Putting Helm React UI in practice 
 
 Besides the Helm React UI component, I also launch today a tool that packages it in a practical form: a CLI.
@@ -131,7 +138,7 @@ replicas: 2
 
 It works with any chart that has a JSON schema defined and an accompanying `helm-ui.json`.
 
-`onechart/onechart` is one such chart, you can use it to see Helm React UI in action.
+`onechart/onechart` is one such chart, and you can use it to see Helm React UI in action.
 It is also a handy 
 chart if you need to deploy something quickly, or looking for an alternative for the lengthy Kubernetes yaml format.
 
