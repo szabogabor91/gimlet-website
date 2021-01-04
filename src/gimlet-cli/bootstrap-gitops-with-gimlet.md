@@ -26,10 +26,12 @@ In this guide you will use Gimlet to bootstrap the GitOps controller and will al
 The GitOps controller is a small piece of software running in your Kubernetes cluster.
 It monitors your GitOps git repository for changes and applies them on the cluster.
 
-To bootstrap the GitOps controller, create a new git repository, and check it out locally.
+To bootstrap the GitOps controller
 
-The `gimlet gitops bootstrap` command
-puts the controller's deploy manifests in the GitOps repository, what you then have to apply on the cluster.
+- first create a new git repository and check it out locally
+- then use the `gimlet gitops bootstrap` command to put the controller's deploy manifests in the GitOps repository 
+- finally, apply the just created manifests on the cluster
+
 Any further changes to the GitOps repository will be automatically applied to the cluster. This is GitOps.🙌
 
 ```

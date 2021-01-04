@@ -195,7 +195,7 @@ Now that you have successfully deployed your application, you can think about a 
 
 You can version two artifacts in this workflow: the Kubernetes yaml or the `values.yaml` file.
 
-We recommend versioning the `values.yaml` file, perhaps in multiple instances, as many environments you have.
+We recommend versioning the `values.yaml` file. Over time, you can version multiple versions of it, as many environments you have.
 
 With a Makefile or CI pipeline you can automate the `helm template` and `kubectl apply -f` commands too.
 
