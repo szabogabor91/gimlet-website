@@ -91,8 +91,8 @@ gimlet manifest create \
   -f values.yaml \
   --env staging \
   --app myapp \
-  --chart onechart/onechart
-  --namespace my-team
+  --chart onechart/onechart \
+  --namespace my-team \
   > .gimlet/staging.yaml
 ```
 
