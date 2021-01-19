@@ -96,3 +96,21 @@ gimlet manifest template \
   -f .gimlet/staging.yaml \
   -o manifests/
 ```
+
+#### Using a local chart
+
+```
+# .gimlet/staging.yaml
+app: myapp
+env: staging
+namespace: my-team
+chart:
+  name: ../relative/path/to/chart
+  version: 0.10.0
+values:
+  replicas: 1
+
+gimlet manifest template \
+  -f .gimlet/staging.yaml \
+  -o manifests.yaml \
+```
