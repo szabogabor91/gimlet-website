@@ -31,7 +31,7 @@ The access to the bare GitOps repository allows developers - with or without int
 
 ## GimletD provides centralized workflows to manage the GitOps repository
 
-GimletD acts as a release manager and detaches the release workflow from CI. BY doing so, it unlocks the possibility of advanced release logics and flexibility to refactor workflows.
+GimletD acts as a release manager and detaches the release workflow from CI. By doing so, it unlocks the possibility of advanced release logics and flexibility to refactor workflows.
 
 By assuming all release related work, it adds central control to the release workflow by introducing policy based deploys and advanced authorization and security standards, while it also optimizes the GitOps repository write performance.
 
@@ -40,14 +40,14 @@ By assuming all release related work, it adds central control to the release wor
 Today companies use CI to automate their releases.
 
 Deploy and rollback steps are implemented in CI pipelines to handle the basic release workflows.
-Later on, further release focused steps are added: dynamic environments, cleanups, notifications 
+Later on, further release steps are added: dynamic environments, cleanups, notifications, steps
 that every application has to maintain. This decentralized approach allows little room for control, flexibility and complex features.
 
 GimletD assumes all release focused tasks and the management of the GitOps repository.
 
-GimletD achieves this by introducing a new concept, the release artifact, that serves as the means to detach the release workflows from CI.
+GimletD achieves this by introducing a new concept, the release artifact, that serves as the means to detach release workflows from CI.
 
-With GimletD, instead of releasing, CI pipelines create an artifact for every releasable version of the application, 
+With GimletD, CI pipelines instead of releasing, they create an artifact for every releasable version of the application. 
 GimletD then serves as a release manager to perform ad-hoc or policy based releases.
 
 Gimlet operates only on the releasable artifacts that CI creates. This split allows for the above listed features.
