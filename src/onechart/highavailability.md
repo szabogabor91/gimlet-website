@@ -18,13 +18,15 @@ By default, OneChart sets two more flags if the replica count is higher than one
 - PodDisruptionBudgets
 - and pod anti affinity
 
+These two flags make sure that your application pods are spread across nodes and never placed on the same one.
+
+Also, in case of node maintenance, it makes sure that nodes are drained in an order that leaves at least one instance running from your application.
+
+---
+
 You can turn them off by setting the following values to `false`:
 
 ```yaml
 podDisruptionBudgetEnabled: true
 spreadAcrossNodes: true
 ```
-
-These two flags make sure that your application pods are spread across nodes and never placed on the same one.
-
-Also, in case of node maintenance, it makes sure that nodes are drained in an order that leaves at least one instance running from your application.
