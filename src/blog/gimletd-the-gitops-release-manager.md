@@ -26,7 +26,7 @@ But it is important to see the scope of Gimlet CLI today: its goal is to help de
 
 ![GimletCLI used from CI](/gitops-with-ci.png)
 
-Gimlet CLI requires a local copy of the GitOps repository and while it helps following the conventions that Gimlet adds to GitOps, it doesn't enforces it.
+Gimlet CLI requires a local copy of the GitOps repository and while it helps following the conventions that Gimlet adds to GitOps, it doesn't enforce them.
 The access to the bare GitOps repository allows developers - with or without intent - to handle the GitOps repository in an ad-hoc manner.
 
 ## GimletD provides centralized workflows to manage the GitOps repository
