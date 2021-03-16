@@ -1,11 +1,11 @@
 ---
 layout: gimlet-cli
-title: Bootstrap GitOps with Gimlet
+title: Bootstrap gitops with Gimlet
 lastUpdated: 2020-12-11
 tags: [gimletcli]
 ---
 
-# Bootstrap GitOps with Gimlet
+# Bootstrap gitops with Gimlet
 
 In this guide you will use Gimlet to bootstrap the GitOps workflow, then write application manifests to the GitOps repository and see it deploy.
 

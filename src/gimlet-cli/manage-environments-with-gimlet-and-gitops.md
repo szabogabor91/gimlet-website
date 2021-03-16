@@ -1,11 +1,11 @@
 ---
 layout: gimlet-cli
-title: Manage environments with Gimlet and GitOps
+title: Manage environments with Gimlet and gitops
 lastUpdated: 2020-12-11
 tags: [gimletcli]
 ---
 
-# Manage environments with Gimlet and GitOps
+# Manage environments with Gimlet and gitops
 
 In this guide you will learn how you can manage a staging and production environment by using Gimlet CLI, and by adopting the GitOps Continuous Delivery technique.
 
