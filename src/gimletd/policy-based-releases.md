@@ -6,3 +6,8 @@ tags: [gimletd]
 ---
 
 # Policy based releases
+
+
+## Next steps
+
+- If you made a mistake, you might want to [Roll back](/gimletd/rolling-back)

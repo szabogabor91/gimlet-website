@@ -62,7 +62,7 @@ GimletD achieves this by introducing a new concept, the release artifact. It ser
 With GimletD, CI pipelines create an artifact for every releasable version of the application, but not release them.
 GimletD then serves as a release manager to perform ad-hoc or policy based releases.
 
-Gimlet operates only on the releasable artifacts that CI creates. This split allows for the above listed features.
+GimletD operates only on the releasable artifacts that CI creates. This split allows for the above listed features.
 
 ![GimletD operates on the release artifacts, manages the GitOps repository](/gimletd-with-gitops.png)
 
@@ -123,7 +123,7 @@ GimletD stores the release artifacts in the artifact storage.
             "cert-manager.io/cluster-issuer": "letsencrypt",
             "kubernetes.io/ingress.class": "nginx"
           },
-          "host": "frontend.staging.raffle.ai",
+          "host": "frontend.staging.mycompany.com",
           "tlsEnabled": true
         },
         "probe": {
@@ -133,7 +133,6 @@ GimletD stores the release artifacts in the artifact storage.
         "replicas": 1,
         "vars": {
           "NODE_ENV": "production",
-          "RAFFLE_ENV": "staging"
         }
       }
     }
