@@ -20,3 +20,10 @@ curl -i \
 ```
 
 Save the returned user token from the result.
+
+## Next steps
+
+Now that you have access to the API
+
+- Continue with [creating release artifacts](/gimletd/creating-artifacts) directly with Gimlet CLI, or with Gimlet's CircleCI integration
+- Or see how to create [ad-hoc](/gimletd/on-demand-releases) or [policy based releases](/gimletd/policy-based-releases)

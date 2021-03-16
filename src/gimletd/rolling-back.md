@@ -87,3 +87,6 @@ Rollbacks are made for a quick mindless remedy to jump back to previously active
 
 If you want to be more creative, best to roll forward by releasing an artifact.
 
+## Next steps
+
+Now that you reached the end of the documentation, you might want to jump right in and [install GimletD](/gimletd/installation)

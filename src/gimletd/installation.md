@@ -99,3 +99,9 @@ EOF
 
 helm template gimletd onechart/onechart -f values.yaml
 ```
+
+## Next steps
+
+- Continue with [configuring GimletD](/gimletd/configuration)
+- Or see how to [create release artifacts](/gimletd/creating-artifacts) directly with Gimlet CLI, or with Gimlet's CircleCI integration
+- See how to create [ad-hoc](/gimletd/on-demand-releases) or [policy based releases](/gimletd/policy-based-releases)

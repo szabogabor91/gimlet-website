@@ -165,3 +165,9 @@ spec:
 You will see the notifications reaching Slack:
 
 ![Notifications on gitops applies](https://raw.githubusercontent.com/gimlet-io/gimletd/tip/docs/notifs.png)
+
+## Next steps
+
+- Continue with [getting access to the API](/gimletd/api-access)
+- Or see how to [create release artifacts](/gimletd/creating-artifacts) directly with Gimlet CLI, or with Gimlet's CircleCI integration
+- See how to create [ad-hoc](/gimletd/on-demand-releases) or [policy based releases](/gimletd/policy-based-releases)

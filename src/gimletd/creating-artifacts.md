@@ -93,7 +93,6 @@ Then push the artifact to GimletD:
 This metadata assembly is typically hidden in CI plugins. See how it is done in the 
 [Gimlet CircleCI Orb](https://github.com/gimlet-io/circleci-orb/blob/alpha/src/commands/gimlet-artifact-create.yml).
 
+## Next steps
 
-
-
-
+Now go and [release one of the artifacts](/gimletd/on-demand-releases)
