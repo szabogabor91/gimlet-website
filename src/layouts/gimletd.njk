@@ -39,10 +39,21 @@ layout: base
                            class="{% if '/concepts' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
                             Concepts
                         </a>
-                        <a href="/gimletd/installation"
-                           class="{% if '/installation' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                    </div>
+                    <div class="space-y-1">
+                        <span class="bg-white text-gray-600 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
                             Installation
-                        </a>
+                        </span>
+                        <div class="space-y-1">
+                            <a href="/gimletd/installation"
+                               class="{% if '/gimletd/installation' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                YAMLs and Helm chart
+                            </a>
+                            <a href="/gimletd/configuration"
+                               class="{% if '/gimletd/configuration' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Configuring GimletD
+                            </a>
+                        </div>
                     </div>
                 </nav>
             </div>
