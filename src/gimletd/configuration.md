@@ -119,3 +119,49 @@ EOF
 
 helm template gimletd onechart/onechart -f values.yaml
 ```
+
+## Notifications on gitops repo applies
+
+This section you will configure Flux - the gitops controller - to notify GimletD whenever it applies the latest changes.
+
+- Generate a Gimlet user for Flux:
+
+```bash
+curl -i \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -X POST -d '{"login":"flux"}' \
+  http://gimletd.mycompany.com:8888/api/user\?access_token\=$GIMLET_ADMIN_TOKEN
+```
+
+- Create the `notifications.yaml` file in your gitops repo under $your_env/flux/notifications.yaml
+
+```yaml
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Provider
+metadata:
+  name: gimletd
+  namespace: flux-system
+spec:
+  type: generic
+  address: https://gimletd.<your-company-com>/api/flux-events?access_token=<token>
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  name: all-kustomizations
+  namespace: flux-system
+spec:
+  providerRef:
+    name: gimletd
+  eventSeverity: info
+  eventSources:
+    - kind: Kustomization
+      namespace: flux-system
+      name: '*'
+  suspend: false
+```
+
+You will see the notifications reaching Slack:
+
+![Notifications on gitops applies](https://raw.githubusercontent.com/gimlet-io/gimletd/tip/docs/notifs.png)

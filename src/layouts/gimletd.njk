@@ -55,6 +55,24 @@ layout: base
                             </a>
                         </div>
                     </div>
+                    <div class="space-y-1">
+                        <a href="/gimletd/api-access"
+                           class="{% if '/gimletd/api-access' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            API Access
+                        </a>
+                        <a href="/gimletd/working-with-artifacts"
+                           class="{% if '/gimletd/working-with-artifacts' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Working with Artifacts
+                        </a>
+                        <a href="/gimletd/on-demand-releases"
+                           class="{% if '/gimletd/on-demans-releases' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            On-demand releases
+                        </a>
+                        <a href="/gimletd/policy-based-releases"
+                           class="{% if '/gimletd/policy-based-releases' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Policy based releases
+                        </a>
+                    </div>
                 </nav>
             </div>
         </div>
