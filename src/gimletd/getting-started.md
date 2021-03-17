@@ -2,6 +2,7 @@
 layout: gimletd
 title: Getting Started
 lastUpdated: 2020-03-15
+image: gimletd-with-gitops.png
 tags: [gimletd]
 ---
 

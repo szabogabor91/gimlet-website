@@ -3,6 +3,7 @@ layout: gimletd
 title: Concepts
 lastUpdated: 2020-03-15
 tags: [gimletd]
+image: gimletd-with-gitops.png
 ---
 
 # Concepts
