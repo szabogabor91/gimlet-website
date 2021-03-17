@@ -20,3 +20,8 @@ It builds on the concepts, conventions and workflows that Gimlet CLI introduced 
 It also packs all release automation logic that used to be scattered in CI pipelines.
 
 Read the [concepts behind GimletD](/gimletd/concepts) and its role alongside Gimlet CLI.
+
+
+Thank you for the re-shares Laszlo Reszegi and Lars Krieger.
+
+If any of you likers would re-share my post, it would really go a long way. Either way, thanks for your support!
