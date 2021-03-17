@@ -24,6 +24,10 @@ No need to adopt the full platform to benefit, unlike many PaaS out there.
 But this also makes it difficult to capture the different usecases for Gimlet.
 This blog post is an exercise for me - the maker of Gimlet - to collect the different paths for adoption.
 
+Maybe you get inspired with one of the paths and feel comfortable using Gimlet in your k8s deployment approach.
+
+Let's do this, shall we?
+
 ## First off, an inventory
 
 Gimlet has three components today:
@@ -32,7 +36,7 @@ Gimlet has three components today:
 
 [OneChart](/onechart/getting-started) is a generic Helm chart that supports the typical web service deployment patterns.
 
-Authoring a Kubernetes application manifest is reduced to setting the parts that are unique to the app itself. No more boilerplate.
+Authoring a Kubernetes application manifest is reduced to setting the parts that are unique to the application itself. No more boilerplate.
 
 ### Gimlet CLI
 
