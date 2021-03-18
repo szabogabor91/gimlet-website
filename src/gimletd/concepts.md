@@ -9,7 +9,7 @@ image: gimletd-with-gitops.png
 # Concepts
 
 GimletD builds on the concepts, conventions and workflows that Gimlet CLI introduced
-and extends it with a centralized approach for managing releases.
+and extends them with a centralized approach for managing releases.
 
 ## Rational
 
