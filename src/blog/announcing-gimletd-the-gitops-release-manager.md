@@ -7,7 +7,7 @@ excerpt: |
     See what GimletD brings to the gitops ecosystem.
 
 topic: Product Updates
-image: logo.png
+image: gimletd-with-gitops.png
 tags: [posts]
 ---
 
