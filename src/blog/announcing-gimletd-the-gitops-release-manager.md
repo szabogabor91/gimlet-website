@@ -104,7 +104,8 @@ The artifact itself is a json structure that you can create with our CI plugins,
 
 Now that you have an overview of how GimletD fits into Gimlet see how to perform ad-hoc releases, rollbacks and other actions in the [GimletD documentation](http://localhost:8080/gimletd/on-demand-releases/).
 
-Make sure also to follow [gimlet_io](https://twitter.com/gimlet_io) on Twitter to hear about new product releases.
-Next up is the Gimlet Dashboard, so stay tuned.
+Make sure also to follow [gimlet_io](https://twitter.com/gimlet_io) as I'm going to live demo GimletD on Thursday, 25th March on Twitter.
+
+Twice actually, first at 11AM CET, then 3PM ET.
 
 Onwards!
