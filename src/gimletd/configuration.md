@@ -40,7 +40,31 @@ probe:
 +        source: AgA/7BnNhSkZAzbMqxMDidxK[...]
 EOF
 
+helm repo add onechart https://chart.onechart.dev
 helm template gimletd onechart/onechart -f values.yaml
+```
+
+If you don't have Sealed Secrets running in your cluster, you can use your own secrets solution, or the following example
+that uses regular Kubernetes secrets stored in git (not for production use).
+
+```diff
+image:
+  repository: ghcr.io/gimlet-io/gimletd
+  tag: latest
+probe:
+  enabled: true
+  path: /
+vars:
+  GITOPS_REPO: mycompany/gitops
+  GITOPS_REPO_DEPLOY_KEY_PATH: /github/deploy.key
++fileSecrets:
++  - name:  github-gitops-deploy-key
++    path: /github
++    secrets:
++      deploy.key: |
++        -----BEGIN OPENSSH PRIVATE KEY-----
++        b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
++        NhAAAAAwEAAQAAAgEA7BqMTFnDm6+C9FrRK5aoj[...]
 ```
 
 #### Slack notifications
