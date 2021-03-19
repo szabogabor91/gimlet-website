@@ -73,3 +73,22 @@ sealedSecrets:
   secret1: AgBy3i4OJSWK+PiTySYZZA9rO43cGDEq...
   secret2: ewogICJjcmVk...
 ```
+
+## Mounting secrets as files
+
+```
+fileSecrets:
+  - name: google-account-key
+    path: /google-account-key
+    secrets:
+      key.json: supersecret
+      another.json: |
+        this
+        is
+        a
+        multiline
+        secret
+```
+
+- The above snippet will create Kubernetes secret with two entries.
+- This secret is mounted to the `/google-account-key` and produce two files: `key.json` and `another.json`
