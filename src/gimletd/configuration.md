@@ -48,6 +48,7 @@ If you don't have Sealed Secrets running in your cluster, you can use your own s
 that uses regular Kubernetes secrets stored in git (not for production use).
 
 ```diff
+cat << EOF > values.yaml
 image:
   repository: ghcr.io/gimlet-io/gimletd
   tag: latest
@@ -65,6 +66,10 @@ vars:
 +        -----BEGIN OPENSSH PRIVATE KEY-----
 +        b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
 +        NhAAAAAwEAAQAAAgEA7BqMTFnDm6+C9FrRK5aoj[...]
+EOF
+
+helm repo add onechart https://chart.onechart.dev
+helm template gimletd onechart/onechart -f values.yaml
 ```
 
 #### Slack notifications
