@@ -102,9 +102,10 @@ The artifact itself is a json structure that you can create with our CI plugins,
 
 ## Ad-hoc releases, rollbacks and other actions
 
-Now that you have an overview of how GimletD fits into Gimlet see how to perform ad-hoc releases, rollbacks and other actions in the [GimletD documentation](/gimletd/on-demand-releases).
+You can read more about the [concepts of GimletD](/gimletd/concepts) or follow how to 
+perform ad-hoc releases, rollbacks and other actions in the [GimletD documentation](/gimletd/on-demand-releases).
 
-Make sure also to follow [gimlet_io](https://twitter.com/gimlet_io) as I'm going to live demo GimletD on Thursday, 25th March on Twitter.
+I'm going to live demo GimletD on the coming Thursday, 25th March on [Twitter](https://twitter.com/gimlet_io).
 
 Twice actually, first at 11AM CET, then 3PM ET.
 
