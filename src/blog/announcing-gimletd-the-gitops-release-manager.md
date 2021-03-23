@@ -103,4 +103,4 @@ The artifact itself is a json structure that you can create with our CI plugins,
 ## Ad-hoc releases, rollbacks and other actions
 
 You can read more about the [concepts of GimletD](/gimletd/concepts) or follow how to 
-perform ad-hoc releases, rollbacks and other actions in the [GimletD documentation](/gimletd/on-demand-releases).
+perform ad-hoc releases and rollbacks in the [GimletD documentation](/gimletd/on-demand-releases).
