@@ -20,7 +20,7 @@ You can read more about the artifact and the motivation behind it on the [Concep
 ```yaml
 version: 2.1
 orbs:
-  gimlet: gimlet-io/circleci-orb@dev:9b91703
+  gimlet: gimlet-io/circleci-orb@dev:1934d4b
 workflows:
   my-workflow:
     jobs:
