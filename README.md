@@ -1,7 +1,3 @@
-# Overview
-
- A modular gitops workflow for Kubernetes deployments.
-
 ## Development Environment Setup
 
 Build:
