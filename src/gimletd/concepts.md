@@ -21,7 +21,7 @@ The GitOps ecosystem lacks tooling to manage the GitOps repository and related w
 
 Organizations have to answer these questions when they implement GitOps.
 
-Gimlet CLI [answers these questions]([https://gimlet.io/gimlet-cli/concepts/](https://gimlet.io/gimlet-cli/concepts/)) 
+Gimlet CLI [answers these questions](/gimlet-cli/concepts/)
 by bringing conventions to the GitOps repository to help companies implementing GitOps.
 
 But it is important to see the scope of Gimlet CLI: its goal is to help developers in their local GitOps workflows and in their CI automation.  
