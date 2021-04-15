@@ -36,35 +36,11 @@ workflows:
                 image-tag: "my-image-registry/my-service:$CIRCLE_SHA1"
 ```
 
+
+
 ## Creating artifacts from Github Actions
 
-```yaml
-name: Build
-on:
-  push:
-    branches:
-      - 'main'
-
-jobs:
-  shipping-artifact:
-    runs-on: ubuntu-latest
-    name: "Shipping artifact"
-    needs:
-    - docker-build
-    steps:
-    - name: Check out
-      uses: actions/checkout@v1
-      with:
-        fetch-depth: 1
-    - name: Shipping release artifact to Gimlet
-      id: shipping
-      uses: gimlet-io/gimlet-artifact-shipper-action@v0.3.14
-      env:
-        GIMLET_SERVER: ${{ secrets.GIMLET_SERVER }}
-        GIMLET_TOKEN: ${{ secrets.GIMLET_TOKEN }}
-    - name: Artifact ID
-      run: echo "Artifact ID is ${{ steps.shipping.outputs.artifact-id }}"
-```
+[https://github.com/gimlet-io/gimlet-artifact-shipper-action#usage](https://github.com/gimlet-io/gimlet-artifact-shipper-action#usage)
 
 ## Creating artifacts with Gimlet CLI
 

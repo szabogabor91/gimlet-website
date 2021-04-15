@@ -158,5 +158,5 @@ You can also use Gimlet CLI's `gimlet artifact *` commands, should you work with
 ## Next steps
 
 - If you want to get started, go to the [Installation guide](/gimletd/installation)
-- Or see how to [create release artifacts](/gimletd/creating-artifacts) directly with Gimlet CLI, or with Gimlet's CircleCI integration
+- Or see how to [create release artifacts](/gimletd/creating-artifacts) directly with Gimlet CLI, or with Gimlet's CircleCI or Github Action integration
 - See how to create [ad-hoc](/gimletd/on-demand-releases) or [policy based releases](/gimletd/policy-based-releases)
