@@ -30,14 +30,14 @@ And building on the core properties of gitops it didn't look too difficult eithe
 
 Mirroring an environment with gitops makes certain things trivial, like keeping the deployments in sync.
 
-But when I launched the mirrored env, I realized that application Ingresses are configured to use the same hostname as on the other environment.
-Making them practically unreachable as the DNS record points to the other cluster.
+But when I launched the mirrored env, I realized that mirrored application Ingresses are configured to use the same hostname as on the original environment.
+Making them practically unreachable as the DNS record points to the original cluster.
 
-While I could circumvent the problem with host file entries, our Let's Encrypt certificates were not issued as ACME requests were hitting the other environment.
+While I could circumvent the problem with host file entries locally, the Let's Encrypt certificates were not issued as ACME requests were hitting the other environment.
 
-I somehow needed to change the hostname for the mirrored environment.
+I somehow needed to change the hostname for the mirrored env.
 
-Changing them in git was not an option since the original environment would also get the change. 
+Changing the hostname in git was not an option since the original environment would also get the change.
 I somehow needed to intercept and change the configuration at deployment time.
 
 ## Using Mutating Admission Controllers to rewrite manifests at deployment time
@@ -46,8 +46,8 @@ Twitter to the rescue. Turned out the coming (now merged) version of Kyverno wil
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">You could use Kyverno to patch the ingress <a href="https://t.co/lyW53aiCRa">https://t.co/lyW53aiCRa</a></p>&mdash; Stefan Prodan (@stefanprodan) <a href="https://twitter.com/stefanprodan/status/1369619082379726852?ref_src=twsrc%5Etfw">March 10, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
-Kyverno is a Kubernetes Admission Controller what you can use to mandate certain policies on your cluster, like not allowing root user on it, 
-or you can also set defaults to applications if the author forgot to set them. 
+Kyverno is a Kubernetes Admission Controller that you can use to mandate certain policies on your cluster, like not allowing root user on it, 
+or set defaults to applications if the author forgot to set them. 
 
 With the most recent version, I could use a string replace function on the Ingress hostname, making my mirrored environment accessible on its unique host name:
 
@@ -77,7 +77,7 @@ spec:
 
 ## So is my source of truth intact?
 
-There is just one thing that kept bugging me: if I use gitops, and I store completely rendered manifests in git, would it break my principle of git being the source of truth?
+There was just one thing that kept bugging me: if I use gitops, and I store completely rendered manifests in git, would it break my principle of git being the source of truth?
 
 In a strict interpretation I think it breaks it.
 
