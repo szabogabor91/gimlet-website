@@ -5,7 +5,7 @@ date: 2021-04-26
 excerpt: |
     See how you can mirror complete environments with gitops and rewrite host names with Kyverno's mutating admission controllers.
 topic: Ecosystem
-image: gitops-kyverno.png
+image: gitops-kyverno2.png
 image_author: Paweł Czerwiński
 image_url: https://unsplash.com/photos/bRwM14s-XcE
 tags: [posts]
