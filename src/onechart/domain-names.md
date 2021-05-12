@@ -58,3 +58,25 @@ EOF
 
 helm template my-app onechart/onechart -f values.yaml
 ```
+
+## Listening on multiple domains
+
+```bash
+cat << EOF > values.yaml
+image:
+  repository: my-app
+  tag: 1.0.0
+
+ingresses:
+  - host: one.mycompany.com
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    tlsEnabled: true
+  - host: two.mycompany.com
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    tlsEnabled: true
+EOF
+
+helm template my-app onechart/onechart -f values.yaml
+```
