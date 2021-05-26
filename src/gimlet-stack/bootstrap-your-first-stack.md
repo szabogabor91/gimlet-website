@@ -3,7 +3,7 @@ layout: gimlet-stack
 title: Bootstrap your first stack
 lastUpdated: 2021-05-26
 image: gimlet-stack.png
-tags: [gimletd]
+tags: [gimlet-stack]
 ---
 
 # Bootstrap your first stack

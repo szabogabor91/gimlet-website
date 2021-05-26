@@ -3,7 +3,7 @@ layout: gimlet-stack
 title: Getting Started
 lastUpdated: 2021-05-17
 image: gimlet-stack.png
-tags: [gimletd]
+tags: [gimlet-stack]
 ---
 
 # Getting Started
