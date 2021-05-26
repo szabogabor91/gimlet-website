@@ -8,7 +8,7 @@ tags: [gimlet-stack]
 
 # Upgrading a stack
 
-`stack.yaml` has a reference to the stack template.
+`stack.yaml` has a reference to the stack template, under the `stack.repository` field it points to a git repository where the stack files are maintained.
 
 ```yaml
 ---
@@ -22,10 +22,9 @@ config:
     host: laszlo.cloud
 ```
 
-Under the `stack.repository` field it points to a git repository, by default not locked to any particular version.
-Therefore, every time you run `stack generate` it pulls in the latest version of the stack and generates the latest and greatest version of the Kubernetes manifests.
+By default it is not locked to any particular version, therefore every time you run `stack generate` it pulls in the latest version of the stack and generates the latest and greatest version of the Kubernetes manifests.
 
-So by default, upgrading the stack is nothing more than running `stack generate` 
+So by default, upgrading the stack is nothing more than running `stack generate`. Just don't forget to inspect, commit and push the changes.
 
 ## Locking the stack version
 
