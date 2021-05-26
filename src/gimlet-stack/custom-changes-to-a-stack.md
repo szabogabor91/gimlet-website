@@ -13,7 +13,7 @@ Stack templates only go so far, and it is inevitable that you want to amend the 
 To do that, you have to make sure that after you run `stack generate` - for example to [upgrade it to the latest version](/gimlet-stack/upgrading-a-stack) - 
 you make sure to keep your manual changes.
 
-The best workflow for that is to do the `stack generate` on a branch, and you inspect the changes with your manual changes in the compare view.
+The best workflow for that is to do the `stack generate` on a branch, and you inspect the changes with focus on your manual changes in the compare view.
 
 The workflow becomes:
 

@@ -19,4 +19,4 @@ without much knowledge of Helm charts, and their configuration options
 
 - You will get constant upgrades for the installed components from the stack curators
 
-Read the [concepts](/gimletd/concepts) behind Gimlet Stack or [bootstrap your first stack](/gimletd/concepts).
+Read the [concepts](/gimlet-stack/concepts) behind Gimlet Stack or [bootstrap your first stack](/gimlet-stack/bootstrap-your-first-stack).
