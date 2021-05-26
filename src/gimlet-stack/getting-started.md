@@ -1,7 +1,7 @@
 ---
 layout: gimlet-stack
 title: Getting Started
-lastUpdated: 2020-05-17
+lastUpdated: 2021-05-17
 image: gimlet-stack.png
 tags: [gimletd]
 ---
@@ -19,4 +19,4 @@ without much knowledge of Helm charts, and their configuration options
 
 - You will get constant upgrades for the installed components from the stack curators
 
-Read the [concepts](/gimletd/concepts) behind GimletD and its role alongside Gimlet CLI.
+Read the [concepts](/gimletd/concepts) behind Gimlet Stack or [bootstrap your first stack](/gimletd/concepts).
