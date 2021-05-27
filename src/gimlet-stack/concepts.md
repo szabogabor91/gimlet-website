@@ -39,7 +39,7 @@ Stacks are a set of Helm charts and Kubernetes manifests that are configured to 
 - stacks expose only a subset of helm chart values to users to limit the decision space
 - stacks make it possible to use all chart values if people want the full chart feature set / optionality
 - stacks create new chart values that group together multiple flags, and abstract them at a higher level. Eg.: stickySessions, realIP, HA
-- stacks don't change the community charts, as upstreaming opinions will be blocker every time. Instead, stacks wrap/compose the community charts 
+- stacks don't change the community charts, as upstreaming opinions will be a blocker every time. Instead, stacks wrap/compose the community charts 
 - stacks are able to deliver raw yamls to the gitops repo, configmaps, etc
 
 
