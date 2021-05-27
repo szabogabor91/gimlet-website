@@ -149,13 +149,13 @@ Congratulations, now you have a working GitOps setup!
 
 But GitOps is only as fun as the applications you are deploying with it. Let's configure now the stack components.
 
-Run `stack configure` and pick enable Nginx, Prometheus and Loki on the UI that starts:
+Run `stack configure` and enable Nginx, Prometheus and Loki on the UI that starts:
 
 ![Configure your stack with stack configure](/stack-configure.png)
 
 Once you enabled the components write the configuration with the red *Close tab & Write values* button.
 
-This will not just write the stack configuration to the console, but also to the `stack.yaml` file which holds all configuration of your stack.
+This will not just write the stack configuration to the console, but also to the `stack.yaml` file which holds the complete configuration of your stack.
 
 ```
 ➜  k8s-stack git:(master) ✗ stack configure
@@ -200,4 +200,46 @@ Untracked files:
 
 Add all files to git, then push it to origin main.
 
+Once you pushed the generated manifests and the stack.yaml to git, the GitOps workflow deploys it on your cluster.
 
+## Verify the installed stack
+
+```bash
+➜  kubectl get helmreleases.helm.toolkit.fluxcd.io -n infrastructure 
+NAME             READY   STATUS                             AGE
+ingress-nginx    True    Release reconciliation succeeded   4m29s
+prometheus       True    Release reconciliation succeeded   4m29s
+loki             True    Release reconciliation succeeded   4m29s
+grafana          True    Release reconciliation succeeded   2m24s
+```
+
+```bash
+➜  kubectl get pods -n infrastructure                               
+NAME                                             READY   STATUS    RESTARTS   AGE
+prometheus-node-exporter-5pg5b                   1/1     Running   0          5m23s
+prometheus-kube-state-metrics-6bfcd6f648-fdrbk   1/1     Running   0          5m23s
+svclb-ingress-nginx-controller-xbznc             2/2     Running   0          5m1s
+loki-promtail-6m45c                              1/1     Running   0          5m23s
+ingress-nginx-controller-569b78f477-pdssw        1/1     Running   0          5m1s
+prometheus-server-5c7648b4dc-wn7lp               2/2     Running   0          5m23s
+loki-0                                           1/1     Running   0          5m23s
+grafana-7b76796ff8-64w65                         2/2     Running   0          3m19s
+```
+
+Should you not see the HelmReleases or pods, it is always a good practice to check the gitops controller logs:
+
+```bash
+kubectl logs -n flux-system -f deploy/source-controller
+```
+and
+```bash
+kubectl logs -n flux-system -f deploy/kustomize-controller
+```
+
+To get started using the ingress, and the observability stack, refer to the component descriptions in `stack configure`.
+
+## Next steps
+
+Now that you have a running stack, see how can you operate it: either how to [reconfigure your stack](/gimlet-stack/reconfiguring-a-stack) or how to [upgrade it](/gimlet-stack/upgrading-a-stack).
+
+You can also [reuse the gitops automation](/gimlet-stack/reusing-the-stack-repo-for-application-deployments) to deliver your own applications.
