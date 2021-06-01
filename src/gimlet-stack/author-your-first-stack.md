@@ -49,6 +49,8 @@ This repository holds a minimal stack with a single Nginx component:
 - `helm-releases` folder to hold the Nginx HelmRelease file
 - `helm-repositories` folder to hold the HelmRepository for the Nginx Helm chart
 - `manifests` folder to hold a plain manifest with the Kubernetes namespace definition
+- `.sourceignore` file to ignore deploying certain files from the gitops repo. Since `stack.yaml` is stored there, Flux needs to know to disregard it
+- `.stackignore` file to ignore files from getting to to the gitops repo during `stack generate`. You typically want to ignore README.md and other documentation files
 
 ```bash
 ➜  gimlet-stack-minimal git:(main) tree
@@ -60,9 +62,11 @@ This repository holds a minimal stack with a single Nginx component:
 ├── manifests
 │   └── namespace.yaml
 ├── README.md
-└── stack-definition.yaml
+├── .sourceignore
+├── stack-definition.yaml
+└── .stackignore
 
-3 directories, 5 files
+3 directories, 7 files
 ```
 
 ![A minimal Gimlet Stack](/stack-minimal.png)
