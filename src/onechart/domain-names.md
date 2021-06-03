@@ -59,6 +59,28 @@ EOF
 helm template my-app onechart/onechart -f values.yaml
 ```
 
+## HTTPS - Let's Encrypt
+
+If your cluster has Cert Manager running, you should add the Cert Manager's annotation to have automated cert provisioning.
+
+## HTTPS
+
+To reference a TLS secret use the `tlsEnabled` field. The deployment will point to a secret named: `tls-$.Release.Name`
+
+```diff
+# values.yaml
+image:
+  repository: my-app
+  tag: 1.0.0
+
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: nginx
++    cert-manager.io/cluster-issuer: letsencrypt
+  host: my-app.mycompany.com
+  tlsEnabled: true
+```
+
 ## Listening on multiple domains
 
 ```bash
