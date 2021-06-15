@@ -10,15 +10,42 @@ tags: [gimlet-stack]
 
 Stack templates only go so far, and it is inevitable that you want to amend the generated manifests in slight ways.
 
-To do that, you have to make sure that after you run `stack generate` - for example to [upgrade it to the latest version](/gimlet-stack/upgrading-a-stack) - 
-you make sure to keep your manual changes.
+`stack generate` takes your custom changes into account and keeps them even after a configuration change, or an upgrade.
 
-The best workflow for that is to do the `stack generate` on a branch, and you inspect the changes with focus on your manual changes in the compare view.
+In case your custom change is conflicting with the generated content, you have to do a content merge, that should be familiar from git.
 
-The workflow becomes:
+## Custom changes that conflicts
 
-- branch out
-- run `stack generate`
-- inspect, commit and push the changes to the branch
-- open a pull request and review the changes
-- when you made sure that none of your manual changes are lost, merge the pull request
+The bellow output was from a stack that was upgraded from `0.2.0` to `0.3.0` and having a custom change on top of `0.2.0`.
+
+The stack 
+operator manually upgraded the version to `3.27.0`.
+
+Since stack version `0.3.0` also updates the ingress-nginx version, now the operator has to make a judgment call whether to keep
+the manually updated version or roll with generated changes.
+
+```yaml
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+  namespace: infrastructure
+spec:
+  interval: 60m
+  releaseName: ingress-nginx
+  chart:
+    spec:
+      chart: ingress-nginx
+<<<<<<<<< Your custom settings
+      version: 3.27.0
+=========
+      version: 3.33.0
+>>>>>>>>> From stack generate
+      sourceRef:
+        kind: HelmRepository
+        name: ingress-nginx
+      interval: 10m
+```
+
+Many editors have conflict resolution tooling. With a click of a button, the operator can accept the changes coming `From stack generate`.
