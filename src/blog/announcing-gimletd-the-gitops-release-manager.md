@@ -40,7 +40,7 @@ values:
   replicas: 1
   image:
     repository: myapp
-    tag: {% raw %}{{ .GIT_SHA }}{% endraw %}
+    tag: {% raw %}"{{ .GIT_SHA }}"{% endraw %}
   ingress:
     host: myapp.staging.mycompany.com
     tlsEnabled: true
@@ -79,7 +79,7 @@ values:
   replicas: 1
   image:
     repository: myapp
-    tag: {% raw %}{{ .GIT_SHA }}{% endraw %}
+    tag: {% raw %}"{{ .GIT_SHA }}"{% endraw %}
   ingress:
     host: myapp.staging.mycompany.com
     tlsEnabled: true
