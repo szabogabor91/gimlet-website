@@ -11,6 +11,8 @@ topic: Ecosystem
 tags: [posts]
 ---
 
+<h4 class="text-lg font-bold">5th July, 2021 UPDATE <br /><br />This blog post uses Flux V1 which is deprecated now. Either head over <a href="https://fluxcd.io/">fluxcd.io</a> for the official docs of Flux V2, or check out the most recent practice from Gimlet in the <a href="/deploy-your-app-to-kubernetes-without-the-boilerplate">Deploy your app to Kubernetes without the boilerplate</a> guide.<br/><br/>There is still some value in reading this blog post as the core of gitops hasn't changed.</h4>
+
 In this blog post you will learn how to implement a gitops platform at your company, using Flux and Kustomize.
 
 What you need as a prerequisite is 
