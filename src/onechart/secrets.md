@@ -38,15 +38,12 @@ image:
   repository: nginx
   tag: 1.19.3
 
-secretEnabled: true
 secretName: my-custom-secret
 ```
 
 ## Mounting secrets as files
 
-OneChart supports experimentation.
-
-When you first try to make a deployment work, you may use OneChart's `fileSecrets` feature to
+You may use OneChart's `fileSecrets` feature to
 provide your application long form secrets: SSH keys, or json files that are typically used as service account keys on Google Cloud.
 
 Just make sure to keep this config out of git - strictly on your laptop - as secrets are plain text.
