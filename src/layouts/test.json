@@ -1,0 +1,22 @@
+{
+  "name": "Gimlet Dash",
+  "url": "<<gimlet.mycompany.com>>",
+  "callback_url": "<<gimlet.mycompany.com>>",
+  "hook_attributes": {
+    "url": "<<gimlet.mycompany.com>>/hook>>"
+  },
+  "public": false,
+  "default_permissions": {
+    "checks": "read",
+    "contents": "read",
+    "repository_hooks": "write",
+    "statuses": "read",
+    "members": "read"
+  },
+  "default_events": [
+    "create",
+    "push",
+    "delete",
+    "status"
+  ]
+}
