@@ -82,7 +82,7 @@ GimletD supports `branch` and `tag` filters.
 
 Both support wildcards.
 
-### Tag pattern trigger example
+#### Tag pattern trigger example
 ```yaml
 +deploy:
 +  tag: v*
@@ -91,7 +91,7 @@ Both support wildcards.
 
 Triggers on "v1", "v2", "v1.1" or any glob pattern that is supported by the https://github.com/gobwas/glob project.
 
-### Branch pattern trigger example
+#### Branch pattern trigger example
 ```yaml
 +deploy:
 +  branch: feature/*
