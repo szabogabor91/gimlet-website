@@ -76,12 +76,36 @@ GimletD processes each new artifact and matches against the defined policies.
 The above example configures a release policy 
 that automatically releases every git push on the `main` branch to the staging environment
 
+## Supported git refs
+
+GimletD supports `branch` and `tag` filters.
+
+Both support wildcards.
+
+### Tag pattern trigger example
+```yaml
++deploy:
++  tag: v*
++  event: tag
+```
+
+Triggers on "v1", "v2", "v1.1" or any glob pattern that is supported by the https://github.com/gobwas/glob project.
+
+### Branch pattern trigger example
+```yaml
++deploy:
++  branch: feature/*
++  event: push
+```
+
+Triggers on any commit pushed to a branch that is prefixed with "feature/".
+
 ## Supported events
 
 GimletD supports `push`, `tag` and `pr` events.
 
 It is mandatory to set either the `branch` or the `event` condition, and they can be also defined solo.
-If both are defined, the policy triggers if both conditions are satisfied.  
+If both are defined, the policy triggers if both conditions are satisfied.
 
 ## Next steps
 
