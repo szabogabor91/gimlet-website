@@ -89,7 +89,7 @@ Both support wildcards.
 +  event: tag
 ```
 
-Triggers on "v1", "v2", "v1.1" or any glob pattern that is supported by the https://github.com/gobwas/glob project.
+Triggers on `v1`, `v2`, `v1.1` or any glob pattern that is supported by the [https://github.com/gobwas/glob](https://github.com/gobwas/glob) project.
 
 #### Branch pattern trigger example
 ```yaml
@@ -98,7 +98,7 @@ Triggers on "v1", "v2", "v1.1" or any glob pattern that is supported by the http
 +  event: push
 ```
 
-Triggers on any commit pushed to a branch that is prefixed with "feature/".
+Triggers on any commit pushed to a branch that is prefixed with `feature/`.
 
 ## Supported events
 
