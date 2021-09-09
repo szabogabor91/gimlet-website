@@ -80,7 +80,7 @@ that automatically releases every git push on the `main` branch to the staging e
 
 GimletD supports `branch` and `tag` filters.
 
-Both support wildcards.
+Both support wildcards and negated expressions
 
 #### Tag pattern trigger example
 ```yaml
@@ -99,6 +99,15 @@ Triggers on `v1`, `v2`, `v1.1` or any glob pattern that is supported by the [htt
 ```
 
 Triggers on any commit pushed to a branch that is prefixed with `feature/`.
+
+#### Negated branch trigger
+```yaml
++deploy:
++  branch: !main
++  event: push
+```
+
+Triggers on any commit pushed to a branch that is not `main`.
 
 ## Supported events
 
