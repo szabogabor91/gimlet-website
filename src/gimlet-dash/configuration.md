@@ -179,6 +179,12 @@ vars:
   GITHUB_CLIENT_SECRET: xxx
 ```
 
+To obtain the `INSTALLATION_ID`, navigate to [https://github.com/settings/apps](https://github.com/settings/apps) and edit your just created application.
+Click *Install App* in the sidebar to install it on the account that you want GimletD to access.
+
+You can copy the `INSTALLATION_ID` from your browsers address bar after installation. The URL will be in the following format:
+[https://github.com/settings/installations/$INSTALLATION_ID]()
+
 That's all.
 
 Now you integrated Gimlet Dash with Github.
