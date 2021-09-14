@@ -36,7 +36,7 @@ probe:
 +  - name: data
 +    path: /var/lib/gimletd
 +    size: 1Gi
-+  - name: repoCache
++  - name: repo-cache
 +    path: /tmp/gimletd
 +    size: 5Gi
 EOF
