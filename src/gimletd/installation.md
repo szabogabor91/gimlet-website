@@ -35,8 +35,10 @@ probe:
 +volumes:
 +  - name: data
 +    path: /var/lib/gimletd
-+    size: 10Gi
-+    storageClass: default
++    size: 1Gi
++  - name: repoCache
++    path: /tmp/gimletd
++    size: 5Gi
 EOF
 
 helm template gimletd onechart/onechart -f values.yaml
