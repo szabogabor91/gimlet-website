@@ -51,3 +51,7 @@ The above snippet has a cleanup section that is triggered
 Once the policy triggers, it deletes applications that are matching the `myapp-{% raw %}{{ .BRANCH | sanitizeDNSName }}{% endraw %}` pattern.
 
 All three fields are mandatory.
+
+Please note that only the `{% raw %}{{ .BRANCH }}{% endraw %}` variable is available for the `branchDeleted` event. At the time of deletion the shipped artifacts and their extensive 
+variable set is not available, only the branch name is known that got deleted - hence the `{% raw %}{{ .GITHUB_BRANCH }}{% endraw %}` usage throughout the manifest, except 
+in the cleanup policy.
