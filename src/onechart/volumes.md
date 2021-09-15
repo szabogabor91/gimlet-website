@@ -39,6 +39,25 @@ EOF
 helm template my-release onechart/onechart -f values.yaml
 ```
 
+## Using existing PersistentVolumeClaims
+
+If for some reason you want to use an existing PersistentVolumeClaim, use the following syntax:
+
+```bash
+cat << EOF > values.yaml
+image:
+  repository: nginx
+  tag: 1.19.3
+
+volumes:
+  - name: data
+    path: /data
+    existingClaim: my-static-claim
+EOF
+
+helm template my-release onechart/onechart -f values.yaml
+```
+
 ## About volumes
 
 OneChart generates a `PeristentVolumeClaim` with this configuration and mounts it to the given path.
