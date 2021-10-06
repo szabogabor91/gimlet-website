@@ -27,7 +27,11 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      transform: ['hover'],
+    }
+  },
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
