@@ -1,41 +1,69 @@
 ---
 layout: base
 ---
-
 <main class="mt-16 mx-auto max-w-6xl px-4 sm:mt-24 sm:px-6 lg:mt-32">
     <img src="/cluster-admin.svg" class="h-56 w-auto mx-auto my-16"/>
     <div class="text-center mx-auto">
         <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">Bootstrap a service platform on any Kubernetes cluster</p>
-        <!-- logos of eks, aks, gke, k3s, openshift -->
+        <ul class="list-none text-gray-500 mt-8">
+            <li class="my-2">
+                Gimlet Stack works with the Kubernetes API
+            </li>
+            <li class="my-2">
+                You can porovisioin the cluster with your favorite tool, or use a managed one
+            </li>
+        </ul>
     </div>
     <div class="text-center mx-auto mt-16">
         <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">With a set of well known, curated components</p>
-        <!-- logos of nginx grafana, etc -->
     </div>
+    <div class="grid grid-cols-1 md:grid-cols-5 my-8 max-w-2xl mx-auto">
+        <div class="text-center">
+            <img class="h-16 inline-block" src="https://raw.githubusercontent.com/gimlet-io/gimlet-stack-reference/main/assets/nginx.png" alt="Nginx" />
+        </div>
+        <div class="text-center">
+            <img class="h-16 inline-block" src="https://raw.githubusercontent.com/gimlet-io/gimlet-stack-reference/main/assets/certManager.png" alt="Cert Manager" />
+        </div>
+        <div class="text-center">
+            <img class="h-16 inline-block" src="https://raw.githubusercontent.com/gimlet-io/gimlet-stack-reference/e4430ccda687880806c77e7efee456293d1a51e2/assets/prometheus.svg" alt="Prometheus" /></div>
+        <div class="text-center">
+            <img class="h-16 inline-block" src="https://grafana.com/static/img/menu/grafana2.svg" alt="Grafana" />
+        </div>
+        <div class="text-center">
+            <img class="h-16 inline-block" src="https://raw.githubusercontent.com/gimlet-io/gimlet-stack-reference/main/assets/kyverno.png" alt="Kyverno" />
+        </div>
+    </div>
+    
     <div class="text-center mx-auto mt-16">
         <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">With high-level configuration options</p>
         <ul class="list-none text-gray-500 mt-8">
             <li class="my-2">
-                want persistence, or high availablity?
+                persistence, or high availablity?
             </li>
             <li class="my-2">
                 use the high level config instead of digging through values.yaml
             </li>
         </ul>
         <!-- gif of editing on UI -->
-        <img src="/rollback.gif" class="max-w-4xl mx-auto my-32"/>
+        <img src="/configure.gif" class="max-w-4xl mx-auto my-16"/>
     </div>
     <img src="/plant.svg" class="h-56 w-auto mx-auto my-32"/>
     <div class="text-center mx-auto mt-16">
         <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">Get a curated update stream of security and feature upgrades</p>
-        <!-- gif of stack update --check and stack update -->
-        <img src="/nav.gif" class="max-w-4xl mx-auto my-32"/>
+        <ul class="list-none text-gray-500 mt-8">
+            <li class="my-2">
+                on the command line with `stack update`
+            </li>
+            <li class="my-2">
+                or get a PR whenever there is an update using our CI plugins
+            </li>
+        </ul>
+        <img src="/update.gif" class="max-w-4xl mx-auto my-32"/>
     </div>
     <img src="/painting.svg" class="h-56 w-auto mx-auto my-32"/>
     <div class="text-center mx-auto mt-16">
         <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">Add custom Helm values or raw yamls if you need to</p>
-            <!-- pic of a HelmRelease file with custom values -->
-        <img src="/preview-apps.svg" class="max-w-2xl mx-auto mt-4"/>
+        <img src="/custom-yaml.svg" class="max-w-2xl mx-auto mt-4"/>
     </div>
     <div class="text-center mx-auto mt-16">
         <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">All delivered in a git repo with self-contained gitops automation</p>
@@ -44,7 +72,6 @@ layout: base
                 Using Flux
             </li>
         </ul>
-        <img src="/preview-apps.svg" class="max-w-2xl mx-auto mt-4"/>
     </div>
     <img src="/coffee.svg" class="h-56 w-auto mx-auto my-32"/>
     <div class="text-center my-16 mb-32">
