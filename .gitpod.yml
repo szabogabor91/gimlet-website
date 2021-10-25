@@ -11,10 +11,14 @@ tasks:
       {
         "files.associations": {
             "*.njk": "html"
-        }
+        },
+        "window.zoomLevel": 1
       }
       EOF
       exit
+  - name: work terminal
+    command: echo "Hello 👋"
+    openMode: split-right
 
 ports:
   - port: 8080
@@ -26,3 +30,8 @@ vscode:
   extensions:
     - ecmel.vscode-html-css
   
+gitConfig:
+  alias.st: status
+  alias.l: log --graph --pretty=default
+  alias.lola: log --graph --oneline --all
+  alias.fp: fetch --prune
