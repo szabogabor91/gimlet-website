@@ -1,13 +1,28 @@
-# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: |
+  - name: npm init
+    init: |
       npm install
       npm run build
     command: npm run dev
+  - name: vscode settings
+    init: |
+      mkdir -p "$PWD/.vscode";
+      cat << 'EOF' > "$PWD/.vscode/settings.json"
+      {
+        "files.associations": {
+            "*.njk": "html"
+        }
+      }
+      EOF
+      exit
 
-# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
   - port: 8080
     onOpen: open-browser
   - port: 3001
     onOpen: ignore
+
+vscode:
+  extensions:
+    - ecmel.vscode-html-css
+  
