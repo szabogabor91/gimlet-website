@@ -38,8 +38,6 @@
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/typography": "^0.3.1",
-    "alpinejs": "^2.7.3",
-    "lunr": "^2.3.9",
     "markdown-it": "^12.2.0",
     "regenerator-runtime": "^0.13.9"
   }
