@@ -22,7 +22,7 @@ layout: base
             r.url = docs[r.ref].url;
         });
 
-        console.log(results)
+        return results;
     }
 </script>
 <main class="mt-8 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-16">
@@ -34,13 +34,12 @@ layout: base
                 <nav class="flex-1 px-2 space-y-1 bg-white" aria-label="Sidebar">
                     <div x-data="{ 
                          searchterm: '',
-                         index: '' 
+                         index: '',
+                         results: ''
                         }" x-init="
                        index = await (await fetch('/search.json')).json();
                        $watch('searchterm', (value, oldValue) => {
-                        console.log(value, oldValue)
-                        search(index, value)
-                        
+                        results = search(index, value)                        
                     })" class="mb-4 relative rounded-md shadow-sm mx-2">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -49,11 +48,18 @@ layout: base
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
                         </div>
-                        <input type="text" name="search" id="search" x-model="searchterm"
+                        <input type="text" name="search" id="search" x-model.debounce.100ms="searchterm"
                             class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
                             placeholder="Search...">
-                        <div x-show="searchterm">
-                            <h1 x-text="searchterm"></h1>
+                        <div class="absolute max-w-xl h-64 overflow-y-auto overflow-x-visible z-40" x-show="searchterm">
+                            <ul>
+                                <template x-for="result in results">
+                                    <li x-text="result.title"></li>
+                                </template>
+                            </ul>
+                            
+                            
+                            <h1 x-text="JSON.stringify(results)"></h1>
                         </div>
                     </div>
 
