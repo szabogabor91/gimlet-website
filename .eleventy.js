@@ -11,6 +11,7 @@ const manifest = isDev
   ? {
       "main.js": "/assets/index.js",
       "main.css": "/assets/index.css",
+      "search.js": "/assets/search.js",
     }
   : JSON.parse(fs.readFileSync(manifestPath, { encoding: "utf8" }));
 
@@ -21,6 +22,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addLayoutAlias("post", "post.njk");
   eleventyConfig.addLayoutAlias("gimlet-cli", "gimlet-cli.njk");
   eleventyConfig.addLayoutAlias("onechart", "onechart.njk");
+  eleventyConfig.addLayoutAlias("docs", "docs.njk");
 
   // Add a shortcode for bundled CSS.
   eleventyConfig.addShortcode("bundledCss", function() {
