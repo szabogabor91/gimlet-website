@@ -29,28 +29,26 @@ layout: base
 
     function matchContext(content, matches) {
         matches = JSON.parse(JSON.stringify(matches))
+        console.log(matches)
 
-        return Object.keys(matches).map(term => {
+        let result = Object.keys(matches).map(term => {
             const position = matches[term].content.position;
-            console.log(position[0])
 
-            let start = position[0];
-            let end = position[1];
+            const context = 50
+            let results = [];
+            for (const pos of position) {
+                let start = pos[0];
+                let end = pos[0] + pos[1];
 
-        
+                start = (start > context) ? (start - context) : 0;
+                end = end < (content.length - context) ? (end + context) : content.length;
+                results.push(content.substring(start, end))
+            }
 
-            console.log(content.length)
-
-            console.log(start)
-
-
-            start = (start > 5) ? (start - 5) : 0;
-            end = end < (content.length-5) ? (end + 5) : content.length;
-
-            console.log(start, end)
-
-            return content.substring(start, end)
+            return results.join('[...] ')
         })
+        console.log(result)
+        return result.join('xxx')
     }
 </script>
 <main class="mt-8 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-16">
@@ -83,13 +81,12 @@ layout: base
                             <ul>
                                 <template x-for="result in results">
                                     <li>
-                                        <span x-text="result.title"></span>
-                                        <span x-text="matchContext(result.content, result.matchData.metadata)"></span>
+                                        <a x-text="result.title" class="font-bold text-lg mb-2" x-bind:href="result.url"></a><br />
+                                        <span x-text="matchContext(result.content, result.matchData.metadata)"
+                                        class="text-xs"></span>
                                     </li>    
                                 </template>
                             </ul>
-                            
-             
                         </div>
                     </div>
 
