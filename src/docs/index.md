@@ -9,7 +9,9 @@ tags: [docs]
 
 Gimlet is a set of tools that will get you an application operations platform on top of Kubernetes.
 
-It is built on the de-fact tools of the ecosystem - Helm and Flux - and provides you with a golden-path, a set of best -practices so you can focus on your task at hand. Not having to navigate the vast options the cloud native ecosystem has to offer you.
+It is built on the de-fact tools of the ecosystem - Helm and Flux - and provides you with a golden-path, a set of best -practices so you can focus on your task at hand. Without having to navigate the vast options the cloud native ecosystem has to offer.
+
+![GimletCLI used from CI](/docs.svg)
 
 ### Where to start
 - **Concepts** discuss key topics and concepts at a fairly high level and provide useful background information and explanation when you are starting out.
