@@ -91,54 +91,133 @@ layout: base
                     </div>
 
                     <div class="space-y-1">
-                        <a href="https://github.com/gimlet-io/gimlet-cli"
-                            class="flex group w-full flex items-center px-5 py-2 mb-4 text-sm font-medium rounded-md">
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-2">gimlet-io/gimlet-cli</span>
-                        </a>
                         <a href="/gimlet-cli/getting-started"
                             class="{% if '/getting-started' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
-                            Getting Started
-                        </a>
-                        <a href="/gimlet-cli/concepts"
-                            class="{% if '/concepts' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
-                            Concepts
+                            Welcome
                         </a>
                     </div>
 
                     <div class="space-y-1">
                         <span
                             class="bg-white text-gray-600 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
-                            Guides
+                            Concepts
                         </span>
                         <div class="space-y-1">
                             <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
                                 class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                Deploy your app to Kubernetes without the boilerplate
+                                The SANE Gitops guide
                             </a>
                             <a href="/gimlet-cli/bootstrap-gitops-with-gimlet"
                                 class="{% if '/gimlet-cli/bootstrap-gitops-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                Bootstrap gitops with Gimlet
+                                The SANE Helm guide
                             </a>
+                            <a href="/gimlet-cli/bootstrap-gitops-with-gimlet"
+                                class="{% if '/gimlet-cli/bootstrap-gitops-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Components
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white text-gray-600 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Developer Tutorials
+                        </span>
+                        <div class="space-y-1">
+                            <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
+                                class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Deploy your app to Kubernetes
+                            </a>
+                            <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
+                                class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Automatically deploy your application to staging
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white text-gray-600 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Developer Guides
+                        </span>
+                        <a href="/gimlet-cli/manage-environments-with-gimlet-and-gitops"
+                            class="{% if '/gimlet-cli/manage-environments-with-gimlet-and-gitops' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            How-to manage staging and production environment configs
+                        </a>
+                        <div class="space-y-1">
+                            <a href="/gimlet-cli/preview-environments-with-gimlet"
+                            class="{% if '/gimlet-cli/preview-environments-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            How-to configure preview environments
+                        </a>
+                        <a href="/gimlet-cli/manage-secrets-with-gimlet"
+                            class="{% if '/gimlet-cli/manage-secrets-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            How-to manage secrets
+                        </a>
+                        <a href="/gimlet-cli/manage-secrets-with-gimlet"
+                            class="{% if '/gimlet-cli/manage-secrets-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            Making ad-hoc deploys
+                        </a>
+                        <a href="/gimlet-cli/manage-secrets-with-gimlet"
+                            class="{% if '/gimlet-cli/manage-secrets-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            Configuring policy-based deploys
+                        </a>
+                        <a href="/gimlet-cli/manage-secrets-with-gimlet"
+                            class="{% if '/gimlet-cli/manage-secrets-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            How-to rollback
+                        </a>
+                        <a href="/gimlet-cli/manage-secrets-with-gimlet"
+                            class="{% if '/gimlet-cli/manage-secrets-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            How-to delete an application
+                        </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white text-gray-600 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Cluster Admin Tutorials
+                        </span>
+                        <div class="space-y-1">
                             <a href="/gimlet-cli/manage-environments-with-gimlet-and-gitops"
                                 class="{% if '/gimlet-cli/manage-environments-with-gimlet-and-gitops' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                Manage environments with Gimlet and gitops
+                                Make Kubernetes an application platform with Gimlet Stack
                             </a>
                             <a href="/gimlet-cli/preview-environments-with-gimlet"
                                 class="{% if '/gimlet-cli/preview-environments-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                Preview environments with Gimlet
+                                Enable release automation with GimletD
                             </a>
-                            <a href="/gimlet-cli/manage-secrets-with-gimlet"
-                                class="{% if '/gimlet-cli/manage-secrets-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                Manage secrets with Gimlet
+                            <a href="/gimlet-cli/preview-environments-with-gimlet"
+                                class="{% if '/gimlet-cli/preview-environments-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Install the Gimlet Dash UI
                             </a>
-                            <a href="/gimlet-cli/scaling-gitops"
-                                class="{% if '/gimlet-cli/scaling-gitops' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                Scaling gitops
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white text-gray-600 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Cluster Admin Guides
+                        </span>
+                        <div class="space-y-1">
+                            <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
+                                class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Configuring GimletD
+                            </a>
+                            <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
+                                class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Configuring Gimlet Dash
+                            </a>
+                            <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
+                                class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                GimletD API access
+                            </a>
+                            <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
+                                class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                How-to structure gitops repositories
+                            </a>
+                            <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
+                                class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Automatically clean up preview apps
                             </a>
                         </div>
                     </div>
@@ -150,31 +229,91 @@ layout: base
                         <div class="space-y-1">
                             <a href="/gimlet-cli/chart-configure"
                                 class="{% if '/gimlet-cli/chart-configure' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                chart configure
+                                Gimlet Agent configuration reference
                             </a>
-                            <a href="/gimlet-cli/gitops-bootstrap"
-                                class="{% if '/gimlet-cli/gitops-bootstrap' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                gitops bootstrap
+                            <a href="/gimlet-cli/chart-configure"
+                                class="{% if '/gimlet-cli/chart-configure' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Gimlet artifact reference
                             </a>
-                            <a href="/gimlet-cli/gitops-write"
-                                class="{% if '/gimlet-cli/gitops-write' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                gitops write
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white text-gray-600 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            GimletD configuration reference
+                        </span>
+                        <div class="space-y-1">
+                            <a href="/gimlet-cli/chart-configure"
+                                class="{% if '/gimlet-cli/chart-configure' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Slack notifications
                             </a>
-                            <a href="/gimlet-cli/gitops-delete"
-                                class="{% if '/gimlet-cli/gitops-delete' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                gitops delete
+                            <a href="/gimlet-cli/chart-configure"
+                                class="{% if '/gimlet-cli/chart-configure' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Github integration
                             </a>
-                            <a href="/gimlet-cli/manifest-create"
-                                class="{% if '/gimlet-cli/manifest-create' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                manifest create
+                            <a href="/gimlet-cli/chart-configure"
+                                class="{% if '/gimlet-cli/chart-configure' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Notifications on gitops repo applies
                             </a>
-                            <a href="/gimlet-cli/manifest-template"
-                                class="{% if '/gimlet-cli/manifest-template' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                manifest template
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white text-gray-600 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Onechart Reference
+                        </span>
+                        <div class="space-y-1">
+                            <a href="/onechart/deploying-an-image"
+                               class="{% if '/onechart/deploying-an-image' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Deploying an image
                             </a>
-                            <a href="/gimlet-cli/seal"
-                                class="{% if '/gimlet-cli/seal' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                seal
+                            <a href="/onechart/deploying-a-private-image"
+                               class="{% if '/gimlet-cli/bootstrap-gitops-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Deploying a private image
+                            </a>
+                            <a href="/onechart/environment-variables"
+                               class="{% if '/onechart/environment-variables' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Environment variables
+                            </a>
+                            <a href="/onechart/secrets"
+                               class="{% if '/onechart/secrets' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Secrets
+                            </a>
+                            <a href="/onechart/domain-names"
+                               class="{% if '/onechart/domain-names' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Domain names
+                            </a>
+                            <a href="/onechart/volumes"
+                               class="{% if '/onechart/volumes' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Volumes
+                            </a>
+                            <a href="/onechart/healthcheck"
+                               class="{% if '/onechart/healthcheck' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Healthcheck
+                            </a>
+                            <a href="/onechart/highavailability"
+                               class="{% if '/onechart/highavailability' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                High-Availability
+                            </a>
+                            <a href="/onechart/custom-command"
+                               class="{% if '/onechart/custom-command' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Custom command
+                            </a>
+                            <a href="/onechart/cron-job"
+                               class="{% if '/onechart/cron-job' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Cron job
+                            </a>
+                            <a href="/onechart/feature-branch-deploys"
+                               class="{% if '/onechart/feature-branch-deploys' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Feature branch deploys
+                            </a>
+                            <a href="/onechart/prometheus-monitoring-rules"
+                               class="{% if '/onechart/prometheus-monitoring-rules' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Prometheus monitoring rules
+                            </a>
+                            <a href="/onechart/sidecar"
+                               class="{% if '/onechart/sidecar' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Attaching a sidecar container
                             </a>
                         </div>
                     </div>

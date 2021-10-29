@@ -5,32 +5,17 @@ lastUpdated: 2020-12-09
 tags: [docs]
 ---
 
-# Getting Started
+# Welcome to the Gimlet universe!
 
-Welcome to the Gimlet universe!
+Gimlet is a set of tools that will get you an application operations platform on top of Kubernetes.
 
-Gimlet CLI provides a modular GitOps workflow that you can adopt in partial, or in full.
+It is built on the de-fact tools of the ecosystem - Helm and Flux - and provides you with a golden-path, a set of best -practices so you can focus on your task at hand. Not having to navigate the vast options the cloud native ecosystem has to offer you.
 
-Its main design goal was to support you on your Kubernetes journey.
-Whether you are hacking on your Raspberry, or want to manage services and environments at scale.
+### Where to start
+- **Concepts** discuss key topics and concepts at a fairly high level and provide useful background information and explanation when you are starting out.
 
-## Installation
+- **Tutorials** take you through a series of steps to deploy your application on Kubernetes. Start here if you’re new to Gimlet or the Kubernetes ecosystem
 
-#### Linux / Mac
+- **How-to guides** are recipes. They guide you through the steps involved in addressing key problems and use-cases. They are more advanced than tutorials and assume some knowledge of how Gimlet works.
 
-```bash
-curl -L https://github.com/gimlet-io/gimlet-cli/releases/download/v0.9.6/gimlet-$(uname)-$(uname -m) -o gimlet
-chmod +x gimlet
-sudo mv ./gimlet /usr/local/bin/gimlet
-gimlet --version
-```
-
-## Next steps
-
-There are a couple of paths you can take:
-
-- If you are new to Kubernetes, follow this guide: <br />
-  [Deploy your app to Kubernetes without the boilerplate](/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate)
-
-- If you already deploy services to Kubernetes, see the
-  [Manage environments with Gimlet and GitOps](/gimlet-cli/manage-environments-with-gimlet-and-gitops) guide
+- **Reference** guides contain technical reference for APIs and other aspects of Gimlet's machinery. They describe how it works and how to use it but assume that you have a basic understanding of key concepts.
