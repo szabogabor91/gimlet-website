@@ -124,8 +124,8 @@ Let's create the file first:
 
 ```
 $ cat << EOF > postgresql.values.yaml
-postgresqlUsername=postgres
-postgresqlPassword=e8f844db4cf0bbb5f431e250dd8e44cb
+postgresqlUsername: postgres
+postgresqlPassword: e8f844db4cf0bbb5f431e250dd8e44cb
 EOF
 ```
 then let's upgrade the installation with
@@ -189,28 +189,81 @@ In this chapter
 - while you will learn how to render and debug Helm charts locally
 - and how to navigate chart source code
 
+## Rendering Helm charts as Kubernetes resources
 
+To demistify Helm, it is important to understand that what Helm does is just little more than rendering Golang templates.
 
+Let's return briefly to the PostgreSQL example from previous chapters. But instead of running `helm upgrade` run `helm template` this time:  replicas: {{ .Values.replicaCount }}
 
+```
+$ helm template my-postgres bitnami/postgresql \
+  -f postgresql.values.yaml
 
+---
+# Source: postgresql/templates/secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  [...]
+```
 
-Large part of Helm's official documentaion explains the structure of Helm charts and teaches how you can make one. But most people never has to create and maintain a Helm chart.
+The output is well-known, although lengthy Kubernetes yamls, and all that happend in the background was rendering text files on your laptop.
 
+To close the loop, let's 
+- look at the source of a chart
+- modify a variable
+- and render the modified chart locally
 
+## Closing the loop
 
+To see Helm in full circle, let's create a chart that we can modify safely:
 
+```
+$ helm create my-first-chart
+Creating my-first-chart
 
+$ tree my-first-chart
+my-first-chart
+├── charts
+├── Chart.yaml
+├── templates
+│   ├── deployment.yaml
+│   ├── _helpers.tpl
+│   ├── hpa.yaml
+│   ├── ingress.yaml
+│   ├── NOTES.txt
+│   ├── serviceaccount.yaml
+│   ├── service.yaml
+│   └── tests
+│       └── test-connection.yaml
+└── values.yaml
+```
 
+Plenty of files and quite a structure, but let's focus on the templates folder. This is where the Goland template files are placed and this is where you will make a change.
 
-helm template
-knowing what's in the helm chart
-navigating on git
-golang template basics
-helm create command
-Onechart
+- Locate the `replicas: {% raw %}{{ .Values.replicaCount }}{% endraw %}` line in the deployment.yaml file 
+- and change it to `replicas: {% raw %}{{ .Values.replicas }}{% endraw %}` to simplify the naming a bit.
 
+Once you save the file template the chart and see that your change manifests in the result:
 
+```
+$ helm template my-first-chart --set replicas=2
 
+[...]
+spec:
+  replicas: 2
+[...]
+```
 
+Congratulations you now know the basics of Helm charts!
 
+- Know how to install off-the-shelf charts
+- Know how to configure them after installation
+- And also understand the Helm charts are just Golang template files
+
+There is a lot to know about Helm but you know how to navigate the ecosystem.
+
+As a final task, you should check out the [defaults of PostgresSQL chart look](https://github.com/bitnami/charts/blob/master/bitnami/postgresql/values.yaml). Every Helm chart has a default `values.yaml` file where most variables are listed, and you can also inspect their default value as well. This knowledge combined with `helm template` should get you far.
+
+And don't get discouraged by the complex chart templating functions. [Helm's documentation](https://helm.sh/docs/chart_template_guide/functions_and_pipelines/) is a good reference to learn about the syntaxes that you don't quite understand yet.
 
