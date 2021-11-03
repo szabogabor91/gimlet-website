@@ -277,6 +277,8 @@ As a final task, you should inspect [the defaults of PostgresSQL chart](https://
 Every Helm chart has a default `values.yaml` file where most variables are listed and have their defult values assigned. 
 It is a good practice to look at a chart's values.yaml when you are looking for examples how to configure a Helm chart. This knowledge combined with `helm template` should get you far.
 
-And don't get discouraged by the complex chart templating functions. [Helm's documentation](https://helm.sh/docs/chart_template_guide/functions_and_pipelines/) is a good reference to learn about the syntaxes that you don't quite understand yet.
+And don't get discouraged by the complex chart templates.
+
+Conceptually you know everything about them now, you may not know yet about templating functions and named templates, but [Helm's documentation](https://helm.sh/docs/chart_template_guide/functions_and_pipelines/) is a good reference to learn about the syntaxes that you don't quite understand yet.
 
 Onwards!
