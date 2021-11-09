@@ -1,11 +1,11 @@
 ---
 layout: docs
-title: Automatically deploy your application to staging
+title: Manage your staging application configuration
 lastUpdated: 2021-11-09
 tags: [docs]
 ---
 
-# Automatically deploy your application to staging
+# Manage your staging application configuration
 
 In this guide you will 
 
