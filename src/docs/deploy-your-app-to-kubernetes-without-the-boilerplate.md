@@ -1,8 +1,8 @@
 ---
-layout: gimlet-cli
+layout: docs
 title: Deploy your app to Kubernetes without the boilerplate
-lastUpdated: 2020-12-09
-tags: [gimletcli]
+lastUpdated: 2021-11-09
+tags: [docs]
 ---
 
 # Deploy your app to Kubernetes without the boilerplate
@@ -16,6 +16,7 @@ In this guide you will deploy your application to Kubernetes without writing len
 - You have `kubectl` installed. Follow [this guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/) if you don't have it
 - You have Gimlet CLI installed. [Click](/gimlet-cli/getting-started#installation) to install it
 - You have Helm installed. You can do so [here](https://helm.sh/docs/intro/install/)
+- You have a basic understanding of Helm, or read our [SANE Helm guide](/concepts/the-sane-helm-guide)
 
 ## The Yaml
 
@@ -43,7 +44,7 @@ And you keep hearing about Helm, aren't you?
 If you want to deploy well known infrastructure components, like Redis, the community has a solution for you:
 it's called Helm, and it is a package manager.
 
-There are prepackaged deployments manifests, called Helm Charts, that can get you started with installation and configuration.
+There are prepackaged deployments manifests, called Helm charts, that can get you started with installation and configuration.
 
 Helm charts allow you to progress from a simple two liner that installs a default Redis:
 
@@ -67,11 +68,10 @@ While most infrastructure software has a Helm Chart today, there is no go to cha
 
 You can try writing your own, but that it is even a larger endeavour than piecing your yamls together from blog posts.
 
-Most companies have an internal best practice and reference implementation on how to deploy to Kubernetes.
-That usually includes a Helm Chart, or a corresponding internal tool.
+Most companies have an internal best practice and reference implementation on how to deploy to Kubernetes which usually includes a Helm chart.
 
 But if you don't work for a company like that,
-you can use Gimlet's OneChart Helm Chart for your application.
+you can use Gimlet's OneChart for your application. OneChart is a Helm chart like any other, with the main goal to cover the 20 most common application deployment usecases.
 
 ## Use OneChart to deploy your application
 
@@ -96,9 +96,9 @@ ingress:
   host: my-app.mycompany.com
 ```
 
-In this guide you will use the OneChart Helm Chart to configure your application for deployment.
+In this guide you will use the OneChart to configure your application for deployment.
 
-Using Gimlet CLI, you can configure OneChart on a GUI, unlike the usual Helm experience of scanning hundreds lines of variable documentation of Helm Charts.
+Using Gimlet CLI, you can configure OneChart on a GUI, unlike the usual Helm experience of scanning hundreds of lines of values.yaml documentation.
 
 You will also see that thanks to Gimlet's design principles, you won't be locked into Gimlet CLI as it works with common Helm file formats and workflows.
 
@@ -106,7 +106,7 @@ Now let's configure your deployment!
 
 ## How to configure your deployment
 
-You will use the `gimlet chart configure` command to configure the OneChart Helm Chart.
+You will use the `gimlet chart configure` command to configure the values.yaml file for OneChart.
 
 `gimlet chart configure` generates a Helm `values.yaml` file that you can use in a normal Helm workflow,
 while you can configure the deployment parameters in a browser based GUI:
@@ -134,8 +134,8 @@ ingress:
 replicas: 2
 ```
 
-Note: even if you don't have an application image to deploy, you can still run this exercise as the default configuration deploys an Nginx image.
-A webserver with a default page that you can interact with in your browser.
+Note: even if you don't have an application image to deploy, you can still run this exercise as the default configuration deploys an Nginx image: 
+a webserver with a default page that you can interact with in your browser.
 
 ## Deploying the application
 
@@ -189,26 +189,8 @@ helm template myapp -n staging onechart/onechart -f values.yaml | \
   kubectl apply -f -
 ```
 
-## Workflow
-
-Now that you have successfully deployed your application, you can think about a workflow how you will make this process repeatable.
-
-You can version two artifacts in this workflow: the Kubernetes yaml or the `values.yaml` file.
-
-We recommend versioning the `values.yaml` file. Over time, you can version multiple versions of it, as many environments you have.
-
-With a Makefile or CI pipeline you can automate the `helm template` and `kubectl apply -f` commands too.
-
-Should you need to make modifications to the `values.yaml`, you can do that manually, or run `gimlet chart configure` again and feed in your existing values file:
+and validate with
 
 ```
-gimlet chart configure -f values.yaml onechart/onechart
+kubectl get pods
 ```
-
-## Next steps
-
-There are a couple of paths you can take:
-
-- You can explore the many use-cases of OneChart in the [OneChart documentation](/onechart/getting-started)
-
-- or read how can you elevate your workflow further by using GitOps in the [Manage environments with Gimlet and GitOps](/gimlet-cli/manage-environments-with-gimlet-and-gitops) guide

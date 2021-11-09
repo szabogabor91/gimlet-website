@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Getting Started
-lastUpdated: 2020-12-09
+lastUpdated: 2021-10-20
 tags: [docs]
 ---
 

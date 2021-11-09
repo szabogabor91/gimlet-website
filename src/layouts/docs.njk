@@ -92,7 +92,7 @@ layout: base
 
                     <div class="space-y-1">
                         <a href="/docs"
-                            class="{% if '/docs' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            class="{% if '/docs/' == page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
                             Welcome
                         </a>
                     </div>
@@ -124,12 +124,12 @@ layout: base
                             Developer Tutorials
                         </span>
                         <div class="space-y-1">
-                            <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
-                                class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
-                                Deploy your app to Kubernetes
+                            <a href="/docs/deploy-your-app-to-kubernetes-without-the-boilerplate"
+                                class="{% if '/docs/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Deploy your app to Kubernetes without the boilerplate
                             </a>
-                            <a href="/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate"
-                                class="{% if '/gimlet-cli/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            <a href="/docs/automatically-deploy-your-application-to-staging"
+                                class="{% if '/docs/automatically-deploy-your-application-to-staging' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
                                 Automatically deploy your application to staging
                             </a>
                         </div>
@@ -182,8 +182,8 @@ layout: base
                                 class="{% if '/gimlet-cli/manage-environments-with-gimlet-and-gitops' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
                                 Make Kubernetes an application platform with Gimlet Stack
                             </a>
-                            <a href="/gimlet-cli/preview-environments-with-gimlet"
-                                class="{% if '/gimlet-cli/preview-environments-with-gimlet' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            <a href="/docs/enable-release-automation-with-gimletd"
+                                class="{% if '/docs/enable-release-automation-with-gimletd' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
                                 Enable release automation with GimletD
                             </a>
                             <a href="/gimlet-cli/preview-environments-with-gimlet"
