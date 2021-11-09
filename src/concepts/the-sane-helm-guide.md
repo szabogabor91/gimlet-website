@@ -28,23 +28,23 @@ Let's get to it, shall we?
 
 ## Helm as a source of packaged infrastructure components
 
-If you need a quick and dirty way to install a database, queuing engine or any infrastructure component on Kubernetes, chances are that the infrastructure component has a good enough official - or community - Helm chart that you can use for installation.
+If you need a quick and dirty way to install a database, queuing engine or any infrastructure component on Kubernetes, chances are that the infrastructure component has a good enough official or community Helm chart that you can use for installation.
 
- Using the chart you usually get good enough default settings as well. Good for testing purposes - that is.
+Charts also give you good enough default settings as well. Good enough for testing purposes - that is.
 
-Let's see how this works with the PostgreSQL database!
+### Let's see how this works with the PostgreSQL database!
 
 - First you need to find the Helm chart for PostgreSQL. The official website of PostgreSQL is a good starting point, but I usually go with a Google search, *"PostgreSQL Helm chart"*
-- Typically you can find the Helm chart in the Github organization of the software you want to install, with PostgreSQL however there is only a community chart available so Google pointed me to the [bitnami/charts repo on Github](https://github.com/bitnami/charts/tree/master/bitnami/postgresql).
-- Judging the trustworthiness of community charts is often not easy. You may get help on slack channels. In this case I just know that Bitnami's charts are often good, so I will go with it.
-- Following the steps on the `bitnami/charts` repo, installing the Helm chart is nothing more than the typical Helm two liners: register first the Helm repository, then install the Redis Helm chart.
+- You can typically find the Helm chart in the Github organization of the software you want to install. With PostgreSQL however, there is only a community chart available, so Google pointed me to the [bitnami/charts repo on Github](https://github.com/bitnami/charts/tree/master/bitnami/postgresql).
+- Judging the trustworthiness of community charts is often not easy. You may get help on slack channels, or judge the maintainer activity on Github. In this particular case I know that Bitnami's charts are often good, so I will go with it.
+- Follow the steps on the `bitnami/charts` repo and install PostrgreSQL with the followingtwo liner::
 
 ```
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm install my-postgres bitnami/postgresql
 ```
 
-In return, PostgreSQL was installed on the cluster and you also got some getting started information on the screen.
+With these two commands you installed PostgreSQL, and you also got some getting started information on the screen.
 
 ```
 [..]
@@ -67,15 +67,14 @@ To connect to your database from outside the cluster execute the following comma
     PGPASSWORD="$POSTGRES_PASSWORD" psql --host 127.0.0.1 -U postgres -d postgres -p 5432
 ```
 
-Follow the installation with the `kubectl get pods -w` command.
 
-With two commands you were able to install PostgreSQL. This is the power of Helm.
+This is usually the way to install any Helm chart. First register the chart repository in your local Helm registry, then call helm install with the name of the release and the Helm chart.
 
-This approach may not match the infrastructure as code tool of your choice, but to see how the component looks installed, and to get inspired how you can automate the component's installation, Helm is the go-to tool. Therefor knowing the above demonstrated commands of Helm is a must have.
+This approach may not match the infrastructure as code tool of your choice, but to see how the component looks installed, Helm is the go-to tool, and knowing the above two commands is a must have.
 
 ## Configuring releases with Helm
 
-Continuing with the PostgreSQL example from the previous chapter, you will tune the PostgreSQL instance using the `bitnami/postgresql` Helm charts predefined options.
+Continuing with the PostgreSQL example from the previous chapter, now you will tune the PostgreSQL instance using the `bitnami/postgresql` Helm charts predefined options.
 
 Every Helm chart offers a set of configuration options that you can use to tune your installation. You will configure the default user and password in this chapter.
 
@@ -95,7 +94,7 @@ $ kubectl get secret my-postgres-postgresql -o jsonpath="{.data.postgresql-passw
 e8f844db4cf0bbb5f431e250dd8e44cb%
 ```
 
-Since PostgreSQL only reads the default username and password parameter at startup time, use the following command to restart it:
+Since PostgreSQL only reads the default username and password parameter at startup time, use the following command to restart it, then verify the changed password by connecting to it.
 
 ```
 $ kubectl rollout restart statefulset my-postgres-postgresql
@@ -110,7 +109,16 @@ my-postgres-postgresql-0   0/1     Running             0          2s
 my-postgres-postgresql-0   1/1     Running             0          10s
 ```
 
-Before we round up this chapter and jump to Helm's other thing that it does well, you should get familiar with the a more declarative way of providing Helm chart configuration options.
+For the connection, we borrow the command from the helm install's output:
+
+```
+$ kubectl run my-postgres-postgresql-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql:11.13.0-debian-10-r80 --env="PGPASSWORD=e8f844db4cf0bbb5f431e250dd8e44cb" --command -- psql --host my-postgres-postgresql -U postgres -d postgres -p 5432
+
+postgres=#
+postgres=# quit
+```
+
+Before we round up this chapter and jump to Helm's other thing that it does well, you should get familiar with a more declarative way of providing Helm chart configuration options.
 
 ## Configuring releases with Helm's values.yaml file
 
@@ -125,13 +133,14 @@ Let's create the file first:
 ```
 $ cat << EOF > postgresql.values.yaml
 postgresqlUsername: postgres
-postgresqlPassword: e8f844db4cf0bbb5f431e250dd8e44cb
+postgresqlPassword: 543e9a6bf104ccb7249715991831f3a0
 EOF
 ```
 then let's upgrade the installation with
 
 ```
-$ helm upgrade my-postgres bitnami/postgresql -f postgresql.values.yaml
+$ helm upgrade my-postgres bitnami/postgresql \
+  -f postgresql.values.yaml
 ```
 
 Restart PostgreSQL, and validate the password by connecting to it:
@@ -151,10 +160,13 @@ my-postgres-postgresql-0   0/1     ContainerCreating   0          0s
 my-postgres-postgresql-0   0/1     Running             0          2s
 my-postgres-postgresql-0   1/1     Running             0          10s
 
-$ kubectl run my-postgres-postgresql-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql:11.13.0-debian-10-r80 --env="PGPASSWORD=e8f844db4cf0bbb5f431e250dd8e44cb" --command -- psql --host my-postgres-postgresql -U postgres -d postgres -p 5432
+$ kubectl run my-postgres-postgresql-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql:11.13.0-debian-10-r80 --env="PGPASSWORD=543e9a6bf104ccb7249715991831f3a0" --command -- psql --host my-postgres-postgresql -U postgres -d postgres -p 5432
 
 postgres=#
+postgres=# quit
 ```
+
+Congratulations, now you are able to configure Helm installations with a declarative values.yaml file!
 
 Now that you are able to install and upgrade Helm charts, it's time to complete your must have Helm knowledge by looking at the other thing that Helm does well: templating.
 
@@ -178,16 +190,19 @@ spec:
           image: nginx
 ```
 
-The above snippet is a Kubernetes Deployment resource with its replica count templated. This is how Helm charts look inside.
+The above snippet is a Kubernetes Deployment resource with its replica count templated.
 
-They are Golang template files that are able to render variables at predefined placeholders. Just much more convoluted in real life, thanks to the many generic usecases they have to serve.
+This is how Helm charts look inside: they are Golang template files that are able to render variables at predefined placeholders.
+Just much more convoluted in real life, thanks to the many generic usecases they have to serve.
 
 
-To round up your Helm intro in the remaining chapters you will
+To round up your Helm intro, in the remaining chapters you will
 
-- modify a chart by introducing a new variable to it, this way you will see that charts are really just template files
-- while you will learn how to render and debug Helm charts locally
+- modify a chart by introducing a new variable to it
+- learn how to render and debug Helm charts locally
 - and how to navigate chart source code
+
+This way you will see that charts are really just template files , and learn how to handle not well documented situations.
 
 ## Rendering Helm charts as Kubernetes resources
 
@@ -207,16 +222,11 @@ metadata:
   [...]
 ```
 
-The output is well-known, although lengthy Kubernetes yamls. These are the yamls Helm is applying on the cluster, this time though it was only rendering text files on your laptop.
+The output is well known - although lengthy - Kubernetes yaml. These are the yamls Helm is applying on the cluster, this time though it was only rendering text files on your laptop.
 
-To close the loop, let's 
-- look at the source of a chart
-- modify a variable
-- and render the modified chart locally
+## Closing the feedback loop
 
-## Closing the loop
-
-To see Helm in full circle, let's create a chart that we can modify safely:
+To see Helm in full circle, let's create a chart on your laptop that we can modify safely:
 
 ```
 $ helm create my-first-chart
@@ -241,12 +251,12 @@ my-first-chart
 
 Plenty of files and quite a structure, but let's focus on the templates folder.
 
-The templates folder is where the Goland template files are placed and this is where you will make a change.
+The templates folder is where the Golang template files are placed and this is where you will make a change.
 
 - Locate the `replicas: {% raw %}{{ .Values.replicaCount }}{% endraw %}` line in the deployment.yaml file 
 - and change it to `replicas: {% raw %}{{ .Values.replicas }}{% endraw %}` to simplify the naming a bit.
 
-Once you save the file template the chart and see that your change manifests in the result:
+Save the file and template the chart to see that your change manifests in the result:
 
 ```
 $ helm template my-first-chart --set replicas=2
@@ -257,28 +267,28 @@ spec:
 [...]
 ```
 
-Congratulations, you successfully made your first edit in a Helm chart.
+Congratulations, you successfully made your first edit in a Helm chart!
 
-While this is not a common thing to do as a developer - you will work mostly with community Helm charts or with a chart your platform team maintains - it is important to get familiar with Helm chart internals. Configuration options are sometimes not well documented, so seeing what they do will help you in your work.
+While editing charts is not a common thing to do as a developer, it is important to get familiar with Helm chart internals. Configuration options are sometimes not well documented, so seeing how they work will help you in your daily work.
 
-To recap, this is what you have learnt:
+## Closing thoughts
+
+This is what you have learnt:
 
 
 - you know how to install off-the-shelf charts
 - you know how to configure them after installation
 - and you also understand that Helm charts are Golang template files
 
-There is still a lot to know about Helm but now you are able navigate the ecosystem.
+There is still a lot to know about Helm, but now you are able navigate the ecosystem.
 
-## Closing thought
-
-As a final task, you should inspect [the defaults of PostgresSQL chart](https://github.com/bitnami/charts/blob/master/bitnami/postgresql/values.yaml).
+As a final task, you should inspect [the defaults of the PostgresSQL chart](https://github.com/bitnami/charts/blob/master/bitnami/postgresql/values.yaml).
 
 Every Helm chart has a default `values.yaml` file where most variables are listed and have their defult values assigned. 
 It is a good practice to look at a chart's values.yaml when you are looking for examples how to configure a Helm chart. This knowledge combined with `helm template` should get you far.
 
 And don't get discouraged by the complex chart templates.
 
-Conceptually you know everything about them now, you may not know yet about templating functions and named templates, but [Helm's documentation](https://helm.sh/docs/chart_template_guide/functions_and_pipelines/) is a good reference to learn about the syntaxes that you don't quite understand yet.
+Conceptually you know everything about them now. You may not know yet about templating functions and named templates, but [Helm's documentation](https://helm.sh/docs/chart_template_guide/functions_and_pipelines/) is a good reference to learn about the syntaxes that you don't quite understand yet.
 
 Onwards!
