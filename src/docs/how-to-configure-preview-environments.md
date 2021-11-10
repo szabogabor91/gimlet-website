@@ -114,3 +114,63 @@ gimlet manifest template \
   -o manifests.yaml \
   --vars ci.env
 ```
+
+## Policies for preview app deploys
+
+Now that the naming and templating is covered, using policy based releases, you can define policies that automatically deploy your Pull Requests or branches.
+
+The following snippet deploys app pushes on branches that match the `feature/*` wildcard pattern.
+Variables are used to guarantee unique resource names, and avoid collision.
+
+It also applies sanitization on the branch name, to fit Kubernetes resource name limitations, and DNS naming rules.
+
+```diff
+# .gimlet/preview-env.yaml
+- app: myapp-{% raw %}{{ .BRANCH }}{% endraw %}
++ app: myapp-{% raw %}{{ .BRANCH | sanitizeDNSName }}{% endraw %}
+env: staging
+namespace: my-team
+chart:
+  repository: https://chart.onechart.dev
+  name: onechart
+  version: 0.32.0
++deploy:
++  branch: feature/*
++  event: push
+values:
+  replicas: 1
+  image:
+    repository: myapp
+    tag: {% raw %}"{{ .GIT_SHA }}"{% endraw %}
+  ingress:
+-    host: "myapp-{% raw %}{{ .BRANCH }}{% endraw %}.staging.mycompany.com"
++    host: "myapp-{% raw %}{{ .BRANCH | sanitizeDNSName }}{% endraw %}.staging.mycompany.com"
+    tlsEnabled: true
+```
+
+The next example is using the `event: pr` trigger to deploy Pull Requests:
+
+```diff
+# .gimlet/preview-env.yaml
+app: myapp-{% raw %}{{ .BRANCH | sanitizeDNSName }}{% endraw %}
+env: staging
+namespace: my-team
+chart:
+  repository: https://chart.onechart.dev
+  name: onechart
+  version: 0.32.0
+deploy:
+-  branch: feature/*
+-  event: push
+  event: pr
+values:
+  replicas: 1
+  image:
+    repository: myapp
+    tag: {% raw %}"{{ .GIT_SHA }}"{% endraw %}
+  ingress:
+    host: "myapp-{% raw %}{{ .BRANCH | sanitizeDNSName }}{% endraw %}.staging.mycompany.com"
+    tlsEnabled: true
+```
+
+For all the possibilities please refer to the [Configuring policy-based deploys](/docs/configuring-policy-based-deploys#supported-git-refs)

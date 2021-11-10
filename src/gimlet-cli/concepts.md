@@ -19,8 +19,10 @@ This page collects the decisions we made while designing Gimlet.
 
 ## Premise
 
-Gimlet addresses the application configuration problem space. 
+Gimlet CLI, GimletD and Gimlet Dash addresses the application configuration problem space. 
 While infrastructure components deserve their tools, Gimlet was made to help developers wanting to deploy their own applications. 
+
+Gimlet Stack is made for cluster admins to manage infrastructure components (ingress, logging, metrics etc) through a curated update stream.
 
 ## Gimlet's take on the GitOps repository structure
 

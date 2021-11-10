@@ -63,6 +63,8 @@ GimletD operates only on the releasable artifacts that CI creates. This split al
 
 ![GimletD operates on the release artifacts, manages the GitOps repository](/gimletd-with-gitops.png)
 
+** The artifact store is implemented in GimletD, hence the matching colors
+
 Now, let's look at the release artifact.
 
 ## The release artifact
