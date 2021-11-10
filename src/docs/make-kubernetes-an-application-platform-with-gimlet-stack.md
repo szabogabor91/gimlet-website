@@ -1,12 +1,12 @@
 ---
-layout: gimlet-stack
-title: Bootstrap your first stack
+layout: docs
+title: Make Kubernetes an application platform with Gimlet Stack
 lastUpdated: 2021-05-26
 image: gimlet-stack.png
-tags: [gimlet-stack]
+tags: [docs]
 ---
 
-# Bootstrap your first stack
+# Make Kubernetes an application platform with Gimlet Stack
 
 In this tutorial you will install 
 

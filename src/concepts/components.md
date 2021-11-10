@@ -44,7 +44,23 @@ Flux is the gitops controller. It polls the gitops repository (1) and applies ch
 
 #### Gitops repository
 
-A completely normal git repository with the role to hold all Kubernetes resource definitions
+A completely normal git repository with the role to hold all Kubernetes resource definitions of your applications.
 
 #### Application repository
 Where your application source code lives.
+
+#### Stack CLI
+With Stack CLI, you can bootstrap curated Kubernetes stacks, logging, metrics, ingress and more - all delivered with gitops.
+
+- You can install logging aggregators, metric collectors, ingress controllers and more on your cluster with a few commands, 
+without much knowledge of Helm charts, and their configuration options
+
+- The components are delivered through a plain git repository with self-contained gitops automation
+
+- You will get constant upgrades for the installed components from the stack curators
+
+You write the infrarstructure gitops repo with the Stack CLI (10) and Flux pulls the changes (11) and applies it on the cluster (2).
+
+#### Infrastructure Gitops repository
+
+A completely normal git repository with the role to hold all Kubernetes resource definitions related to infrastructure components: ingress controller, observability stack, daemonsets etc.
