@@ -1,18 +1,21 @@
 ---
-layout: gimletd
-title: On-demand releases
+layout: docs
+title: Making ad-hoc deploys
 lastUpdated: 2020-03-16
-tags: [gimletd]
+tags: [docs]
 ---
 
-# On-demand releases
+# Making ad-hoc deploys
 
-GimletD operates only on the releasable artifacts that CI created, therefore to make an adhoc release, first you should
-browse the stored artifacts to pick the desired version.
+GimletD operates only on the releasable artifacts that you shipped from your CI pipeline, therefore to make an adhoc release, first you should browse the stored artifacts to pick the desired version.
 
-If you need a refresher, you can read more about the artifacts on the [Concepts](/gimletd/concepts) page.
+In this guide first 
+- you see how to make ad-hoc releases with Gimlet CLI
+- then you will see how to do so on the Gimlet Dash UI.
 
-## Browsing the artifacts
+If you need a refresher, you can see how artifacts are shipped from CI pipelines to Gimlet in the [Automatically deploy your application to staging](/docs/automatically-deploy-your-application-to-staging) tutorial.
+
+## Browsing the artifacts with Gimlet CLI
 
 ```bash
 export GIMLET_SERVER=http://gimletd.mycompany.com
@@ -36,7 +39,7 @@ https://github.com/mycompany/frontend/pull/322
 [...]
 ```
 
-## Releasing an artifact
+## Releasing an artifact with Gimlet CLI
 
 Once you identified the artifact you want to release, issue the following Gimlet CLI command:
 
@@ -60,7 +63,10 @@ staging/frontend mycompany/gitops@2655962fcf5b27553d139005f47c2eec9002c19d  (jus
     mycompany/frontend-3dcf8ec0-96ec-4974-b28b-4e8d2862a359
 ```
 
-## Next steps
+## Making ad-hoc releases with the Gimlet Dash UI
 
-- If you made a mistake, you might want to [Roll back](/gimletd/rolling-back)
-- To automate the releases, read about [Policy based releases](/gimletd/policy-based-releases)
+If an artifact exist for a given commit, you can push the deploy button next to it.
+
+So locate the desired commit, and hit "Deploy".
+
+<img src="/deploy.gif" class="w-full md:max-w-4xl mx-auto my-16"/>
