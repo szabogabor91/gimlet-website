@@ -1,11 +1,11 @@
 ---
-layout: gimlet-cli
-title: Manage secrets with Gimlet
+layout: docs
+title: How-to manage secrets
 lastUpdated: 2020-12-11
-tags: [gimletcli]
+tags: [docs]
 ---
 
-# Manage secrets with Gimlet
+# How-to manage secrets
 
 Secrets demand special handling, and often they are stored, managed and configured in a workflow that is adjacent to application deployment.
 
@@ -69,6 +69,8 @@ all the encrypted secrets in the GitOps repository will be useless if you need t
 
 Once you have the controller running, and fetched the public key, you can use Gimlet CLI to seal your Gimlet manifest file.
 
+You can deploy SealedSecrets with Gimlet Stack. Follow the [Make Kubernetes an application platform with Gimlet Stack](/docs/make-kubernetes-an-application-platform-with-gimlet-stack) tutorial to install SealedSecrets.
+
 ## Using Gimlet CLI to seal the Gimlet manifest file
 
 Given the following manifest file
@@ -80,7 +82,7 @@ namespace: my-team
 chart:
   repository: https://chart.onechart.dev
   name: onechart
-  version: 0.10.0
+  version: 0.32.0
 values:
   replicas: 1
   image:
@@ -108,10 +110,11 @@ gimlet gitops write -f .gimlet/staging.yaml \
   -m "Adding encrypted secret values"
 ```
 
-## Next Steps
+You may also use the SealedSecrets project native commands to encrypt individual secret values:
 
-There are a few of paths you can take:
-
-- Learn more about the Gimlet file in [Manage environments with Gimlet and GitOps](/gimlet-cli/manage-environments-with-gimlet-and-gitops)
-
-- Watch a video about the [installation and usage of Sealed Secrets](https://youtu.be/rlGJM19auJU?t=28)
+```
+echo -n my-secret-value | kubeseal \
+  --raw --scope cluster-wide \
+  --controller-namespace=infrastructure \
+  --from-file=/dev/stdin
+```

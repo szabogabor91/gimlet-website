@@ -13,7 +13,7 @@ One file per environment.
 
 ## Example
 
-The following example shows two files, on for staging, and one for production.
+The following example shows two files, one for staging, and one for production.
 
 They only differ in the replica count. However, you can have a completely unique set of configs in your envs.
 The manifest files controls it all.
