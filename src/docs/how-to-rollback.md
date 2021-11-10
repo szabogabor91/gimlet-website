@@ -1,19 +1,18 @@
 ---
-layout: gimletd
+layout: docs
 title: Rolling back
 lastUpdated: 2020-03-16
 image: sisyphus.jpg?123
-tags: [gimletd]
+tags: [docs]
 ---
 
 # Rolling back
 
-In software, things go wrong sometimes.
+In software, things go wrong sometimes. It is inevitable, so best if you have an action that you can perform routinely.
 
-It is inevitable, so best if you have a default action that you can perform routinely.
+That's why Gimlet provides rollback tooling out of the box. 
 
-That's why GimletD provides rollback tooling out of the box. 
-On this page you will learn how to use it, and what does it do actually.
+On this page you will learn how to use it, first with the CLI then on the UI, and learn what it does actually.
 
 ## Getting a quick overview
 
@@ -45,7 +44,7 @@ staging/my-app laszlocph/gimletd-test@d2d0a416e6 (1 week ago)
 ## Roll back
 
 Once you identified the broken release, roll back to the preceding one.
-GimletD will revert all gitops commits made after the desired release.
+Gimlet will revert all gitops commits made after the desired release.
 
 ```
 gimlet release rollback --env staging --app my-app --to c8d8c1d192
@@ -76,7 +75,7 @@ staging/my-app laszlocph/gimletd-test@d2d0a416e6 (1 week ago)
 
 ## What does rollback do
 
-Rollbacks in GimletD are preforming revert commits on all gitops commits that were made later than the release that you are rolling back to.
+Rollbacks in Gimlet are preforming revert commits on all gitops commits that were made later than the release that you are rolling back to.
 
 With this approach you can be sure that a previous release will be applied verbatim on the cluster. No template re-renders, no waiting on the machinery.
 
@@ -86,8 +85,11 @@ You can't roll back an already rolled back commit. Best to roll forward in this 
 
 Rollbacks are made for a quick mindless remedy to jump back to previously active gitops state.
 
-If you want to be more creative, best to roll forward by releasing an artifact.
+If you want to be more creative, best to roll forward by releasing a new version.
 
-## Next steps
+## Rolling back on the UI
 
-Now that you reached the end of the documentation, you might want to jump right in and [install GimletD](/gimletd/installation)
+Each application has a release history bar with the ten most recent deploys.
+If you click the bar, you will see the individual released versions, and you can click the "Rollback to this version" button next to it.
+
+<img src="/rollback.gif" class="w-full md:max-w-4xl mx-auto my-16"/>
