@@ -1,12 +1,26 @@
 ---
-layout: gimlet-stack
-title: Concepts
-lastUpdated: 2021-05-17
-image: gimlet-stack.png
-tags: [gimlet-stack]
+layout: docs
+title: Gimlet Stack concepts
+lastUpdated: 2021-11-09
+tags: [docs]
 ---
 
-# Concepts
+# Gimlet Stack concepts
+
+## What can you do with Gimlet Stack
+
+Bootstrap curated Kubernetes stacks!
+
+Logging, metrics, ingress and more - all delivered with gitops.
+
+- You can install logging aggregators, metric collectors, ingress controllers and more on your cluster with a few commands, 
+without much knowledge of Helm charts, and their configuration options
+
+- The components are delivered through a plain git repository with self-contained gitops automation
+
+- You will get constant upgrades for the installed components from the stack curators
+
+## Design
 
 Gimlet Stack is a command line tool that you can use to configure curated stacks for Kubernetes clusters.
 
@@ -45,4 +59,5 @@ Stacks are a set of Helm charts and Kubernetes manifests that are configured to 
 
 ## Next steps
 
-To see Gimlet Stack in action, go and [bootstrap your first stack](/gimlet-stack/bootstrap-your-first-stack).
+To see Gimlet Stack in action, go and [Make Kubernetes an application platform with Gimlet Stack](//docs/make-kubernetes-an-application-platform-with-gimlet-stack).
+

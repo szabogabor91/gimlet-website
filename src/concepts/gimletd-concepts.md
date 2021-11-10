@@ -1,15 +1,18 @@
 ---
-layout: gimletd
-title: Concepts
-lastUpdated: 2020-03-15
-tags: [gimletd]
-image: gimletd-with-gitops.png
+layout: docs
+title: GimletD concepts
+lastUpdated: 2021-11-09
+tags: [docs]
 ---
 
-# Concepts
+# GimletD concepts
 
-GimletD builds on the concepts, conventions and workflows that Gimlet CLI introduced
+GimletD is the GitOps release manager.
+
+It builds on the concepts, conventions and workflows that Gimlet CLI introduced 
 and extends them with a centralized approach for managing releases.
+
+It packs all release automation logic that used to be scattered in CI pipelines.
 
 ## Rational
 
@@ -21,16 +24,7 @@ The GitOps ecosystem lacks tooling to manage the GitOps repository and related w
 
 Organizations have to answer these questions when they implement GitOps.
 
-Gimlet CLI [answers these questions](/gimlet-cli/concepts/)
-by bringing conventions to the GitOps repository to help companies implementing GitOps.
-
-But it is important to see the scope of Gimlet CLI: its goal is to help developers in their local GitOps workflows and in their CI automation.  
-
-![GimletCLI used from CI](/gitops-with-ci.png)
-
-Gimlet CLI also requires a local copy of the GitOps repository and while it helps following the conventions, it doesn't enforce them.
-
-Working on the local copy allows developers - with or without intent - to handle the GitOps repository in an ad-hoc manner.
+Gimlet answers these questions by bringing conventions to the GitOps repository to help companies implementing GitOps.
 
 ## GimletD adds centralized release workflows
 
@@ -46,6 +40,8 @@ standardized toolchain.
 ## It factors much of the scripting work into a standardized toolchain
 
 Today companies use CI to automate their releases.
+
+![GimletCLI used from CI](/gitops-with-ci.png)
 
 Deploy and rollback steps are implemented in CI pipelines to handle the basic release workflows.
 
@@ -154,9 +150,3 @@ GimletD stores the release artifacts in the artifact storage.
 While this is a sizable json structure, we have integrations with most CI engines out there today.
 
 You can also use Gimlet CLI's `gimlet artifact *` commands, should you work with something that is not integrated with Gimlet.
-
-## Next steps
-
-- If you want to get started, go to the [Installation guide](/gimletd/installation)
-- Or see how to [create release artifacts](/gimletd/creating-artifacts) directly with Gimlet CLI, or with Gimlet's CircleCI or Github Action integration
-- See how to create [ad-hoc](/gimletd/on-demand-releases) or [policy based releases](/gimletd/policy-based-releases)

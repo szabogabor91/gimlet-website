@@ -240,6 +240,4 @@ To get started using the ingress, and the observability stack, refer to the comp
 
 ## Next steps
 
-Now that you have a running stack, see how can you operate it: either how to [reconfigure your stack](/gimlet-stack/reconfiguring-a-stack) or how to [upgrade it](/gimlet-stack/upgrading-a-stack).
-
-You can also [reuse the gitops automation](/gimlet-stack/reusing-the-stack-repo-for-application-deployments) to deliver your own applications.
+Now that you have a running stack, see how can you operate it in [Reconfiguring, upgrading and making custom changes to stacks](/docs/reconfiguring-upgrading-and-making-custom-changes-to-stacks)
