@@ -44,7 +44,7 @@ values:
     tlsEnabled: true
 ```
 
-Gimlet supports [multiple deploy conditions](/docs/tbdtoreference), but before this is going to work, you have to set up the missing link between your CI and Gimlet. Let's set it up now, shall we?
+Gimlet supports [multiple deploy conditions](/docs/configuring-policy-based-deploys#supported-git-refs), but before this is going to work, you have to set up the missing link between your CI and Gimlet. Let's set it up now, shall we?
 
 ## The missing link
 
