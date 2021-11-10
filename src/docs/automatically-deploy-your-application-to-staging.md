@@ -19,6 +19,8 @@ In this guide you will set up a deploy policy to automatically deploy every new 
 
 To deploy every new main branch commit to staging, add the following deploy policy section to the `.gimlet/staging.yaml` file.
 
+Also, change your image tag to follow your image tagging convention
+
 ```diff
 # .gimlet/staging.yaml
 app: frontend
@@ -35,7 +37,8 @@ values:
   replicas: 2
   image:
     repository: myapp
-    tag: 1.1.0
+-    tag: 1.1.0
++    tag:  {% raw %}"{{ .GITHUB_SHA }}"{% endraw %}
   ingress:
     host: myapp.staging.mycompany.com
     tlsEnabled: true
@@ -111,4 +114,4 @@ laszlocph/gimletd-test-repo@main https://github.com/laszlocph/gimletd-test-repo/
   myapp -> staging @ push
 ```
 
-By now, if GimletD is in place, it also already released your app to staging. Verify the latest commit in the gitops repo and on Kubernetes.
+By now, if GimletD is in place, it also already released your app to staging. Verify the latest commit in the gitops repo to see of GimletD had made the change, and on Kubernetes to see your updated application.
