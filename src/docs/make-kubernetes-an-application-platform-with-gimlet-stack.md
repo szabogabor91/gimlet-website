@@ -16,7 +16,7 @@ In this tutorial you will install
   - Prometheus for metrics
   - and Loki for logs
     
- on your Kubernetes cluster using Gimlet Stack.
+ on your Kubernetes cluster to make it a true application platform with all the infrastructure services that you need.
  
 All backed by a git repository with a self-containing gitops automation.
 
@@ -58,7 +58,7 @@ In this tutorial we are going to use Flux V2 as the GitOps controller, and use t
 Fetch Gimlet Stack and install it with the following commands:
 
 ```bash
-curl -L https://github.com/gimlet-io/gimlet-stack/releases/download/v0.3.3/stack-$(uname)-$(uname -m) -o stack
+curl -L https://github.com/gimlet-io/gimlet-stack/releases/download/v0.3.5/stack-$(uname)-$(uname -m) -o stack
 chmod +x stack
 sudo mv ./stack /usr/local/bin/stack
 stack --version

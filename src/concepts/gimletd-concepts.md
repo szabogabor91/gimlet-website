@@ -151,4 +151,4 @@ GimletD stores the release artifacts in the artifact storage.
 
 While this is a sizable json structure, we have integrations with most CI engines out there today.
 
-You can also use Gimlet CLI's `gimlet artifact *` commands, should you work with something that is not integrated with Gimlet.
+You can also use Gimlet CLI's `gimlet artifact` commands, should you work with something that is not integrated with Gimlet.
