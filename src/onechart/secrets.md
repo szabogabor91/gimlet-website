@@ -1,8 +1,8 @@
 ---
-layout: onechart
+layout: docs
 title: Secrets
 lastUpdated: 2020-12-09
-tags: [onechart]
+tags: [docs]
 ---
 
 # Secrets

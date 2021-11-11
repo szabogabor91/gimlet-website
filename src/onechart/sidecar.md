@@ -1,8 +1,8 @@
 ---
-layout: onechart
+layout: docs
 title: Attaching a sidecar container
 lastUpdated: 2021-02-10
-tags: [onechart]
+tags: [docs]
 ---
 
 # Attaching a sidecar

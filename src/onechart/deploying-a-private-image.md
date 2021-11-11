@@ -1,8 +1,8 @@
 ---
-layout: onechart
+layout: docs
 title: Deploying a private image
 lastUpdated: 2020-12-09
-tags: [onechart]
+tags: [docs]
 ---
 
 # Deploying a private image

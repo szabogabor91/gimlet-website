@@ -1,8 +1,8 @@
 ---
-layout: onechart
+layout: docs
 title: Healthcheck
 lastUpdated: 2021-02-15
-tags: [onechart]
+tags: [docs]
 ---
 
 # High-Availability
