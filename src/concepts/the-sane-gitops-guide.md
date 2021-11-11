@@ -34,6 +34,16 @@ This guide is going to focus on FluxCD and its concepts to explain gitops in dep
 - Then it applies it on the cluster (2)
 - The gitops repository is a completely normal git repository. We store Kubernetes resource definitions in it.
 
+## How gitops differs from other automation
+
+Whether you deploy today from your laptop, or from CI, you have a set of commands - or plugin - to install the Kubernetes manifests, and you have to have Kubernetes access to be able to perform these commands.
+
+With gitops, your deployment step is simplified. You only interact with git by writing your manifests to it, then the gitops controller will apply these changes on the cluster, in a separate workflow.
+
+This split allows for a more declarative software delivery flow - you record in git what state the cluster needs to be in, and leave the rollout for standardized tooling.
+
+In this guide you will use Gimlet to bootstrap the gitops controller and will also use Gimlet to write manifests to the gitops repository. 
+
 ## Pull semantics
 
 The presented flow is just the opposite of a what you find in CI based automation.
@@ -57,9 +67,9 @@ The log that was previously scattered in the CI build history
 - Rollback based on git history<br />
 Since every version is stored, rolling back to exact revisions is a core property of git
 
-## Next steps
+## Congratulations
 
-Congratulations. You now know 
+You now know 
 
 - what role the gitops controller has
 - what is the gitops repository

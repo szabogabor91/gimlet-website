@@ -1,11 +1,11 @@
 ---
-layout: gimlet-cli
-title: Concepts
-lastUpdated: 2020-12-23
-tags: [gimletcli]
+layout: docs
+title: How-to structure gitops repositories
+lastUpdated: 2021-11-11
+tags: [docs]
 ---
 
-# Concepts
+# How-to structure gitops repositories
 
 GitOps looks straightforward from the outset,
 but early implementations showed that constructing your GitOps workflow is far from trivial.
@@ -103,17 +103,3 @@ While Gimlet accepts the state of mind that we use CI for everything in our work
 Gimlet will gradually factor deployment logic to a standalone deployment controller.
 
 In the meantime, Gimlet provides tools that you can use in your CI to kickstart GitOps at your company.
-
-## Next steps
-
-There are several paths you can take:
-
-- Get to know the Gimlet environment manifest better in the 
-  [Manage environments with Gimlet and GitOps](/gimlet-cli/manage-environments-with-gimlet-and-gitops) guide
-
-- See what tools you can use in your CI pipeline to manage GitOps in [Bootstrap GitOps with Gimlet](/gimlet-cli/bootstrap-gitops-with-gimlet)
-
-- or read the reference of
-  - [gimlet manifest create]()
-  - [gimlet manifest template]()
-  - or [gimlet gitops write]()
