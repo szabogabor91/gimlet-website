@@ -1,11 +1,35 @@
 ---
-layout: gimlet-dash
-title: Installation
+layout: docs
+title: Install the Gimlet Dash UI
 lastUpdated: 2020-09-06
-tags: [gimlet-dash]
+tags: [docs]
 ---
 
-# Installation
+# Install the Gimlet Dash UI
+
+Gimlet Dash is a developer focused generic Kubernetes dashboard and a UI for Gimlet tools.
+
+It gives a
+
+- a realtime view on Kubernetes resources
+
+![Gimlet Dash Kubernetes resources](/gimlet-dash-rt-k8s.png)
+
+- a realtime view on your git commits
+
+![Gimlet Dash Kubernetes resources](/gimlet-dash-rt-commits.png)
+
+- an overview on what was deployed and when, by whom
+
+![Gimlet Dash Kubernetes resources](/gimlet-dash-history.png)
+
+- and you can deploy on-demand
+
+![Gimlet Dash Kubernetes resources](/gimlet-dash-deploy.png)
+
+In this tutorial you are going install Gimlet Dash and connect it to Github and GimletD.
+
+## Installation yamls and configuration
 
 ```bash
 cat << EOF > values.yaml
