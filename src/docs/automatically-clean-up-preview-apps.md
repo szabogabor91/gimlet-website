@@ -1,23 +1,21 @@
 ---
-layout: gimletd
+layout: docs
 title: Cleaning up applications
 lastUpdated: 2020-09-14
 image: policy.png
-tags: [gimletd]
+tags: [docs]
 ---
-
-# Cleaning up applications
-
-If you accidentally deployed an app, or you no longer need one, use the following one-off command: 
-
-```bash
-gimlet release delete --env local --app myapp-dummy
-```
 
 ## Cleaning up preview apps
 
 If you deploy preview apps with dynamic names, like with the branch name in the app name, 
 you can use Gimlet's cleanup policies to clean them up once you don't need them anymore.
+
+## Prerequisites
+
+This feature works only if you [enabled the Github integration](/docs/configuring-gimletd#github-integration) in GimletD.
+
+## Cleanup policy
 
 ```diff
 # .gimlet/preview.yaml
@@ -52,6 +50,7 @@ Once the policy triggers, it deletes applications that are matching the `myapp-{
 
 All three fields are mandatory.
 
-Please note that only the `{% raw %}{{ .BRANCH }}{% endraw %}` variable is available for the `branchDeleted` event. At the time of deletion the shipped artifacts and their extensive 
-variable set is not available, only the branch name is known that got deleted - hence the `{% raw %}{{ .GITHUB_BRANCH }}{% endraw %}` usage throughout the manifest, except 
-in the cleanup policy.
+> Please note that only the `{% raw %}{{ .BRANCH }}{% endraw %}` variable is available for the `branchDeleted` event.
+>
+> At the time of deletion the shipped artifacts and their extensive 
+variable set is not available, only the branch name is known that got deleted. Hence the `{% raw %}{{ .GITHUB_BRANCH }}{% endraw %}` usage throughout the manifest, except in the cleanup policy.

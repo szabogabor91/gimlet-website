@@ -1,11 +1,11 @@
 ---
-layout: gimletd
+layout: docs
 title: Creating artifacts
 lastUpdated: 2020-03-16
-tags: [gimletd]
+tags: [docs]
 ---
 
-# Creating Artifacts
+# Gimlet artifact creation
 
 GimletD uses the release artifact to detach the release workflow from CI.
 
@@ -13,7 +13,7 @@ Instead of releasing, CI generates a release artifact for each releasable versio
 The artifact contains all metadata that can be later used for releasing and auditing. 
 GimletD then stores these artifacts in the artifact storage.
 
-You can read more about the artifact and the motivation behind it on the [Concepts](/gimletd/concepts) page.
+You can read more about the artifact and the motivation behind it on the [GimletD concepts](/concepts/gimletd-concepts) page.
 
 ## Creating artifacts from CircleCI
 
@@ -98,7 +98,3 @@ Then push the artifact to GimletD:
 
 This metadata assembly is typically hidden in CI plugins. See how it is done in the 
 [Gimlet CircleCI Orb](https://github.com/gimlet-io/circleci-orb/blob/alpha/src/commands/gimlet-artifact-create.yml).
-
-## Next steps
-
-Now go and [release one of the artifacts](/gimletd/on-demand-releases)
