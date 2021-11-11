@@ -7,7 +7,17 @@ tags: [docs]
 
 # Components
 
-Gimlet is a set of tools that will get you an application operations platform on top of Kubernetes.
+GitOps looks straightforward from the outset,
+but early implementations showed that constructing your GitOps workflow is far from trivial.
+It involves many decisions - big and small, that add up to a lot of work as you go.
+
+Gimlet is a modular take on GitOps that brings an opinionated layer on top of 
+the common GitOps tools. It eliminates much of the decisions you have to make and gets you an application operations platform on top of Kubernetes.
+
+Gimlet CLI, GimletD and Gimlet Dash addresses the application configuration problem space. 
+They were made to help developers wanting to deploy their own applications. 
+
+Gimlet Stack is made for cluster admins to manage infrastructure components (ingress, logging, metrics etc) through a curated update stream.
 
 ![Gimlet components](/components.svg)
 
