@@ -1,8 +1,8 @@
 ---
-layout: gimlet-dash
+layout: docs
 title: Installating Gimlet Agent
 lastUpdated: 2020-09-06
-tags: [gimlet-dash]
+tags: [docs]
 ---
 
 # Installing Gimlet Agent
@@ -86,7 +86,3 @@ EOF
 
 helm template gimlet-agent onechart/onechart -f values.yaml
 ```
-
-## Next steps
-
-- Continue with [configuring Gimlet Dashboard](/gimlet-dash/configuration)

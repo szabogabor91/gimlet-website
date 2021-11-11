@@ -98,9 +98,7 @@ probe:
 +  tlsEnabled: true
 ```
 
-Once you did this basic configuration, time to run GimletD for the first time. Shall we?
-
-# Configuring Gimlet Dash
+## Add basic Dash config
 
 ```diff
 image:
@@ -119,7 +117,7 @@ probe:
 - `HOST` Gimlet Dash must know what address it is running on. It uses this hostname to register webhooks on Github.
 - `JWT_SECRET` is the secret to generate agent JWT tokens
 
-## GimletD integration
+## Integrate it with GimletD
 
 To be able to deploy / rollback and to look at the deploy history, you must connect your Gimlet Dash to GimletD, the release manager.
 
@@ -132,12 +130,13 @@ containerPort: 9000
 probe:
   enabled: true
   path: /
+[...]
 +vars:
 +  GIMLETD_URL: gimletd.mycompany.com
 +  GIMLETD_TOKEN: <<a GilmetD admin token>>
 ```
 
-## Github integration
+## Integrate it with Github
 
 Gimlet Dashboard uses a Github Application to gain access to your source code.
 
@@ -288,6 +287,10 @@ Now you integrated Gimlet Dash with Github.
 
 > You can also validate our script on Github's [Creating a GitHub App from a manifest](https://docs.github.com/en/developers/apps/building-github-apps/creating-a-github-app-from-a-manifest) guide
 
-## Next steps
+## Time to start up the dash
 
-- Continue with [installing the Gimlet Agent](/gimlet-dash/installing-gimlet-agent)
+If you did everything right, the dashboard should start up and you are able to access it on the defined ingress endpoint.
+
+## Connect the Gimlet Agent
+
+To finish the setup continue with the [Installing the Gimlet Agent](/docs/installing-gimlet-agent) guide
