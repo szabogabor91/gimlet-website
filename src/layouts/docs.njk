@@ -51,10 +51,23 @@ layout: base
         return result.join('xxx')
     }
 </script>
-<main class="mt-8 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-16">
+<main 
+    x-data="{ open: false }"
+    class="mt-8 mx-auto max-w-7xl px-4 sm:px-6 lg:mt-16">
     <script defer src="https://unpkg.com/lunr/lunr.js"></script>
-    <div class=" lg:flex">
+    <button @click="open = ! open" type="button"
+            class="block lg:hidden bg-white rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            id="main-menu" aria-haspopup="true">
+        <span class="sr-only">Open main menu</span>
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+    <div class="lg:flex">
         <div
+            x-bind:class="open ? 'block' : 'hidden lg:block'"
             class="flex flex-col flex-initial lg:border-r lg:border-gray-200 pt-5 pb-4 bg-white overflow-y-auto max-w-xs">
             <div class="flex-grow flex flex-col">
                 <nav class="flex-1 px-2 space-y-1 bg-white" aria-label="Sidebar">
@@ -304,7 +317,7 @@ layout: base
                 </nav>
             </div>
         </div>
-        <div class="prose lg:prose-lg w-full pt-4 p-4 lg:pl-16">
+        <div class="prose lg:prose-lg w-full pt-4 lg:pl-16">
             {{ content | safe }}
         </div>
     </div>
