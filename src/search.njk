@@ -8,7 +8,7 @@ eleventyExcludeFromCollections: true
     {
         "title":"{{page.data.title}}",
         "url":"https://gimlet.io{{ mappedUrl }}",
-        "content":"{{page.templateContent | striptags(true) | escape | replace("\n", " ") }}"
+        "content":"{{page.templateContent | striptags(true) | escape | replace("\n", " ") | replace("\\", "") }}"
     } {% if loop.last == false %},{% endif %}
     {%- endfor %}
 ]
