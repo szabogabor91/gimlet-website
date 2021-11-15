@@ -1,0 +1,328 @@
+---
+layout: base
+---
+<script>
+    function search(docs, term) {
+        let idx = lunr(function () {
+            this.ref('id');
+            this.field('title');
+            this.field('url');
+            this.field('content');
+            this.metadataWhitelist = ['position']
+
+            docs.forEach(function (doc, idx) {
+                doc.id = idx;
+                this.add(doc);
+            }, this);
+        });
+
+        let results = idx.search(term);
+
+        results.forEach(r => {
+            r.title = docs[r.ref].title;
+            r.url = docs[r.ref].url;
+            r.content = docs[r.ref].content;
+        });
+
+        return results;
+    }
+
+    function matchContext(content, matches) {
+        matches = JSON.parse(JSON.stringify(matches))
+
+        let result = Object.keys(matches).map(term => {
+            const position = matches[term].content.position;
+
+            const context = 50
+            let results = [];
+            for (const pos of position) {
+                let start = pos[0];
+                let end = pos[0] + pos[1];
+
+                start = (start > context) ? (start - context) : 0;
+                end = end < (content.length - context) ? (end + context) : content.length;
+                results.push(content.substring(start, end))
+            }
+
+            return results.join('[...] ')
+        })
+
+        return result.join('xxx')
+    }
+</script>
+<main 
+    x-data="{ open: false }"
+    class="mt-8 mx-auto max-w-7xl px-4 sm:px-6 lg:mt-16">
+    <script defer src="https://unpkg.com/lunr/lunr.js"></script>
+    <button @click="open = ! open" type="button"
+            class="block lg:hidden bg-white rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            id="main-menu" aria-haspopup="true">
+        <span class="sr-only">Open main menu</span>
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+    <div class="lg:flex">
+        <div
+            x-bind:class="open ? 'block' : 'hidden lg:block'"
+            class="flex flex-col flex-initial lg:border-r lg:border-gray-200 pt-5 pb-4 bg-white overflow-y-auto max-w-xs">
+            <div class="flex-grow flex flex-col">
+                <nav class="flex-1 px-2 space-y-1 bg-white" aria-label="Sidebar">
+                    <div x-data="{ 
+                         searchterm: '',
+                         index: '',
+                         results: ''
+                        }" x-init="
+                       index = await (await fetch('/search.json')).json();
+                       $watch('searchterm', (value, oldValue) => {
+                        results = search(index, value)
+                    })" class="mb-4 relative rounded-md shadow-sm mx-2">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <input type="text" name="search" id="search" x-model.debounce.100ms="searchterm"
+                            class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                            placeholder="Search...">
+                        <div
+                            x-bind:class="results.length === 0 ? 'h-16' : 'h-96'" 
+                            class="absolute bg-black text-gray-100 max-w-xl overflow-y-auto overflow-x-visible z-40 p-2" x-show="searchterm">
+                            <ul>
+                                <li x-show="results.length === 0" class="pt-4">
+                                    No match
+                                </li>
+                                <template x-for="result in results">
+                                    <li class="pt-4">
+                                        <a x-text="result.title" class="font-bold text-lg mb-2" x-bind:href="result.url"></a><br />
+                                        <span x-text="matchContext(result.content, result.matchData.metadata)"
+                                        class="text-xs"></span>
+                                    </li>    
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <a href="/docs"
+                            class="{% if '/docs/' == page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Welcome
+                        </a>
+                    </div>
+
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white font-bold text-gray-800 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Concepts
+                        </span>
+                        <div class="space-y-1">
+                            <a href="/concepts/the-sane-gitops-guide"
+                                class="{% if '/concepts/the-sane-gitops-guide' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                The SANE Gitops guide
+                            </a>
+                            <a href="/concepts/the-sane-helm-guide"
+                                class="{% if '/concepts/the-sane-helm-guide' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                The SANE Helm guide
+                            </a>
+                            <a href="/concepts/components"
+                                class="{% if '/concepts/components' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Components
+                            </a>
+                            <a href="/concepts/gimletd-concepts"
+                                class="{% if '/concepts/gimletd-concepts' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                GimletD concepts
+                            </a>
+                            <a href="/concepts/gimlet-stack-concepts"
+                                class="{% if '/concepts/gimlet-stack-concepts' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Gimlet Stack concepts
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white font-bold text-gray-800 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Developer Tutorials
+                        </span>
+                        <div class="space-y-1">
+                            <a href="/docs/deploy-your-app-to-kubernetes-without-the-boilerplate"
+                                class="{% if '/docs/deploy-your-app-to-kubernetes-without-the-boilerplate' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Deploy your app to Kubernetes without the boilerplate
+                            </a>
+                            <a href="/docs/manage-your-staging-application-configuration"
+                                class="{% if '/docs/manage-your-staging-application-configuration' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Manage your staging application configuration
+                            </a>
+                            <a href="/docs/automatically-deploy-your-application-to-staging"
+                                class="{% if '/docs/automatically-deploy-your-application-to-staging' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Automatically deploy your application to staging
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white font-bold text-gray-800 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Developer Guides
+                        </span>
+                        <a href="/docs/how-to-manage-staging-and-production-environment-configs"
+                            class="{% if '/docs/how-to-manage-staging-and-production-environment-configs' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            How-to manage staging and production environment configs
+                        </a>
+                        <div class="space-y-1">
+                            <a href="/docs/how-to-configure-preview-environments"
+                            class="{% if '/docs/how-to-configure-preview-environments' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            How-to configure preview environments
+                        </a>
+                        <a href="/docs/variable-support-in-the-gimlet-manifest"
+                            class="{% if '/docs/variable-support-in-the-gimlet-manifest' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            Variable support in the Gimlet manifest
+                        </a>
+                        <a href="/docs/how-to-manage-secrets"
+                            class="{% if '/docs/how-to-manage-secrets' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            How-to manage secrets
+                        </a>
+                        <a href="/docs/making-ad-hoc-deploys"
+                            class="{% if '/docs/making-ad-hoc-deploys' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            Making ad-hoc deploys
+                        </a>
+                        <a href="/docs/configuring-policy-based-deploys"
+                            class="{% if '/docs/configuring-policy-based-deploys' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            Configuring policy-based deploys
+                        </a>
+                        <a href="/docs/how-to-rollback"
+                            class="{% if '/docs/how-to-rollback' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            How-to rollback
+                        </a>
+                        <a href="/docs/how-to-delete-an-application"
+                            class="{% if '/docs/how-to-delete-an-application' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            How-to delete an application
+                        </a>
+                        <a href="/reference/gimlet-artifact-creation"
+                            class="{% if '/reference/gimlet-artifact-creation' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                            Gimlet artifact creation
+                        </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white font-bold text-gray-800 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Cluster Admin Tutorials
+                        </span>
+                        <div class="space-y-1">
+                            <a href="/docs/make-kubernetes-an-application-platform-with-gimlet-stack"
+                                class="{% if '/docs/make-kubernetes-an-application-platform-with-gimlet-stack' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Make Kubernetes an application platform with Gimlet Stack
+                            </a>
+                            <a href="/docs/install-gimletd-and-enable-release-automation"
+                                class="{% if '/docs/install-gimletd-and-enable-release-automation' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Install GimletD and enable release automation
+                            </a>
+                            <a href="/docs/install-the-gimlet-dash-ui"
+                                class="{% if '/docs/install-the-gimlet-dash-ui' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Install the Gimlet Dash UI
+                            </a>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white font-bold text-gray-800 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Cluster Admin Guides
+                        </span>
+                        <div class="space-y-1">
+                            <a href="/docs/configuring-gimletd"
+                                class="{% if '/docs/configuring-gimletd' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Configuring GimletD
+                            </a>
+                            <a href="/docs/bootstrap-the-gitops-automation"
+                                class="{% if '/docs/bootstrap-the-gitops-automation' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Bootstrap the gitops automation
+                            </a>
+                            <a href="/docs/how-to-structure-gitops-repositories"
+                                class="{% if '/docs/how-to-structure-gitops-repositories' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                How-to structure gitops repositories
+                            </a>
+                            <a href="/docs/automatically-clean-up-preview-apps"
+                                class="{% if '/docs/automatically-clean-up-preview-apps' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Automatically clean up preview apps
+                            </a>
+                            <a href="/docs/reconfiguring-upgrading-and-making-custom-changes-to-stacks"
+                               class="{% if '/docs/reconfiguring-upgrading-and-making-custom-changes-to-stacks' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Reconfiguring, upgrading and making custom changes to stacks
+                            </a>
+                            <a href="/docs/installing-gimlet-agent"
+                                class="{% if '/docs/installing-gimlet-agent' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Installing the Gimlet Agent
+                            </a>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <span
+                            class="bg-white font-bold text-gray-800 group w-full flex items-center px-5 py-2 text-sm font-medium rounded-md">
+                            Onechart Reference
+                        </span>
+                        <div class="space-y-1">
+                            <a href="/onechart/deploying-an-image"
+                               class="{% if '/onechart/deploying-an-image' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Deploying an image
+                            </a>
+                            <a href="/onechart/deploying-a-private-image"
+                               class="{% if '/onechart/deploying-a-private-image' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Deploying a private image
+                            </a>
+                            <a href="/onechart/environment-variables"
+                               class="{% if '/onechart/environment-variables' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Environment variables
+                            </a>
+                            <a href="/onechart/secrets"
+                               class="{% if '/onechart/secrets' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Secrets
+                            </a>
+                            <a href="/onechart/domain-names"
+                               class="{% if '/onechart/domain-names' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Domain names
+                            </a>
+                            <a href="/onechart/volumes"
+                               class="{% if '/onechart/volumes' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Volumes
+                            </a>
+                            <a href="/onechart/healthcheck"
+                               class="{% if '/onechart/healthcheck' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Healthcheck
+                            </a>
+                            <a href="/onechart/highavailability"
+                               class="{% if '/onechart/highavailability' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                High-Availability
+                            </a>
+                            <a href="/onechart/custom-command"
+                               class="{% if '/onechart/custom-command' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Custom command
+                            </a>
+                            <a href="/onechart/cron-job"
+                               class="{% if '/onechart/cron-job' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Cron job
+                            </a>
+                            <a href="/onechart/prometheus-monitoring-rules"
+                               class="{% if '/onechart/prometheus-monitoring-rules' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Prometheus monitoring rules
+                            </a>
+                            <a href="/onechart/sidecar"
+                               class="{% if '/onechart/sidecar' in page.url %}activeMenu{% else %}menu{% endif %} group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md">
+                                Attaching a sidecar container
+                            </a>
+                        </div>
+                    </div>
+
+                </nav>
+            </div>
+        </div>
+        <div class="prose lg:prose-lg w-full pt-4 lg:pl-16">
+            {{ content | safe }}
+        </div>
+    </div>
+</main>

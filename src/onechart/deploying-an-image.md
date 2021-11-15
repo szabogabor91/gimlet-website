@@ -1,8 +1,8 @@
 ---
-layout: onechart
+layout: docs
 title: Deploying an image
 lastUpdated: 2020-12-09
-tags: [onechart]
+tags: [docs]
 ---
 
 # Deploying an image

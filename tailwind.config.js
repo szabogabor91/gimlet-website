@@ -13,7 +13,7 @@ module.exports = {
       red: colors.red,
       green: colors.emerald,
       gray: colors.blueGray,
-      blue: colors.lightBlue,
+      blue: colors.sky,
       yellow: colors.amber,
       pink: colors.rose,
       cyan: colors.cyan,
@@ -27,7 +27,11 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      transform: ['hover'],
+    }
+  },
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),

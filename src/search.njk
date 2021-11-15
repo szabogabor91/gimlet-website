@@ -1,0 +1,14 @@
+---
+permalink: /search.json
+eleventyExcludeFromCollections: true
+---
+[
+    {%- for page in collections.docs %}
+    {% set mappedUrl %}{{ metadata.url}}{{ page.url | url }}{% endset %}
+    {
+        "title":"{{page.data.title}}",
+        "url":"https://gimlet.io{{ mappedUrl }}",
+        "content":"{{page.templateContent | striptags(true) | escape | replace("\n", " ") | replace("\\", "") }}"
+    } {% if loop.last == false %},{% endif %}
+    {%- endfor %}
+]

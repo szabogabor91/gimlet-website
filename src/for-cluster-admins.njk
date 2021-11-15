@@ -1,0 +1,85 @@
+---
+layout: base
+---
+<main class="mt-16 mx-auto max-w-6xl px-4 sm:mt-24 sm:px-6 lg:mt-32">
+    <img src="/cluster-admin.svg" class="h-56 w-auto mx-auto my-16"/>
+    <div class="text-center mx-auto mt-16 lg:mt-32">
+        <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">Bootstrap a service platform on any Kubernetes cluster</p>
+        <ul class="list-none text-gray-500 mt-8">
+            <li class="my-2">
+                Gimlet Stack works with the Kubernetes API
+            </li>
+            <li class="my-2">
+                You can provision the cluster with your favorite tool, or use a managed one
+            </li>
+        </ul>
+    </div>
+    <div class="text-center mx-auto mt-16">
+        <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">With a set of well known, curated components</p>
+    </div>
+    <div class="grid grid-cols-3 md:grid-cols-5 my-8 max-w-2xl gap-y-2 mx-auto">
+        <div class="text-center">
+            <img class="h-16 inline-block" src="https://raw.githubusercontent.com/gimlet-io/gimlet-stack-reference/main/assets/nginx.png" alt="Nginx" />
+        </div>
+        <div class="text-center">
+            <img class="h-16 inline-block" src="https://raw.githubusercontent.com/gimlet-io/gimlet-stack-reference/main/assets/certManager.png" alt="Cert Manager" />
+        </div>
+        <div class="text-center">
+            <img class="h-16 inline-block" src="https://raw.githubusercontent.com/gimlet-io/gimlet-stack-reference/e4430ccda687880806c77e7efee456293d1a51e2/assets/prometheus.svg" alt="Prometheus" /></div>
+        <div class="text-center">
+            <img class="h-16 inline-block" src="https://grafana.com/static/img/menu/grafana2.svg" alt="Grafana" />
+        </div>
+        <div class="text-center">
+            <img class="h-16 inline-block" src="https://raw.githubusercontent.com/gimlet-io/gimlet-stack-reference/main/assets/kyverno.png" alt="Kyverno" />
+        </div>
+    </div>
+    
+    <div class="text-center mx-auto mt-16">
+        <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">With high-level configuration options</p>
+        <ul class="list-none text-gray-500 mt-8">
+            <li class="my-2">
+                Persistence or high availablity?
+            </li>
+            <li class="my-2">
+                Use our high level config options instead of digging through values.yaml files on Github.
+            </li>
+        </ul>
+        <!-- gif of editing on UI -->
+        <img src="/configure.gif" class="max-w-4xl mx-auto my-16 w-full md:max-w-4xl"/>
+    </div>
+    <div class="text-center mx-auto mt-16">
+        <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">Get a curated update stream of security and feature upgrades</p>
+        <ul class="list-none text-gray-500 mt-8">
+            <li class="my-2">
+                On the command line with `stack update`
+            </li>
+            <li class="my-2">
+                or get a PR whenever there is an update using our CI plugins.
+            </li>
+        </ul>
+        <img src="/update.gif" class="mx-auto my-16 w-full md:max-w-4xl"/>
+    </div>
+    <div class="text-center mx-auto mt-16">
+        <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">Add custom Helm values or raw yamls if you need to</p>
+        <ul class="list-none text-gray-500 mt-8">
+            <li class="my-2">
+                Don't worry, our 3-way merge keeps your custom changes even if you update your stack
+            </li>
+        </ul>
+        <img src="/custom-yaml.svg" class="mx-auto mt-4 max-w-4xl"/>
+    </div>
+    <div class="text-center mx-auto mt-16">
+        <p class="mt-2 text-4xl font-extrabold text-gray-800 max-w-4xl mx-auto">All delivered in a git repo with self-contained gitops automation</p>
+        <ul class="list-none text-gray-500 mt-8">
+            <li class="my-2">
+                Using Flux
+            </li>
+        </ul>
+    </div>
+    <img src="/coffee.svg" class="h-56 w-auto mx-auto my-16"/>
+    <div class="text-center my-16">
+        <a class="font-semibold text-gray-500 text-sm" href="/docs">Get me to the DOCUMENTATION</a>
+    </div>
+
+
+</main>

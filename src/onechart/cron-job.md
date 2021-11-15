@@ -1,8 +1,8 @@
 ---
-layout: onechart
+layout: docs
 title: Cron Job
 lastUpdated: 2020-12-09
-tags: [onechart]
+tags: [docs]
 ---
 
 # Cron Job
