@@ -67,7 +67,7 @@ layout: base
     <div class="lg:flex">
         <div
             x-bind:class="open ? 'block' : 'hidden lg:block'"
-            class="flex flex-col flex-initial lg:border-r lg:border-gray-200 pt-5 pb-4 bg-white overflow-y-auto max-w-xs">
+            class="flex flex-col flex-initial lg:border-r lg:border-gray-200 py-4 bg-white overflow-y-auto max-w-xs">
             <div class="flex-grow flex flex-col">
                 <nav class="flex-1 px-2 space-y-1 bg-white" aria-label="Sidebar">
                     <div x-data="{ 
@@ -321,8 +321,18 @@ layout: base
                 </nav>
             </div>
         </div>
-        <div class="prose lg:prose-lg w-full pt-4 lg:pl-16">
-            {{ content | safe }}
+        <div class="w-full pt-4 lg:pl-16">
+            <div class="bg-gray-800 text-gray-100 text-sm p-2 mt-4 mb-8 rounded-md">
+                <span>If you need some help,</span>
+                <a class="text-gray-400 text-sm font-bold"
+                    href="https://discord.com/invite/ZwQDxPkYzE"
+                    target="_blank">
+                    join our community Discord!
+                </a>
+            </div>
+            <div class="mt-8 prose lg:prose-lg ">
+                {{ content | safe }}
+            </div>
         </div>
     </div>
 </main>
