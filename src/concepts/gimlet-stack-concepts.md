@@ -59,5 +59,5 @@ Stacks are a set of Helm charts and Kubernetes manifests that are configured to 
 
 ## Next steps
 
-To see Gimlet Stack in action, go and [Make Kubernetes an application platform with Gimlet Stack](//docs/make-kubernetes-an-application-platform-with-gimlet-stack).
+To see Gimlet Stack in action, go and [Make Kubernetes an application platform with Gimlet Stack](/docs/make-kubernetes-an-application-platform-with-gimlet-stack).
 
