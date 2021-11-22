@@ -1,0 +1,79 @@
+<svg class="h-8 sm:h-10 w-auto" xmlns:i="&amp;ns_ai;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="1.1" x="0" y="0" viewBox="0 750 2000 500"
+    style="enable-background:new 0 0 2000 2000" xml:space="preserve">
+    <style type="text/css">
+        .st0 {
+            fill: #334154
+        }
+    </style>
+    <switch id="switch83">
+        <g i:extraneous="self" id="g81">
+            <g id="g79">
+                <g id="g18">
+                    <g id="g16">
+                        <path class="st0"
+                            d="M769.36 997.69h35.59v80.72c-10.42 8.29-22.57 14.66-36.46 19.1-13.89 4.43-28.16 6.65-42.82 6.65-20.64 0-39.25-4.49-55.84-13.46s-29.61-21.36-39.06-37.18c-9.45-15.81-14.18-33.66-14.18-53.53 0-19.87 4.72-37.71 14.18-53.53 9.45-15.81 22.52-28.21 39.2-37.18s35.44-13.46 56.27-13.46c16.97 0 32.4 2.8 46.29 8.39 13.89 5.6 25.56 13.79 35.01 24.59l-23.72 23.15c-15.43-15.43-34.05-23.15-55.84-23.15-14.28 0-26.96 2.99-38.05 8.97-11.09 5.98-19.77 14.37-26.04 25.17-6.27 10.8-9.4 23.15-9.4 37.03 0 13.5 3.13 25.65 9.4 36.46 6.27 10.8 14.95 19.29 26.04 25.46 11.09 6.18 23.68 9.26 37.76 9.26 15.81 0 29.7-3.47 41.66-10.42l.01-63.04z"
+                            id="path4" />
+                        <path class="st0" d="M897.82 898.73h37.61v202.53h-37.61V898.73z" id="path6" />
+                        <path class="st0"
+                            d="m1219.56 1101.27-.29-134.25-66.54 111.1h-16.79l-66.54-109.37v132.51h-35.87V898.73h30.96l80.43 134.25 78.99-134.25h30.96l.29 202.53h-35.6v.01z"
+                            id="path8" />
+                        <path class="st0"
+                            d="M1353.22 898.73h37.61v170.7h105.89v31.83h-143.51V898.73h.01z"
+                            id="path10" />
+                        <path class="st0"
+                            d="M1721.83 1069.73v31.54h-151.9V898.74h147.85v31.54h-110.24v52.66h97.8v30.96h-97.8v55.84l114.29-.01z"
+                            id="path12" />
+                        <path class="st0"
+                            d="M1848.26 930.56h-67.13v-31.83h171.86v31.83h-67.12v170.7h-37.61v-170.7z"
+                            id="path14" />
+                    </g>
+                </g>
+                <g id="g77">
+                    <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-437.617"
+                        y1="-3051.266" x2="1467.618" y2="-3051.266"
+                        gradientTransform="matrix(-.4018 0 0 .4018 515.508 2255.238)">
+                        <stop offset="0" style="stop-color:#fec53e" id="stop20" />
+                        <stop offset=".227" style="stop-color:#ff884e" id="stop22" />
+                        <stop offset=".454" style="stop-color:#fe5558" id="stop24" />
+                        <stop offset=".509" style="stop-color:#f5495f" id="stop26" />
+                        <stop offset=".61" style="stop-color:#ea3968" id="stop28" />
+                        <stop offset=".687" style="stop-color:#e6336b" id="stop30" />
+                        <stop offset=".825" style="stop-color:#d72d74" id="stop32" />
+                        <stop offset="1" style="stop-color:#be2283" id="stop34" />
+                    </linearGradient>
+                    <path id="polygon37" style="fill:url(#SVGID_1_)"
+                        d="M184.27 1030.66v50.56l124.19 71.7-2.09 1.21-53.4 30.82-53.39-30.82-53.39-30.83-53.39-30.82V907.52l.13-.07 16.36-9.44 36.9-21.31 5.5-3.17 168.98 97.55 1.01-1.75v-50.55l-169.99-98.14-45.8 26.44-42.4 24.48-16.36 9.45-.13.07v237.84l205.98 118.92 101.28-58.48 45.8-26.44-214.78-124.01z" />
+                    <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-437.617"
+                        y1="-3273.018" x2="1467.618" y2="-3273.018"
+                        gradientTransform="matrix(-.4018 0 0 .4018 515.508 2255.238)">
+                        <stop offset="0" style="stop-color:#fec53e" id="stop39" />
+                        <stop offset=".227" style="stop-color:#ff884e" id="stop41" />
+                        <stop offset=".454" style="stop-color:#fe5558" id="stop43" />
+                        <stop offset=".509" style="stop-color:#f5495f" id="stop45" />
+                        <stop offset=".61" style="stop-color:#ea3968" id="stop47" />
+                        <stop offset=".687" style="stop-color:#e6336b" id="stop49" />
+                        <stop offset=".825" style="stop-color:#d72d74" id="stop51" />
+                        <stop offset="1" style="stop-color:#be2283" id="stop53" />
+                    </linearGradient>
+                    <path id="polygon56" style="fill:url(#SVGID_2_)"
+                        d="m359.76 876.7 53.39 30.82v184.16l45.8 26.44V881.08L252.97 762.16l-45.8 26.44 99.2 57.27z" />
+                    <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-437.617"
+                        y1="-3124.038" x2="1467.618" y2="-3124.038"
+                        gradientTransform="matrix(-.4018 0 0 .4018 515.508 2255.238)">
+                        <stop offset="0" style="stop-color:#fec53e" id="stop58" />
+                        <stop offset=".227" style="stop-color:#ff884e" id="stop60" />
+                        <stop offset=".454" style="stop-color:#fe5558" id="stop62" />
+                        <stop offset=".509" style="stop-color:#f5495f" id="stop64" />
+                        <stop offset=".61" style="stop-color:#ea3968" id="stop66" />
+                        <stop offset=".687" style="stop-color:#e6336b" id="stop68" />
+                        <stop offset=".825" style="stop-color:#d72d74" id="stop70" />
+                        <stop offset="1" style="stop-color:#be2283" id="stop72" />
+                    </linearGradient>
+                    <path id="polygon75" style="fill:url(#SVGID_3_)"
+                        d="M184.27 933.89v52.89l137.41 79.33v-52.89z" />
+                </g>
+            </g>
+        </g>
+    </switch>
+</svg>
