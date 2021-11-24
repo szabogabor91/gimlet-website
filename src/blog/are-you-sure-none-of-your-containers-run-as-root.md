@@ -32,9 +32,9 @@ to - as the name suggests - mutate the resources that you are about to create, a
 
 ![How Kyverno extends the Kubernetes API server](https://kyverno.io/images/kyverno-architecture.png)
 
-Kyverno implements both of these extension points and able to due quite handy stuff. Like automatically injecting resource limits, or what our article is about: checking if a pod is running as root or not.
+Kyverno implements both of these extension points and able to do quite handy stuff. Like automatically injecting resource limits, or what our article is about: checking if a pod is running as root or not.
 
-If it is running as root, Kyverno sends a rejection response in the validating admission webhook request, and the Kubernetes API server turns down your `kubectl apply` request.
+If it is running as root, Kyverno sends a rejection response in the validating admission webhook response, and the Kubernetes API server turns down your `kubectl apply` request.
 
 ## Introducing Kyverno to Gimlet Stack
 
@@ -104,11 +104,11 @@ spec:
               runAsNonRoot: true
 ```
 
-The above `ClusterPolicy` is checking if the depployed `Deployments` have the `runAsNonRoot: true` flag in their pod specification. If not, then it will not pass this policy.
+The above `ClusterPolicy` is checking if the deployed `Deployments` have the `runAsNonRoot: true` flag in their pod specification. If not, then it will not pass this policy.
 
 It is worth noting that Kyverno is not looking inside the container to validate if it is really running as root. Instead, it relies on existing Kubernetes controls, `runAsNonRoot: true`, and the developer's diligence of adding the flag in their `Deployment` configuration. Should they not add the flag, their deployment is flagged if the policy is in `validationFailureAction: audit` mode, or rejected if `validationFailureAction ` is set to `enforce`.
 
-The above policy is part of group of `restricted` policies that you can deploy with Gimlet Stack. The two supported set of policies, baseline and restricted, are also documented on the [Kyverno website](https://kyverno.io/policies).
+The above policy is part of the `restricted` policies that you can deploy with Gimlet Stack. The two supported set of policies, baseline and restricted, are also documented on the [Kyverno website](https://kyverno.io/policies).
 
 ## Checking violating containers
 
@@ -122,7 +122,7 @@ For that purpose Gimlet Stack includes a Grafana dashboard:
 
 To round up policy reporting, let's set an alert on it too.
 
-Looking at dashboards just adds to the daily toil that you do anyways. Instead, let's have Grafana reach out to you if a new pod is running as non root.
+Looking at dashboards just adds to the daily toil. Instead, let's have Grafana reach out to you if a new pod is running as non root.
 
 To do that, duplicate the "Failing Policies" widget on the dash and limit it to the `require-run-as-non-root` policy with the following query: `sum(increase(kyverno_policy_results_total{rule_result="fail", policy_name="require-run-as-non-root"}[45s])) by (policy_name)`
 
