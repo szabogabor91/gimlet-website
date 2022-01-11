@@ -14,15 +14,15 @@ But Helm does two things well:
 - packaging
 - and templating
 
-In this guide you will get practical knowledge on how-to use Helm focusing on those usecases, packaging and templating, that by the way also underpin Gimlet.
+In this guide, you will get practical knowledge on how to use Helm, focusing on those use-cases, packaging and templating, that, by the way, also underpin Gimlet.
 
 This guide emphasizes simplicity and ease of use. Being an exhausting guide of Helm features is a non-goal. Instead, the goal is to get you from *"Helm, wtf?"* to *"Helm, this ain't so bad"* under five minutes.
 
 Let's get to it, shall we?
 
 ## Prerequisites
-- You have access to a Kubernetes cluster. Use [k3d](https://github.com/rancher/k3d#get) if you don't have one.
-- You have `kubectl` installed. Follow [this guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/) if you don't have it.
+- You have access to a Kubernetes cluster. Use [k3d](https://github.com/rancher/k3d#get), if you don't have one.
+- You have `kubectl` installed. Follow [this guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/), if you don't have it.
 - You have Helm installed. Install it with 
 `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` <br /> or look for installation alternatives at [https://helm.sh/docs/intro/install/](https://helm.sh/docs/intro/install/)
 
@@ -122,7 +122,7 @@ Before we round up this chapter and jump to Helm's other thing that it does well
 
 ## Configuring releases with Helm's values.yaml file
 
-It is a good practice to store configuration values in a declerative form, in a file that you can version control.
+It is good practice to store configuration values in a declarative form, in a file that you can version control.
 
 Let's change the password of the Postgresql installation once again.
 
@@ -168,7 +168,7 @@ postgres=# quit
 
 Congratulations, now you are able to configure Helm installations with a declarative values.yaml file!
 
-Now that you are able to install and upgrade Helm charts, it's time to complete your must have Helm knowledge by looking at the other thing that Helm does well: templating.
+Now that you are able to install and upgrade Helm charts, it's time to complete your must-have Helm knowledge by looking at the other thing that Helm does well: templating.
 
 
 ## Templating - the anatomy of a Helm chart
@@ -193,7 +193,7 @@ spec:
 The above snippet is a Kubernetes Deployment resource with its replica count templated.
 
 This is how Helm charts look inside: they are Golang template files that are able to render variables at predefined placeholders.
-Just much more convoluted in real life, thanks to the many generic usecases they have to serve.
+Just much more convoluted in real life, thanks to the many generic use-cases they have to serve.
 
 
 To round up your Helm intro, in the remaining chapters you will
@@ -202,7 +202,7 @@ To round up your Helm intro, in the remaining chapters you will
 - learn how to render and debug Helm charts locally
 - and how to navigate chart source code
 
-This way you will see that charts are really just template files , and learn how to handle not well documented situations.
+This way you will see that charts are really just template files, and learn how to handle not well documented situations.
 
 ## Rendering Helm charts as Kubernetes resources
 
@@ -222,7 +222,7 @@ metadata:
   [...]
 ```
 
-The output is well known - although lengthy - Kubernetes yaml. These are the yamls Helm is applying on the cluster, this time though it was only rendering text files on your laptop.
+The output is a well known - although lengthy - Kubernetes yaml. These are the yamls Helm is applying on the cluster, this time though it was only rendering text files on your laptop.
 
 ## Closing the feedback loop
 
@@ -280,15 +280,15 @@ This is what you have learnt:
 - you know how to configure them after installation
 - and you also understand that Helm charts are Golang template files
 
-There is still a lot to know about Helm, but now you are able navigate the ecosystem.
+There is still a lot to know about Helm, but now you are able to navigate the ecosystem.
 
 As a final task, you should inspect [the defaults of the PostgresSQL chart](https://github.com/bitnami/charts/blob/master/bitnami/postgresql/values.yaml).
 
-Every Helm chart has a default `values.yaml` file where most variables are listed and have their defult values assigned. 
-It is a good practice to look at a chart's values.yaml when you are looking for examples how to configure a Helm chart. This knowledge combined with `helm template` should get you far.
+Every Helm chart has a default `values.yaml` file where most variables are listed and have their default values assigned.
+It is good practice to look at a chart's values.yaml when you are looking for examples on how to configure a Helm chart. This knowledge combined with `helm template` should get you far.
 
-And don't get discouraged by the complex chart templates.
+And don't get discouraged by complex chart templates.
 
-Conceptually you know everything about them now. You may not know yet about templating functions and named templates, but [Helm's documentation](https://helm.sh/docs/chart_template_guide/functions_and_pipelines/) is a good reference to learn about the syntaxes that you don't quite understand yet.
+You know everything about them now conceptually. You may not know yet about templating functions and named templates, but [Helm's documentation](https://helm.sh/docs/chart_template_guide/functions_and_pipelines/) is a good reference to learn about the syntaxes that you don't quite understand yet.
 
 Onwards!
