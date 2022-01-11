@@ -7,7 +7,7 @@ tags: [docs]
 
 # Manage your staging application configuration
 
-In this guide you will configure your staging application deployment in a declarative file, called the Gimlet manifest.
+In this guide, you will configure your staging application deployment in a declarative file, called the Gimlet manifest.
 
 #### Prerequisites
 
@@ -18,7 +18,7 @@ In this guide you will configure your staging application deployment in a declar
 In the [Deploy your app to Kubernetes without the boilerplate](/docs/deploy-your-app-to-kubernetes-without-the-boilerplate) tutorial you got familiar
 
 - with the `values.yaml` file to store configuration parameters for Helm charts
-- and also the `helm template` command and its parameters to render the manifests
+- and also the `helm template` command and its parameters to render manifests
 
 Gimlet introduces the Gimlet environment manifest file that captures those two things in a single file.
 
@@ -53,9 +53,9 @@ Not by accident, the `values` field carries the content that you previously plac
 
 In addition, it captures the name of the application instance, the logical name of the environment, the namespace where it goes, and the chart name and version.
 
-Capturing the chart name and version also lifts responsibilities from CI as it allows you deploy different manifest version on different environments, without modifying the CI pipeline.
+Capturing the chart name and version also lifts responsibilities from CI, as it allows you to deploy different manifest versions on different environments, without modifying the CI pipeline.
 
-To create your first environment file, use `gimlet manifest create` on your values.yaml file from the previous tutorial. It reads up the values.yaml file and puts into the Gimlet manifest format.
+To create your first environment file, use `gimlet manifest create` on your values.yaml file from the previous tutorial. It reads the values.yaml file, and converts its contents into the Gimlet manifest format.
 
 ```bash
 gimlet manifest create \
@@ -89,7 +89,7 @@ Continue reading to see how you get Kubernetes manifests from the environment fi
 
 ## Generating Kubernetes manifests for an environment
 
-Gimlet CLI has numerous tools that helps your local workflows. With the `gimlet manifest template` command you can render the exact Kubernetes manifest that is later applied on the cluster through automation. If in doubt, you can always fallback to this method to debug your manifests.
+Gimlet CLI has numerous tools that help your local workflows. With the `gimlet manifest template` command, you can render the exact Kubernetes manifest that is later applied on the cluster through automation. If in doubt, you can always fall back to this method to debug your manifests.
 
 Now run `gimlet manifest template` to get Kubernetes manifests from your environment file:
 
