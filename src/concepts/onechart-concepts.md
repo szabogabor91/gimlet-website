@@ -9,7 +9,7 @@ tags: [docs]
 
 "One chart to rule them all"
 
-A generic Helm chart for your application deployments. Because no-one can remember the Kubernetes yaml syntax.
+A generic Helm chart for your application deployments. Because no one can remember the Kubernetes yaml syntax.
 
 ## The Yaml
 
@@ -17,16 +17,15 @@ Kubernetes has a powerful deployment manifest, or "the yaml" as people often cal
 
 It allows for great flexibility with its many options and knobs, but that also means that it requires extensive boilerplate to get started.
 
-The bigger issue is that it's not easy to piece together the needed Kubernetes `Deployment`, `Service` and `Ingress` objects 
-as there is no go to place besides the Kubernetes documentation.
+The bigger issue is that it's not easy to piece together the needed Kubernetes `Deployment`, `Service` and `Ingress` objects, as there is no go-to place besides the Kubernetes documentation.
 
 ## How to get started with Kubernetes yamls
 
 Most people copy it from somewhere.
 
-If they need to extend it with new features, they search and copy that snippet too. When they start a new project, they copy over their proven yamls.
+If they need to extend it with new features, they search and copy that snippet too. When they start a new project, they copy their proven yamls.
 
-Some point, they want to make it more clever, support variables, apply pieces conditionally, they come up with some templating solution.
+At some point, they want to make it more clever, support variables, apply pieces conditionally, they come up with some templating solution.
 
 This scales to a certain point, but there has to be a better way.
 
@@ -37,7 +36,7 @@ And you keep hearing about Helm, aren't you?
 If you want to deploy well known infrastructure components, like Redis, the community has a solution for you:
 it's called Helm, and it is a package manager.
 
-There are prepackaged deployments manifests, called Helm Charts, that can get you started with installation and configuration.
+There are prepackaged deployment manifests, called Helm Charts, that can get you started with installation and configuration.
 
 Helm charts allow you to progress from a simple two liner that installs a default Redis:
 
@@ -57,7 +56,7 @@ master:
     size: 10Gi
 ```
 
-While most infrastructure software has a Helm Chart today, there is no go to chart to use for your own applications.
+While most infrastructure software have a Helm Chart today, there is no go-to chart to use for your own applications.
 
 You can try writing your own, but that it is even a larger endeavour than piecing your yamls together from blog posts.
 
@@ -71,7 +70,7 @@ you can use Gimlet's OneChart Helm Chart for your application.
 
 OneChart is a generic Helm Chart for web applications. The idea is that most Kubernetes manifest look alike, only very few parts actually change.
 
-The example bellow deploys your application image, sets environment variables and configures the Kubernetes Ingress domain name:
+The example below deploys your application image, sets environment variables and configures the Kubernetes Ingress domain name:
 
 ```bash
 helm repo add onechart https://chart.onechart.dev
