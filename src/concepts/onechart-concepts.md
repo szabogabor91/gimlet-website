@@ -29,7 +29,7 @@ At some point, they want to make it more clever, support variables, apply pieces
 
 This scales to a certain point, but there has to be a better way.
 
-And you keep hearing about Helm, aren't you?
+And you keep hearing about Helm, don't you?
 
 ## What is Helm
 
