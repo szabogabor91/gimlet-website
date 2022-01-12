@@ -12,7 +12,7 @@ In this guide you will set up a deploy policy to automatically deploy every new 
 #### Prerequisites
 
 - You have finished the [Manage your staging application configuration](/docs/manage-your-staging-application-configuration) tutorial
-- Your cluster administrator has set up GimletD for your cluster. If you are the cluster adminstrator, then bad luck, go and install GimletD first by following the [Enable release automation with GimletD](/docs/enable-release-automation-with-gimletd) tutorial.
+- Your cluster administrator has set up GimletD for your cluster. If you are the cluster adminstrator, then bad luck, go and install GimletD first by following the [Enable release automation with GimletD](/docs/install-gimletd-and-enable-release-automation) tutorial.
 - A CI pipeline that builds a docker image on new commits
 
 ## Automating staging deploys
