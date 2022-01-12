@@ -14,7 +14,7 @@ But Helm does two things well:
 - packaging
 - and templating
 
-In this guide, you will get practical knowledge on how to use Helm, focusing on those use-cases, packaging and templating, that, by the way, also underpin Gimlet.
+In this guide, you will get practical knowledge about using Helm, focusing on those use-cases, namely packaging and templating, that also underpin Gimlet.
 
 This guide emphasizes simplicity and ease of use. Being an exhausting guide of Helm features is a non-goal. Instead, the goal is to get you from *"Helm, wtf?"* to *"Helm, this ain't so bad"* under five minutes.
 
@@ -222,7 +222,7 @@ metadata:
   [...]
 ```
 
-The output is a well known - although lengthy - Kubernetes yaml. These are the yamls Helm is applying on the cluster, this time though it was only rendering text files on your laptop.
+The output is the well known - although lengthy - Kubernetes yaml. These are the yamls Helm is applying on the cluster, this time though it was only rendering text files on your laptop.
 
 ## Closing the feedback loop
 
